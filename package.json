@@ -1,6 +1,6 @@
 {
   "name": "cards-color-harmony-generator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Library for generation of harmonious color themes.",
   "keywords": [
     "device",
@@ -24,6 +24,7 @@
   },
   "files": [
     "dist/color-harmony-generator.js",
-    "dist/color-harmony-generator.js.map"
+    "dist/color-harmony-generator.js.map",
+    "color-harmony-generator.css"
   ]
 }
