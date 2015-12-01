@@ -1,0 +1,29 @@
+{
+  "name": "cards-color-harmony-generator",
+  "version": "0.0.1",
+  "description": "Library for generation of harmonious color themes.",
+  "keywords": [
+    "device",
+    "helper"
+  ],
+  "author": {
+    "name": "Rostyslav Khanas",
+    "url": "https://github.com/rtkhanas"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:opensource-cards/color-harmony-generator.git"
+  },
+  "dependencies": {
+    "tinycolor2": "*",
+    "mithril": "*"
+  },
+  "devDependencies": {
+    "typescript": "*"
+  },
+  "files": [
+    "dist/color-harmony-generator.js",
+    "dist/color-harmony-generator.js.map"
+  ]
+}

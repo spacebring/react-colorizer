@@ -1,0 +1,13 @@
+﻿#ColorPickerContainer {
+    width: 300px;
+}
+
+#SelectedLabel {
+    margin-top: 5px;
+}
+
+#SelectedColor {
+    margin: 5px 0;
+    padding: 10px;
+    display: inline-block;
+}
