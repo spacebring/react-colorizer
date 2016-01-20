@@ -1,0 +1,18 @@
+{
+  "version": "v4",
+  "repo": "borisyankov/DefinitelyTyped",
+  "ref": "master",
+  "path": "typings",
+  "bundle": "typings/tsd.d.ts",
+  "installed": {
+    "react/react.d.ts": {
+      "commit": "f11e49cfb77f99678657ddfe5d43017849675c64"
+    },
+    "react/react-dom.d.ts": {
+      "commit": "f11e49cfb77f99678657ddfe5d43017849675c64"
+    },
+    "tinycolor/tinycolor.d.ts": {
+      "commit": "6483a9dc7496b942252cff51b77309afaa840b23"
+    }
+  }
+}

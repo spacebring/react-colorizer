@@ -1,0 +1,24 @@
+{
+  "compilerOptions": {
+    "outDir": "../example",
+    "target": "es5",
+    "module": "commonjs",
+    "jsx": "react",
+    "declaration": false,
+    "noImplicitAny": true,
+    "removeComments": true,
+    "noLib": false,
+    "preserveConstEnums": true,
+    "suppressImplicitAnyIndexErrors": true,
+    "sourceMap": true
+  },
+  "filesGlob": [
+    "./**/*.ts",
+    "./**/*.tsx",
+    "!./node_modules/**/*"
+  ],
+  "files": [
+    "../typings/react/react.d.ts",
+    "../typings/tsd.d.ts"
+  ]
+}
