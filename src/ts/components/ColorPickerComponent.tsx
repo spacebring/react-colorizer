@@ -7,43 +7,83 @@ import { BrightnessPickerComponent } from "./BrightnessPickerComponent";
 interface IColorPickerComponentProps {
 	height: number;
 	defaultColor?: Color;
-	onColorChanged: any;
+	onColorChangedCallback: any;
 }
 
 export class ColorPickerComponent extends React.Component<IColorPickerComponentProps, any> {
-	public color: Color;
-	public variation: string;
-	public height: number;
-	private basePicker: BaseColorPickerComponent;
-	private brightnessPicker: BrightnessPickerComponent;
 
-	constructor(props: IColorPickerComponentProps, height: number, defaultColor?: Color) {
+	state = {
+		baseColor: this.props.defaultColor || new Color(255, 0, 0),
+		color: this.props.defaultColor || new Color(255, 0, 0),
+		brightnessPosition: 0.5
+	};
+
+	constructor(props: IColorPickerComponentProps) {
 		super(props);
 
-		var color = new Color(255, 0, 0);
-		if (defaultColor) {
-			color = defaultColor;
+		this.setBrightnessPickerBase = this.setBrightnessPickerBase.bind(this);
+		this.onBrightnessPickerColorChanged = this.onBrightnessPickerColorChanged.bind(this);
+	}
+
+	setBrightnessPickerBase(baseColor: Color) {
+		var newMainColor: Color;
+
+		newMainColor = this.getMainColor(this.state.brightnessPosition);
+
+		this.setState({
+			baseColor: baseColor,
+			color: newMainColor
+		});
+
+		this.changeColor(newMainColor);
+	}
+
+	onBrightnessPickerColorChanged(position: number) {
+		var newMainColor: Color = this.getMainColor(position);
+
+		this.setState({
+			brightnessPosition: position,
+			color: newMainColor
+		});
+
+		this.changeColor(newMainColor);
+	}
+
+	getMainColor(position: number) {
+		var baseColor: Color = this.state.baseColor,
+			newMainColor: Color = new Color(0, 0, 0);
+
+		if (position < 0.5) {
+			newMainColor.r = 255 + (baseColor.r - 255) * (position * 2);
+			newMainColor.g = 255 + (baseColor.g - 255) * (position * 2);
+			newMainColor.b = 255 + (baseColor.b - 255) * (position * 2);
+		} else {
+			newMainColor.r = baseColor.r - baseColor.r * ((position - 0.5) * 2);
+			newMainColor.g = baseColor.g - baseColor.g * ((position - 0.5) * 2);
+			newMainColor.b = baseColor.b - baseColor.b * ((position - 0.5) * 2);
 		}
 
-		//this._controller = new ColorPickerController(height, color);
+		return newMainColor;
+	}
 
-		this.height = height;
-		this.color = color;
-		this.basePicker = new BaseColorPickerComponent(height, color).onColorChanged((c) => this.brightnessPicker.setBase(c));
-		this.brightnessPicker = new BrightnessPickerComponent(height, color).onColorChanged((c) => {
-				this.color = c;
-				if (this.props.onColorChanged) {
-					this.props.onColorChanged(this.color);
-				}
-			});
-
+	changeColor(color: Color) {
+		this.props.onColorChangedCallback(this.state.color);
 	}
 
 	render() {
 		return (
 			<div>
-				<BaseColorPickerComponent height={this.props.height} />
-				<BrightnessPickerComponent height={this.props.height} />
+				<BaseColorPickerComponent
+					height={this.props.height}
+					color={this.state.baseColor}
+					onBaseColorChanged={this.setBrightnessPickerBase}
+				/>
+				<BrightnessPickerComponent
+					height={this.props.height}
+					color={this.state.baseColor}
+					position={this.state.brightnessPosition}
+					onPositionChanged={this.onBrightnessPickerColorChanged}
+				/>
 			</div>
 		);
 	}

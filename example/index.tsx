@@ -1,16 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ColorPickerComponent } from "../src/ts/components/ColorPickerComponent";
+import { Color } from "../src/ts/color";
 
 // can be: triad, tetrad, monochromatic, analogous, splitcomplement
 var selectedScheme = 'triad';
 
-var onColorChanged = function (c: any) {
+var onColorChangedCallback = function (mainColor: Color) {
 	var selected = document.getElementById('SelectedColor');
-	selected.style.backgroundColor = '#' + c.toHex();
-	selected.innerText = '#' + c.toHex();
+	selected.style.backgroundColor = '#' + mainColor.toHex();
+	selected.innerText = '#' + mainColor.toHex();
 
-	var colors = c.fullScheme(selectedScheme);
+	var colors = mainColor.fullScheme(selectedScheme);
 	var container = document.getElementById('GeneratedColors');
 	container.innerHTML = '';
 
@@ -26,7 +27,7 @@ var onColorChanged = function (c: any) {
 ReactDOM.render(
 	<ColorPickerComponent
 		height={50}
-		onColorChanged={onColorChanged}
+		onColorChangedCallback={onColorChangedCallback}
 	/>,
 	document.getElementById('ColorPickerContainer')
 );

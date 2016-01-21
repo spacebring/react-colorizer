@@ -6,97 +6,85 @@ interface IColorPickerCircleComponentProps {
 	size: number;
 	position: number;
 	top: number;
+	onPositionChanged: any;
 }
 
 export class ColorPickerCircleComponent extends React.Component<IColorPickerCircleComponentProps, any> {
-	private dragging: boolean;
-	private parentWidth: number;
-	private parentLeft: number;
 
 	constructor(props: IColorPickerCircleComponentProps) {
 		super(props);
 
-		this.dragging = false;
-
-		window.addEventListener('mousemove', (e) => this.onMouseMove(e));
-		window.addEventListener('mouseup', () => this.onMouseUp());
-
 		this.onMouseDown = this.onMouseDown.bind(this);
+		this.onMouseMove = this.onMouseMove.bind(this);
+		this.onMouseUp = this.onMouseUp.bind(this);
 	}
 
-	public getPosition = () => {
-		return this.props.position;
+	state = {
+		dragging: false,
+		parentWidth: 0,
+		parentLeft: 0,
+		position: this.props.position
 	};
 
-	public positionChanged = (handler: NumberFunc) => {
+	onMouseDown = (e: any) => {
+		var self = this;
 
-		// TODO: fix, this is from BaseColorPickerComponent
-		var colors = [
-			new Color(0, 169, 224),
-			new Color(50, 52, 144),
-			new Color(234, 22, 136),
-			new Color(235, 46, 46),
-			new Color(253, 233, 45),
-			new Color(0, 158, 84),
-			new Color(0, 158, 84)
-		];
-		var index = pos * 5;
-		var index1 = Math.floor(index);
-		var index2 = index1 + 1;
-		var percent = index - index1;
-		this.color.r = colors[index1].r + (colors[index2].r - colors[index1].r) * percent;
-		this.color.g = colors[index1].g + (colors[index2].g - colors[index1].g) * percent;
-		this.color.b = colors[index1].b + (colors[index2].b - colors[index1].b) * percent;
+		this.setState({
+			dragging: true,
+			parentWidth: e.target.parentElement.clientWidth,
+			parentLeft: e.target.parentElement.getBoundingClientRect().left
+		});
 
-		if (this.onColorChanged) {
-			this.onColorChanged(this.color);
+		window.addEventListener('mousemove', this.onMouseMove);
+		window.addEventListener('mouseup', this.onMouseUp);
+	};
+
+	onMouseMove = (e: any) => {
+
+		if (!this.state.dragging) {
+			return;
 		}
-		// TODO: fix, this is from BaseColorPickerComponent
 
-		return this;
+		this.setState({
+			position: (e.pageX - this.state.parentLeft) / this.state.parentWidth
+		});
+
+		if (this.state.position > 1) {
+			this.setState({
+				position: 1
+			});
+		}
+		if (this.state.position < 0) {
+			this.setState({
+				position: 0
+			});
+		}
+
+		this.props.onPositionChanged(this.state.position);
 	};
 
 	onMouseUp = () => {
-		this.dragging = false;
-	};
-
-	onMouseMove = (e: MouseEvent) => {
-		if (this.dragging) {
-			this.props.position = (e.pageX - this.parentLeft) / this.parentWidth;
-			if (this.props.position > 1) {
-				this.props.position = 1;
-			}
-			if (this.props.position < 0) {
-				this.props.position = 0;
-			}
-			m.redraw();
-
-			if (this.positionChanged) {
-				this.positionChanged(this.props.position);
-			}
-		}
-	};
-
-	onMouseDown = (e: MouseEvent) => {
-		var rect: any;
-
-		this.dragging = true;
-		this.parentWidth = e.srcElement.parentElement.clientWidth;
-		rect = e.srcElement.parentElement.getBoundingClientRect();
-		this.parentLeft = rect.left;
+		this.setState({
+			dragging: false
+		});
 	};
 
 	render() {
-		var style = {
-			height: this.props.size + 'px',
-			width: this.props.size + 'px',
-			top: this.props.top + 'px',
-			marginLeft: this.props.size / 2 + 'px',
-			left: this.props.position * 100 + '%'
-		};
+		var size = this.props.size,
+			style = {
+				height: size + 'px',
+				width: size + 'px',
+				top: this.props.top + 'px',
+				marginLeft: - size / 2 + 'px',
+				left: this.state.position * 100 + '%'
+			};
 
 		return (
-			<div className="colorPickerCircle" style={style} onMouseDown={this.onMouseDown}>
+			<div
+				className="colorPickerCircle"
+				style={style} 
+				onMouseDown={this.onMouseDown}
+			>
 			</div>
 		);
 	}

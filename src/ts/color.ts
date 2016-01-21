@@ -1,3 +1,5 @@
+import * as tinycolor from 'tinycolor2';
+
 export class Color {
 	public r: number;
 	public g: number;
