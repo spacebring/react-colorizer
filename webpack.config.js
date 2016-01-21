@@ -9,10 +9,6 @@ module.exports = {
 		extensions: ['', '.js', '.ts', '.tsx']
 	},
 	module: {
-		loaders: [{
-			test: /\.tsx?$/,
-			loader: 'ts-loader',
-			exclude: /node_modules/
-		}]
+		loaders: [{ test: /\.tsx?$/, loader: 'ts-loader', exclude: /node_modules/ }]
 	}
 };
