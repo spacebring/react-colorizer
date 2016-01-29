@@ -1,9 +1,9 @@
 var path = require("path");
 
 module.exports = {
-	entry: "./example/index.tsx",
+	entry: "./examples/main/index.tsx",
 	output: {
-		filename: "example/index.js"
+		filename: "examples/main/index.js"
 	},
 	resolve: {
 		extensions: ['', '.js', '.ts', '.tsx']

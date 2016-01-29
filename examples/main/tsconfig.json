@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "outDir": "../example",
+    "outDir": "../../examples/main",
     "target": "es5",
     "module": "commonjs",
     "jsx": "react",
@@ -18,7 +18,7 @@
     "!./node_modules/**/*"
   ],
   "files": [
-    "../typings/react/react.d.ts",
-    "../typings/tsd.d.ts"
+    "../../typings/react/react.d.ts",
+    "../../typings/tsd.d.ts"
   ]
 }

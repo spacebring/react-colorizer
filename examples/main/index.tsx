@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { ColorPickerComponent } from "../src/ts/components/ColorPickerComponent";
-import { Color } from "../src/ts/color";
+import { ColorPickerComponent } from '../../src/ts/components/ColorPickerComponent';
+import { Color } from '../../src/ts/color';
 
 // can be: triad, tetrad, monochromatic, analogous, splitcomplement
 var selectedScheme = 'triad';

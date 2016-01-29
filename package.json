@@ -1,6 +1,6 @@
 {
-  "name": "cards-color-harmony-generator",
-  "version": "0.0.3",
+  "name": "color-harmony-generator",
+  "version": "0.0.1",
   "description": "Library for generation of harmonious color themes.",
   "keywords": [
     "color",
@@ -26,7 +26,7 @@
   "dependencies": {
     "react": "~0.14.5",
     "react-dom": "~0.14.5",
-    "tinycolor2": "*"
+    "tinycolor2": "~1.3.0"
   },
   "devDependencies": {
     "typescript": "*",
