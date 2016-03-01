@@ -19719,7 +19719,7 @@
 	Object.defineProperty(exports, "__esModule", {
 		value: true
 	});
-	exports.HarmonyTypes = exports.Color = exports.ColorPickerComponent = undefined;
+	exports.HarmonyTypes = exports.fromHex = exports.Color = exports.ColorPickerComponent = undefined;
 
 	var _ColorPickerComponent = __webpack_require__(160);
 
@@ -19743,6 +19743,7 @@
 
 	exports.ColorPickerComponent = _ColorPickerComponent.ColorPickerComponent;
 	exports.Color = _color.Color;
+	exports.fromHex = _color.fromHex;
 	exports.HarmonyTypes = HarmonyTypes;
 
 /***/ },
