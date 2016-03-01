@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Color } from '../color';
+import { Color } from '../utils/color';
 
 export class ColorPickerCircleComponent extends React.Component {
 

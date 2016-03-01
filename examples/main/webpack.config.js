@@ -1,13 +1,16 @@
 var path = require('path');
 
 module.exports = {
-	entry: './examples/main/index.js',
+	entry: './index.js',
 	output: {
 		path: __dirname,
-		filename: 'examples/main/bundle.js'
+		filename: 'bundle.js'
 	},
 	resolve: {
-		extensions: ['', '.js']
+		extensions: ['', '.js'],
+		alias: {
+			'color-harmony-generator': path.join(__dirname, '..', '..', 'lib')
+		}
 	},
 	module: {
 		loaders: [

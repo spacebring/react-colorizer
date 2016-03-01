@@ -1,23 +1,27 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { ColorPickerComponent } from '../../src/js/components/ColorPickerComponent';
-import { Color } from '../../src/js/color';
+import { ColorPickerComponent, Color, HarmonyTypes } from 'color-harmony-generator';
 
-// can be: triad, tetrad, monochromatic, analogous, splitcomplement
-var selectedScheme = 'triad';
+// can be: TRIAD, TETRAD, MONOCHROMATIC, ANALOGOUS, SPLIT_COMPLEMENT
+const
+	selectedScheme = HarmonyTypes.TRIAD;
 
-var onColorChangedCallback = function (mainColor) {
-	var selected = document.getElementById('SelectedColor');
+function onColorChangedCallback(mainColor) {
+	const
+		selected = document.getElementById('SelectedColor');
 	selected.style.backgroundColor = '#' + mainColor.toHex();
 	selected.innerText = '#' + mainColor.toHex();
 
-	var colors = mainColor.fullScheme(selectedScheme);
-	var container = document.getElementById('GeneratedColors');
+	const
+		colors = mainColor.fullScheme(selectedScheme),
+		container = document.getElementById('GeneratedColors');
 	container.innerHTML = '';
 
-	for (var i in colors) {
-		var color = colors[i];
-		var elem = document.createElement('div');
+	for (let i in colors) {
+		const
+			color = colors[i],
+			elem = document.createElement('div');
+
 		elem.innerText = '#' + color;
 		elem.style.backgroundColor = '#' + color;
 		container.appendChild(elem);
@@ -25,9 +29,19 @@ var onColorChangedCallback = function (mainColor) {
 };
 
 ReactDOM.render(
-	<ColorPickerComponent
-		height={50}
-		onColorChangedCallback={onColorChangedCallback}
-	/>,
-	document.getElementById('ColorPickerContainer')
+	<div>
+		<h1>Color picker example</h1>
+		<div id="ColorPickerContainer">
+			<ColorPickerComponent
+				height={50}
+				onColorChangedCallback={onColorChangedCallback}
+			/>
+		</div>
+		<div>
+			<div id="SelectedLabel">Selected:</div>
+			<div id="SelectedColor"></div>
+		</div>
+		<div id="GeneratedColors"></div>
+	</div>,
+	document.getElementById('ColorHarmonyGeneratorMainExample')
 );
