@@ -1,32 +1,24 @@
 import * as React from 'react';
-import { NumberFunc } from "../i-number-func";
-import {Color} from "../color";
+import { Color } from '../color';
 
-interface IColorPickerCircleComponentProps {
-	size: number;
-	position: number;
-	top: number;
-	onPositionChanged: any;
-}
+export class ColorPickerCircleComponent extends React.Component {
 
-export class ColorPickerCircleComponent extends React.Component<IColorPickerCircleComponentProps, any> {
-
-	constructor(props: IColorPickerCircleComponentProps) {
+	constructor(props) {
 		super(props);
+
+		this.state = {
+			dragging: false,
+			parentWidth: 0,
+			parentLeft: 0,
+			position: props.position
+		};
 
 		this.onMouseDown = this.onMouseDown.bind(this);
 		this.onMouseMove = this.onMouseMove.bind(this);
 		this.onMouseUp = this.onMouseUp.bind(this);
 	}
 
-	state = {
-		dragging: false,
-		parentWidth: 0,
-		parentLeft: 0,
-		position: this.props.position
-	};
-
-	onMouseDown = (e: any) => {
+	onMouseDown(e) {
 		var self = this;
 
 		this.setState({
@@ -39,7 +31,7 @@ export class ColorPickerCircleComponent extends React.Component<IColorPickerCirc
 		window.addEventListener('mouseup', this.onMouseUp);
 	};
 
-	onMouseMove = (e: any) => {
+	onMouseMove(e) {
 
 		if (!this.state.dragging) {
 			return;
@@ -63,14 +55,15 @@ export class ColorPickerCircleComponent extends React.Component<IColorPickerCirc
 		this.props.onPositionChanged(this.state.position);
 	};
 
-	onMouseUp = () => {
+	onMouseUp() {
 		this.setState({
 			dragging: false
 		});
 	};
 
 	render() {
-		var size = this.props.size,
+		const
+			size = this.props.size,
 			style = {
 				height: size + 'px',
 				width: size + 'px',
@@ -89,3 +82,10 @@ export class ColorPickerCircleComponent extends React.Component<IColorPickerCirc
 		);
 	}
 }
+
+ColorPickerCircleComponent.defaultProps = {
+	size: undefined,
+	position: undefined,
+	top: undefined,
+	onPositionChanged: undefined
+};

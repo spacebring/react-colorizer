@@ -1,28 +1,21 @@
 import * as React from 'react';
-import { Color } from "../color";
-import { ColorFunc } from "../i-color-func";
-import { ColorPickerCircleComponent } from "./ColorPickerCircleComponent";
+import { Color } from '../color';
+import { ColorPickerCircleComponent } from './ColorPickerCircleComponent';
 
-interface IBaseColorPickerComponentProps {
-	height: number;
-	color: Color;
-	onBaseColorChanged: any;
-}
+export class BaseColorPickerComponent extends React.Component {
 
-export class BaseColorPickerComponent extends React.Component<IBaseColorPickerComponentProps, any> {
-
-	constructor(props: IBaseColorPickerComponentProps) {
+	constructor(props) {
 		super(props);
 
 		this.onPositionChanged = this.onPositionChanged.bind(this);
 	}
 
-	onPositionChanged(position: number) {
-		var index: number,
-			index1: number,
-			index2: number,
-			percent: number,
-			color: Color = new Color(0, 0, 0),
+	onPositionChanged(position) {
+		let index,
+			index1,
+			index2,
+			percent,
+			color = new Color(0, 0, 0),
 			colors = [
 				new Color(0, 169, 224),
 				new Color(50, 52, 144),
@@ -46,9 +39,10 @@ export class BaseColorPickerComponent extends React.Component<IBaseColorPickerCo
 	}
 
 	render() {
-		var style = {
-			height: this.props.height + 'px'
-		};
+		const
+			style = {
+				height: this.props.height + 'px'
+			};
 
 		return (
 			<div className="colorPickerGradient colorPickerHueGradient" style={style}>
@@ -62,3 +56,9 @@ export class BaseColorPickerComponent extends React.Component<IBaseColorPickerCo
 		);
 	}
 }
+
+BaseColorPickerComponent.defaultProps = {
+	height: undefined,
+	color: undefined,
+	onBaseColorChanged: undefined
+};

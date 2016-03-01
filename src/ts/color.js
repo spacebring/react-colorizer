@@ -1,17 +1,14 @@
-import * as tinycolor from 'tinycolor2';
+import tinycolor from 'tinycolor2';
 
 export class Color {
-	public r: number;
-	public g: number;
-	public b: number;
 
-	constructor(r: number, g: number, b: number) {
+	constructor(r, g, b) {
 		this.r = r;
 		this.g = g;
 		this.b = b;
 	}
 
-	private numberToHex(num: number): string {
+	numberToHex(num) {
 		var res = Math.round(num).toString(16);
 		if (res.length < 2) {
 			res = '0' + res;
@@ -19,18 +16,19 @@ export class Color {
 		return res;
 	}
 
-	toHex(): string {
+	toHex() {
 		return this.numberToHex(this.r) + this.numberToHex(this.g) + this.numberToHex(this.b);
 	}
 
-	tinyColor(): tinycolorInstance {
+	tinyColor() {
 		return tinycolor(this.toHex());
 	}
 
-	fullScheme(scheme: string): Array<string> {
-		var colors: Array<tinycolorInstance> = this.tinyColor()[scheme]();
-		var result: Array<string> = [];
-		for (var i in colors) {
+	fullScheme(scheme) {
+		let colors = this.tinyColor()[scheme](),
+			result = [];
+
+		for (let i in colors) {
 			result.push(colors[i].toHex());
 			result.push(colors[i].lighten().toHex());
 			result.push(colors[i].brighten().toHex());
@@ -38,19 +36,24 @@ export class Color {
 			result.push(colors[i].desaturate().toHex());
 			result.push(colors[i].saturate().toHex());
 		}
+
 		return result;
 	}
 
-	clone(): Color {
+	clone() {
 		return new Color(this.r, this.g, this.b)
 	}
+}
 
-	static fromHex(hex: string): Color {
-		var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
-		return result ? new Color(
+export function fromHex(hex) {
+	const
+		result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+
+	return result
+		? new Color(
 			parseInt(result[1], 16),
 			parseInt(result[2], 16),
 			parseInt(result[3], 16)
-		) : null;
-	}
+		)
+		: null;
 }

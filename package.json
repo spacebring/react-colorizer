@@ -11,9 +11,6 @@
     "name": "Rostyslav Khanas",
     "url": "https://github.com/rtkhanas"
   },
-  "scripts": {
-    "postinstall": "tsd reinstall --overwrite --save"
-  },
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -29,9 +26,12 @@
     "tinycolor2": "~1.3.0"
   },
   "devDependencies": {
-    "typescript": "*",
-    "webpack": "*",
-    "ts-loader": "*",
-    "tsd": "*"
+    "babel": "^6.3.26",
+    "babel-core": "^6.4.0",
+    "babel-loader": "^6.2.1",
+    "babel-plugin-transform-object-rest-spread": "^6.5.0",
+    "babel-preset-es2015": "^6.3.13",
+    "babel-preset-react": "^6.3.13",
+    "webpack": "*"
   }
 }
