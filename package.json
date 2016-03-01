@@ -1,6 +1,6 @@
 {
   "name": "color-harmony-generator",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Library for generation of harmonious color themes.",
   "keywords": [
     "color",
@@ -18,7 +18,7 @@
   },
   "files": [
     "dist/css/",
-    "src/ts/"
+    "src/js/"
   ],
   "dependencies": {
     "react": "~0.14.5",
