@@ -1,6 +1,6 @@
 {
   "name": "color-harmony-generator",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Library for generation of harmonious color themes.",
   "keywords": [
     "color",
@@ -20,8 +20,8 @@
     "url": "git@github.com:opensource-cards/color-harmony-generator.git"
   },
   "files": [
-    "dist/css/",
-    "src/js/"
+    "lib",
+    "src/css"
   ],
   "main": "lib/index.js",
   "dependencies": {
