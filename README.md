@@ -4,7 +4,7 @@ Library for generation of harmonious color themes.
 
 ### Installation
 
-To install:
+Using [npm](https://www.npmjs.com/):
 
 ```
 npm install --save color-harmony-generator
