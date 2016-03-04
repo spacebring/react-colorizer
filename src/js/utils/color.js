@@ -9,9 +9,9 @@ export class Color {
 	}
 
 	numberToHex(num) {
-		var res = Math.round(num).toString(16);
+		let res = Math.round(num).toString(16);
 		if (res.length < 2) {
-			res = '0' + res;
+			res = `0${res}`;
 		}
 		return res;
 	}
@@ -25,23 +25,25 @@ export class Color {
 	}
 
 	fullScheme(scheme) {
-		let colors = this.tinyColor()[scheme](),
-			result = [];
+		const colors = this.tinyColor()[scheme]();
+		const result = [];
 
-		for (let i in colors) {
-			result.push(colors[i].toHex());
-			result.push(colors[i].lighten().toHex());
-			result.push(colors[i].brighten().toHex());
-			result.push(colors[i].darken().toHex());
-			result.push(colors[i].desaturate().toHex());
-			result.push(colors[i].saturate().toHex());
+		for (const i in colors) {
+			if (colors.hasOwnProperty(i)) {
+				result.push(colors[i].toHex());
+				result.push(colors[i].lighten().toHex());
+				result.push(colors[i].brighten().toHex());
+				result.push(colors[i].darken().toHex());
+				result.push(colors[i].desaturate().toHex());
+				result.push(colors[i].saturate().toHex());
+			}
 		}
 
 		return result;
 	}
 
 	clone() {
-		return new Color(this.r, this.g, this.b)
+		return new Color(this.r, this.g, this.b);
 	}
 }
 

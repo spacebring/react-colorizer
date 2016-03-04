@@ -6,5 +6,5 @@ export {
 	ColorPickerComponent,
 	Color,
 	fromHex,
-	HarmonyTypes
+	HarmonyTypes,
 };

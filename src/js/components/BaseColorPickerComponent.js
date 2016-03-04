@@ -11,25 +11,20 @@ export class BaseColorPickerComponent extends React.Component {
 	}
 
 	onPositionChanged(position) {
-		let index,
-			index1,
-			index2,
-			percent,
-			color = new Color(0, 0, 0),
-			colors = [
-				new Color(0, 169, 224),
-				new Color(50, 52, 144),
-				new Color(234, 22, 136),
-				new Color(235, 46, 46),
-				new Color(253, 233, 45),
-				new Color(0, 158, 84),
-				new Color(0, 158, 84)
-			];
-
-		index = position * 5;
-		index1 = Math.floor(index);
-		index2 = index1 + 1;
-		percent = index - index1;
+		const color = new Color(0, 0, 0);
+		const colors = [
+			new Color(0, 169, 224),
+			new Color(50, 52, 144),
+			new Color(234, 22, 136),
+			new Color(235, 46, 46),
+			new Color(253, 233, 45),
+			new Color(0, 158, 84),
+			new Color(0, 158, 84),
+		];
+		const index = position * 5;
+		const index1 = Math.floor(index);
+		const index2 = index1 + 1;
+		const percent = index - index1;
 
 		color.r = colors[index1].r + (colors[index2].r - colors[index1].r) * percent;
 		color.g = colors[index1].g + (colors[index2].g - colors[index1].g) * percent;
@@ -39,10 +34,9 @@ export class BaseColorPickerComponent extends React.Component {
 	}
 
 	render() {
-		const
-			style = {
-				height: this.props.height + 'px'
-			};
+		const style = {
+			height: `${this.props.height}px`,
+		};
 
 		return (
 			<div className="colorPickerGradient colorPickerHueGradient" style={style}>
@@ -60,5 +54,11 @@ export class BaseColorPickerComponent extends React.Component {
 BaseColorPickerComponent.defaultProps = {
 	height: undefined,
 	color: undefined,
-	onBaseColorChanged: undefined
+	onBaseColorChanged: undefined,
+};
+
+BaseColorPickerComponent.propTypes = {
+	height: React.PropTypes.any.isRequired,
+	color: React.PropTypes.any,
+	onBaseColorChanged: React.PropTypes.any,
 };

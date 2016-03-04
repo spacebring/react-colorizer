@@ -9,13 +9,25 @@ export class ColorPickerComponent extends React.Component {
 		super(props);
 
 		this.state = {
-			baseColor: props.defaultColor || new Color(255, 0, 0),
-			color: props.defaultColor || new Color(255, 0, 0),
-			brightnessPosition: 0.5
+			baseColor: props.defaultColor,
+			color: props.defaultColor,
+			brightnessPosition: 0.5,
 		};
 
-		this.setBrightnessPickerBase = this.setBrightnessPickerBase.bind(this);
 		this.onBrightnessPickerColorChanged = this.onBrightnessPickerColorChanged.bind(this);
+		this.setBrightnessPickerBase = this.setBrightnessPickerBase.bind(this);
+	}
+
+	onBrightnessPickerColorChanged(position) {
+		const
+			newMainColor = this.getMainColor(position);
+
+		this.setState({
+			brightnessPosition: position,
+			color: newMainColor,
+		});
+
+		this.changeColor(newMainColor);
 	}
 
 	setBrightnessPickerBase(baseColor) {
@@ -23,29 +35,16 @@ export class ColorPickerComponent extends React.Component {
 			newMainColor = this.getMainColor(this.state.brightnessPosition);
 
 		this.setState({
-			baseColor: baseColor,
-			color: newMainColor
+			baseColor,
+			color: newMainColor,
 		});
 
 		this.changeColor(newMainColor);
 	}
 
-	onBrightnessPickerColorChanged(position: number) {
-		const
-			newMainColor = this.getMainColor(position);
-
-		this.setState({
-			brightnessPosition: position,
-			color: newMainColor
-		});
-
-		this.changeColor(newMainColor);
-	}
-
-	getMainColor(position: number) {
-		const
-			baseColor = this.state.baseColor,
-			newMainColor = new Color(0, 0, 0);
+	getMainColor(position) {
+		const baseColor = this.state.baseColor;
+		const newMainColor = new Color(0, 0, 0);
 
 		if (position < 0.5) {
 			newMainColor.r = 255 + (baseColor.r - 255) * (position * 2);
@@ -60,7 +59,7 @@ export class ColorPickerComponent extends React.Component {
 		return newMainColor;
 	}
 
-	changeColor(color) {
+	changeColor() {
 		this.props.onColorChangedCallback(this.state.color);
 	}
 
@@ -85,6 +84,12 @@ export class ColorPickerComponent extends React.Component {
 
 ColorPickerComponent.defaultProps = {
 	height: undefined,
-	defaultColor: undefined,
-	onColorChangedCallback: undefined
+	defaultColor: new Color(255, 0, 0),
+	onColorChangedCallback: undefined,
+};
+
+ColorPickerComponent.propTypes = {
+	height: React.PropTypes.any.isRequired,
+	defaultColor: React.PropTypes.any,
+	onColorChangedCallback: React.PropTypes.any,
 };

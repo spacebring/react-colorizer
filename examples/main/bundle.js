@@ -19818,29 +19818,17 @@
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ColorPickerComponent).call(this, props));
 
 			_this.state = {
-				baseColor: props.defaultColor || new _color.Color(255, 0, 0),
-				color: props.defaultColor || new _color.Color(255, 0, 0),
+				baseColor: props.defaultColor,
+				color: props.defaultColor,
 				brightnessPosition: 0.5
 			};
 
-			_this.setBrightnessPickerBase = _this.setBrightnessPickerBase.bind(_this);
 			_this.onBrightnessPickerColorChanged = _this.onBrightnessPickerColorChanged.bind(_this);
+			_this.setBrightnessPickerBase = _this.setBrightnessPickerBase.bind(_this);
 			return _this;
 		}
 
 		_createClass(ColorPickerComponent, [{
-			key: 'setBrightnessPickerBase',
-			value: function setBrightnessPickerBase(baseColor) {
-				var newMainColor = this.getMainColor(this.state.brightnessPosition);
-
-				this.setState({
-					baseColor: baseColor,
-					color: newMainColor
-				});
-
-				this.changeColor(newMainColor);
-			}
-		}, {
 			key: 'onBrightnessPickerColorChanged',
 			value: function onBrightnessPickerColorChanged(position) {
 				var newMainColor = this.getMainColor(position);
@@ -19853,10 +19841,22 @@
 				this.changeColor(newMainColor);
 			}
 		}, {
+			key: 'setBrightnessPickerBase',
+			value: function setBrightnessPickerBase(baseColor) {
+				var newMainColor = this.getMainColor(this.state.brightnessPosition);
+
+				this.setState({
+					baseColor: baseColor,
+					color: newMainColor
+				});
+
+				this.changeColor(newMainColor);
+			}
+		}, {
 			key: 'getMainColor',
 			value: function getMainColor(position) {
-				var baseColor = this.state.baseColor,
-				    newMainColor = new _color.Color(0, 0, 0);
+				var baseColor = this.state.baseColor;
+				var newMainColor = new _color.Color(0, 0, 0);
 
 				if (position < 0.5) {
 					newMainColor.r = 255 + (baseColor.r - 255) * (position * 2);
@@ -19872,7 +19872,7 @@
 			}
 		}, {
 			key: 'changeColor',
-			value: function changeColor(color) {
+			value: function changeColor() {
 				this.props.onColorChangedCallback(this.state.color);
 			}
 		}, {
@@ -19896,8 +19896,14 @@
 
 	ColorPickerComponent.defaultProps = {
 		height: undefined,
-		defaultColor: undefined,
+		defaultColor: new _color.Color(255, 0, 0),
 		onColorChangedCallback: undefined
+	};
+
+	ColorPickerComponent.propTypes = {
+		height: React.PropTypes.any.isRequired,
+		defaultColor: React.PropTypes.any,
+		onColorChangedCallback: React.PropTypes.any
 	};
 
 /***/ },
@@ -39457,16 +39463,18 @@
 		}, {
 			key: 'fullScheme',
 			value: function fullScheme(scheme) {
-				var colors = this.tinyColor()[scheme](),
-				    result = [];
+				var colors = this.tinyColor()[scheme]();
+				var result = [];
 
 				for (var i in colors) {
-					result.push(colors[i].toHex());
-					result.push(colors[i].lighten().toHex());
-					result.push(colors[i].brighten().toHex());
-					result.push(colors[i].darken().toHex());
-					result.push(colors[i].desaturate().toHex());
-					result.push(colors[i].saturate().toHex());
+					if (colors.hasOwnProperty(i)) {
+						result.push(colors[i].toHex());
+						result.push(colors[i].lighten().toHex());
+						result.push(colors[i].brighten().toHex());
+						result.push(colors[i].darken().toHex());
+						result.push(colors[i].desaturate().toHex());
+						result.push(colors[i].saturate().toHex());
+					}
 				}
 
 				return result;
@@ -40735,17 +40743,12 @@
 		_createClass(BaseColorPickerComponent, [{
 			key: 'onPositionChanged',
 			value: function onPositionChanged(position) {
-				var index = undefined,
-				    index1 = undefined,
-				    index2 = undefined,
-				    percent = undefined,
-				    color = new _color.Color(0, 0, 0),
-				    colors = [new _color.Color(0, 169, 224), new _color.Color(50, 52, 144), new _color.Color(234, 22, 136), new _color.Color(235, 46, 46), new _color.Color(253, 233, 45), new _color.Color(0, 158, 84), new _color.Color(0, 158, 84)];
-
-				index = position * 5;
-				index1 = Math.floor(index);
-				index2 = index1 + 1;
-				percent = index - index1;
+				var color = new _color.Color(0, 0, 0);
+				var colors = [new _color.Color(0, 169, 224), new _color.Color(50, 52, 144), new _color.Color(234, 22, 136), new _color.Color(235, 46, 46), new _color.Color(253, 233, 45), new _color.Color(0, 158, 84), new _color.Color(0, 158, 84)];
+				var index = position * 5;
+				var index1 = Math.floor(index);
+				var index2 = index1 + 1;
+				var percent = index - index1;
 
 				color.r = colors[index1].r + (colors[index2].r - colors[index1].r) * percent;
 				color.g = colors[index1].g + (colors[index2].g - colors[index1].g) * percent;
@@ -40778,6 +40781,12 @@
 		onBaseColorChanged: undefined
 	};
 
+	BaseColorPickerComponent.propTypes = {
+		height: React.PropTypes.any.isRequired,
+		color: React.PropTypes.any,
+		onBaseColorChanged: React.PropTypes.any
+	};
+
 /***/ },
 /* 320 */
 /***/ function(module, exports, __webpack_require__) {
@@ -40804,8 +40813,6 @@
 	var _react = __webpack_require__(161);
 
 	var React = _interopRequireWildcard(_react);
-
-	var _color = __webpack_require__(317);
 
 	function _interopRequireWildcard(obj) {
 		if (obj && obj.__esModule) {
@@ -40861,8 +40868,6 @@
 		_createClass(ColorPickerCircleComponent, [{
 			key: 'onMouseDown',
 			value: function onMouseDown(e) {
-				var self = this;
-
 				this.setState({
 					dragging: true,
 					parentWidth: e.target.parentElement.clientWidth,
@@ -40875,7 +40880,6 @@
 		}, {
 			key: 'onMouseMove',
 			value: function onMouseMove(e) {
-
 				if (!this.state.dragging) {
 					return;
 				}
@@ -40907,8 +40911,8 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var size = this.props.size,
-				    style = {
+				var size = this.props.size;
+				var style = {
 					height: size + 'px',
 					width: size + 'px',
 					top: this.props.top + 'px',
@@ -40932,6 +40936,13 @@
 		position: undefined,
 		top: undefined,
 		onPositionChanged: undefined
+	};
+
+	ColorPickerCircleComponent.propTypes = {
+		size: React.PropTypes.any.isRequired,
+		position: React.PropTypes.any,
+		top: React.PropTypes.any,
+		onPositionChanged: React.PropTypes.any
 	};
 
 /***/ },
@@ -40960,8 +40971,6 @@
 	var _react = __webpack_require__(161);
 
 	var React = _interopRequireWildcard(_react);
-
-	var _color = __webpack_require__(317);
 
 	var _ColorPickerCircleComponent = __webpack_require__(320);
 
@@ -41017,7 +41026,7 @@
 			value: function render() {
 				var style = {
 					height: this.props.height + 'px',
-					backgroundImage: 'linear-gradient(90deg, rgb(255, 255, 255) 0%, #' + this.props.color.toHex() + ' 50%, rgb(0, 0, 0) 100%)'
+					backgroundImage: 'linear-gradient(\n\t\t\t\t90deg, rgb(255, 255, 255) 0%, #' + this.props.color.toHex() + ' 50%, rgb(0, 0, 0) 100%\n\t\t\t)'
 				};
 
 				return React.createElement('div', { className: 'colorPickerGradient', style: style }, React.createElement(_ColorPickerCircleComponent.ColorPickerCircleComponent, {
@@ -41037,6 +41046,13 @@
 		color: undefined,
 		onPositionChanged: undefined,
 		position: undefined
+	};
+
+	BrightnessPickerComponent.propTypes = {
+		height: React.PropTypes.any.isRequired,
+		color: React.PropTypes.any,
+		onPositionChanged: React.PropTypes.any,
+		position: React.PropTypes.any
 	};
 
 /***/ },
