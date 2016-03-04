@@ -36,7 +36,7 @@ ReactDOM.render(
 
 * Main ([source](https://github.com/opensource-cards/color-harmony-generator/tree/master/examples/main))
 
-## Web site
+### Web site
 
 http://opensource-cards.github.io/color-harmony-generator
 
