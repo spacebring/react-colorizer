@@ -1,6 +1,6 @@
 # color-harmony-generator
 
-Library for generation of harmonious color themes.
+Library for generation of harmonious color themes. Include react components for picking colors.
 
 ### Installation
 
