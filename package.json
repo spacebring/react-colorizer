@@ -12,8 +12,9 @@
     "url": "https://github.com/rtkhanas"
   },
   "scripts": {
+    "clean": "rimraf lib",
     "lint": "eslint src",
-    "build": "npm run lint && babel src/js --out-dir lib",
+    "build": "npm run lint && npm run clean && babel src/js --out-dir lib",
     "build:all": "npm run build && cd examples/main && webpack"
   },
   "license": "MIT",
@@ -42,6 +43,7 @@
     "eslint": "^2.2.0",
     "eslint-config-airbnb": "^6.0.2",
     "eslint-plugin-react": "^4.1.0",
+    "rimraf": "^2.3.4",
     "webpack": "1.12.13"
   }
 }
