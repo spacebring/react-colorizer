@@ -1,4 +1,7 @@
-# color-harmony-generator
+# color-harmony-generator [![npm package][npm-badge]][npm]
+
+[npm-badge]: https://badge.fury.io/js/color-harmony-generator.svg
+[npm]: https://www.npmjs.com/package/color-harmony-generator
 
 Library for generation of harmonious color themes. Include react components for picking colors.
 
