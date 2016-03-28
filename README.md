@@ -1,7 +1,8 @@
-# color-harmony-generator [![npm package][npm-badge]][npm]
+# color-harmony-generator
 
-[npm-badge]: https://badge.fury.io/js/color-harmony-generator.svg
-[npm]: https://www.npmjs.com/package/color-harmony-generator
+[![npm package](https://badge.fury.io/js/color-harmony-generator.svg)](https://www.npmjs.org/package/color-harmony-generator)
+[![Dependency Status](https://david-dm.org/opensource-cards/color-harmony-generator.svg)](https://david-dm.org/opensource-cards/color-harmony-generator)
+[![devDependency Status](https://david-dm.org/opensource-cards/color-harmony-generator/dev-status.svg)](https://david-dm.org/opensource-cards/color-harmony-generator#info=devDependencies)
 
 Library for generation of harmonious color themes. Include react components for picking colors.
 
