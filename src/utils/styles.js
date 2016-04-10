@@ -24,13 +24,3 @@ export const colorPickerCircle = {
 	verticalAlign: 'middle',
 	cursor: 'w-resize',
 };
-
-export const colorPickerRect = {
-	display: 'inline-block',
-	boxSizing: 'border-box',
-	cursor: 'pointer',
-};
-
-export const colorPickerRectSelected = {
-	border: 'solid 3px white',
-};
