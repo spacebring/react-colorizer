@@ -14,8 +14,9 @@
   "scripts": {
     "clean": "rimraf lib",
     "lint": "eslint src",
-    "build": "npm run lint && npm run clean && babel src/js --out-dir lib",
-    "build:all": "npm run build && cd examples/main && webpack"
+    "build": "npm run lint && npm run clean && babel src --out-dir lib",
+    "build:all": "npm run build && cd examples/main && webpack",
+    "start": "cd examples/main && webpack-dev-server --inline --hot"
   },
   "license": "MIT",
   "repository": {
@@ -23,28 +24,29 @@
     "url": "git@github.com:opensource-cards/color-harmony-generator.git"
   },
   "files": [
-    "lib",
-    "src/css"
+    "lib"
   ],
   "main": "lib/index.js",
   "dependencies": {
-    "react": "^0.14.7",
+    "autobind-decorator": "^1.3.3",
+    "react": "^15.0.1",
     "tinycolor2": "^1.3.0"
   },
   "devDependencies": {
     "babel": "^6.3.26",
-    "babel-cli": "^6.6.5",
-    "babel-core": "^6.7.4",
-    "babel-eslint": "^6.0.0",
+    "babel-cli": "^6.7.5",
+    "babel-core": "^6.7.6",
+    "babel-eslint": "^6.0.2",
     "babel-loader": "^6.2.1",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
     "babel-plugin-transform-object-rest-spread": "^6.6.5",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
-    "eslint": "^2.5.1",
+    "eslint": "^2.7.0",
     "eslint-config-airbnb": "^6.2.0",
-    "eslint-plugin-react": "^4.2.3",
-    "estraverse-fb": "^1.3.1",
+    "eslint-plugin-react": "^4.3.0",
     "rimraf": "^2.3.4",
-    "webpack": "^1.12.14"
+    "webpack": "^1.12.14",
+    "webpack-dev-server": "^1.14.1"
   }
 }

@@ -19725,7 +19725,7 @@
 
 	var _color = __webpack_require__(317);
 
-	var _harmonyTypes = __webpack_require__(322);
+	var _harmonyTypes = __webpack_require__(323);
 
 	var HarmonyTypes = _interopRequireWildcard(_harmonyTypes);
 
@@ -19777,7 +19777,7 @@
 
 	var _BaseColorPickerComponent = __webpack_require__(319);
 
-	var _BrightnessPickerComponent = __webpack_require__(321);
+	var _BrightnessPickerComponent = __webpack_require__(322);
 
 	function _interopRequireWildcard(obj) {
 		if (obj && obj.__esModule) {
@@ -40704,6 +40704,8 @@
 
 	var _ColorPickerCircleComponent = __webpack_require__(320);
 
+	var _styles = __webpack_require__(321);
+
 	function _interopRequireWildcard(obj) {
 		if (obj && obj.__esModule) {
 			return obj;
@@ -40765,11 +40767,11 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var style = {
+				var style = Object.assign({}, _styles.colorPickerGradient, _styles.colorPickerHueGradient, {
 					height: this.props.height + 'px'
-				};
+				});
 
-				return React.createElement('div', { className: 'colorPickerGradient colorPickerHueGradient', style: style }, React.createElement(_ColorPickerCircleComponent.ColorPickerCircleComponent, {
+				return React.createElement('div', { style: style }, React.createElement(_ColorPickerCircleComponent.ColorPickerCircleComponent, {
 					size: this.props.height / 2,
 					position: 0.5,
 					top: this.props.height / 4,
@@ -40819,6 +40821,8 @@
 	var _react = __webpack_require__(161);
 
 	var React = _interopRequireWildcard(_react);
+
+	var _styles = __webpack_require__(321);
 
 	function _interopRequireWildcard(obj) {
 		if (obj && obj.__esModule) {
@@ -40918,16 +40922,15 @@
 			key: 'render',
 			value: function render() {
 				var size = this.props.size;
-				var style = {
+				var style = Object.assign({}, _styles.colorPickerCircle, {
 					height: size + 'px',
 					width: size + 'px',
 					top: this.props.top + 'px',
 					marginLeft: -size / 2 + 'px',
 					left: this.state.position * 100 + '%'
-				};
+				});
 
 				return React.createElement('div', {
-					className: 'colorPickerCircle',
 					style: style,
 					onMouseDown: this.onMouseDown
 				});
@@ -40953,6 +40956,44 @@
 
 /***/ },
 /* 321 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+		value: true
+	});
+	var colorPickerGradient = exports.colorPickerGradient = {
+		position: 'relative',
+		width: '100%',
+		overflow: 'hidden'
+	};
+
+	var colorPickerHueGradient = exports.colorPickerHueGradient = {
+		backgroundImage: 'linear-gradient(\n\t\t90deg,\n\t\trgb(0, 169, 224) 0%,\n\t\trgb(50, 52, 144) 20%,\n\t\trgb(234, 22, 136) 40%,\n\t\trgb(235, 46, 46) 60%,\n\t\trgb(253, 233, 45) 80%,\n\t\trgb(0, 158, 84) 100%\n\t)'
+	};
+
+	var colorPickerCircle = exports.colorPickerCircle = {
+		position: 'absolute',
+		boxSizing: 'border-box',
+		border: 'solid 2px white',
+		borderRadius: '50%',
+		verticalAlign: 'middle',
+		cursor: 'w-resize'
+	};
+
+	var colorPickerRect = exports.colorPickerRect = {
+		display: 'inline-block',
+		boxSizing: 'border-box',
+		cursor: 'pointer'
+	};
+
+	var colorPickerRectSelected = exports.colorPickerRectSelected = {
+		border: 'solid 3px white'
+	};
+
+/***/ },
+/* 322 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -40979,6 +41020,8 @@
 	var React = _interopRequireWildcard(_react);
 
 	var _ColorPickerCircleComponent = __webpack_require__(320);
+
+	var _styles = __webpack_require__(321);
 
 	function _interopRequireWildcard(obj) {
 		if (obj && obj.__esModule) {
@@ -41030,12 +41073,12 @@
 		}, {
 			key: 'render',
 			value: function render() {
-				var style = {
+				var style = Object.assign({}, _styles.colorPickerGradient, {
 					height: this.props.height + 'px',
 					backgroundImage: 'linear-gradient(\n\t\t\t\t90deg, rgb(255, 255, 255) 0%, #' + this.props.color.toHex() + ' 50%, rgb(0, 0, 0) 100%\n\t\t\t)'
-				};
+				});
 
-				return React.createElement('div', { className: 'colorPickerGradient', style: style }, React.createElement(_ColorPickerCircleComponent.ColorPickerCircleComponent, {
+				return React.createElement('div', { style: style }, React.createElement(_ColorPickerCircleComponent.ColorPickerCircleComponent, {
 					size: this.props.height / 2,
 					position: this.props.position,
 					top: this.props.height / 4,
@@ -41062,7 +41105,7 @@
 	};
 
 /***/ },
-/* 322 */
+/* 323 */
 /***/ function(module, exports) {
 
 	'use strict';

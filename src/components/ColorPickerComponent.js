@@ -1,4 +1,5 @@
 import * as React from 'react';
+import autobind from 'autobind-decorator';
 import { Color } from '../utils/color';
 import { BaseColorPickerComponent } from './BaseColorPickerComponent';
 import { BrightnessPickerComponent } from './BrightnessPickerComponent';
@@ -13,11 +14,9 @@ export class ColorPickerComponent extends React.Component {
 			color: props.defaultColor,
 			brightnessPosition: 0.5,
 		};
-
-		this.onBrightnessPickerColorChanged = this.onBrightnessPickerColorChanged.bind(this);
-		this.setBrightnessPickerBase = this.setBrightnessPickerBase.bind(this);
 	}
 
+	@autobind
 	onBrightnessPickerColorChanged(position) {
 		const
 			newMainColor = this.getMainColor(position);
@@ -30,6 +29,7 @@ export class ColorPickerComponent extends React.Component {
 		this.changeColor(newMainColor);
 	}
 
+	@autobind
 	setBrightnessPickerBase(baseColor) {
 		const
 			newMainColor = this.getMainColor(this.state.brightnessPosition);
@@ -42,6 +42,7 @@ export class ColorPickerComponent extends React.Component {
 		this.changeColor(newMainColor);
 	}
 
+	@autobind
 	getMainColor(position) {
 		const baseColor = this.state.baseColor;
 		const newMainColor = new Color(0, 0, 0);
@@ -59,6 +60,7 @@ export class ColorPickerComponent extends React.Component {
 		return newMainColor;
 	}
 
+	@autobind
 	changeColor() {
 		this.props.onColorChangedCallback(this.state.color);
 	}

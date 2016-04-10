@@ -1,4 +1,6 @@
 import * as React from 'react';
+import autobind from 'autobind-decorator';
+import { colorPickerCircle } from '../utils/styles';
 
 export class ColorPickerCircleComponent extends React.Component {
 
@@ -11,12 +13,9 @@ export class ColorPickerCircleComponent extends React.Component {
 			parentLeft: 0,
 			position: props.position,
 		};
-
-		this.onMouseDown = this.onMouseDown.bind(this);
-		this.onMouseMove = this.onMouseMove.bind(this);
-		this.onMouseUp = this.onMouseUp.bind(this);
 	}
 
+	@autobind
 	onMouseDown(e) {
 		this.setState({
 			dragging: true,
@@ -28,6 +27,7 @@ export class ColorPickerCircleComponent extends React.Component {
 		window.addEventListener('mouseup', this.onMouseUp);
 	}
 
+	@autobind
 	onMouseMove(e) {
 		if (!this.state.dragging) {
 			return;
@@ -51,6 +51,7 @@ export class ColorPickerCircleComponent extends React.Component {
 		this.props.onPositionChanged(this.state.position);
 	}
 
+	@autobind
 	onMouseUp() {
 		this.setState({
 			dragging: false,
@@ -59,19 +60,18 @@ export class ColorPickerCircleComponent extends React.Component {
 
 	render() {
 		const size = this.props.size;
-		const style = {
+		const style = Object.assign({}, colorPickerCircle, {
 			height: `${size}px`,
 			width: `${size}px`,
 			top: `${this.props.top}px`,
 			marginLeft: `${- size / 2}px`,
 			left: `${this.state.position * 100}%`,
-		};
+		});
 
 		return (
 			<div
-				className="colorPickerCircle"
-				style={style}
-				onMouseDown={this.onMouseDown}
+				style={ style }
+				onMouseDown={ this.onMouseDown }
 			>
 			</div>
 		);

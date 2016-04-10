@@ -1,15 +1,12 @@
 import * as React from 'react';
+import autobind from 'autobind-decorator';
 import { Color } from '../utils/color';
 import { ColorPickerCircleComponent } from './ColorPickerCircleComponent';
+import { colorPickerGradient, colorPickerHueGradient } from '../utils/styles';
 
 export class BaseColorPickerComponent extends React.Component {
 
-	constructor(props) {
-		super(props);
-
-		this.onPositionChanged = this.onPositionChanged.bind(this);
-	}
-
+	@autobind
 	onPositionChanged(position) {
 		const color = new Color(0, 0, 0);
 		const colors = [
@@ -34,17 +31,17 @@ export class BaseColorPickerComponent extends React.Component {
 	}
 
 	render() {
-		const style = {
+		const style = Object.assign({}, colorPickerGradient, colorPickerHueGradient, {
 			height: `${this.props.height}px`,
-		};
+		});
 
 		return (
-			<div className="colorPickerGradient colorPickerHueGradient" style={style}>
+			<div style={ style }>
 				<ColorPickerCircleComponent
-					size={this.props.height / 2}
-					position={0.5}
-					top={this.props.height / 4}
-					onPositionChanged={this.onPositionChanged}
+					size={ this.props.height / 2 }
+					position={ 0.5 }
+					top={ this.props.height / 4 }
+					onPositionChanged={ this.onPositionChanged }
 				/>
 			</div>
 		);
