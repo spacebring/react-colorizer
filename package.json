@@ -1,6 +1,6 @@
 {
   "name": "color-harmony-generator",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Library for generation of harmonious color themes.",
   "keywords": [
     "color",
