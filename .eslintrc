@@ -2,7 +2,6 @@
   "parser": "babel-eslint",
   "extends": "airbnb",
   "rules": {
-    "indent": 0,
-    "react/jsx-indent-props": [0, 0]
+    "no-restricted-syntax": 0
   }
 }

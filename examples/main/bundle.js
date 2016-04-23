@@ -19717,7 +19717,7 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	exports.HarmonyTypes = exports.fromHex = exports.Color = exports.ColorPickerComponent = undefined;
 
@@ -19730,15 +19730,15 @@
 	var HarmonyTypes = _interopRequireWildcard(_harmonyTypes);
 
 	function _interopRequireWildcard(obj) {
-		if (obj && obj.__esModule) {
-			return obj;
-		} else {
-			var newObj = {};if (obj != null) {
-				for (var key in obj) {
-					if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
-				}
-			}newObj.default = obj;return newObj;
-		}
+	  if (obj && obj.__esModule) {
+	    return obj;
+	  } else {
+	    var newObj = {};if (obj != null) {
+	      for (var key in obj) {
+	        if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
+	      }
+	    }newObj.default = obj;return newObj;
+	  }
 	}
 
 	exports.ColorPickerComponent = _ColorPickerComponent.ColorPickerComponent;
@@ -19755,18 +19755,18 @@
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	exports.ColorPickerComponent = undefined;
 
 	var _createClass = function () {
-		function defineProperties(target, props) {
-			for (var i = 0; i < props.length; i++) {
-				var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-			}
-		}return function (Constructor, protoProps, staticProps) {
-			if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-		};
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
 	}();
 
 	var _desc, _value, _class;
@@ -19786,160 +19786,160 @@
 	var _BrightnessPickerComponent = __webpack_require__(197);
 
 	function _interopRequireDefault(obj) {
-		return obj && obj.__esModule ? obj : { default: obj };
+	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	function _interopRequireWildcard(obj) {
-		if (obj && obj.__esModule) {
-			return obj;
-		} else {
-			var newObj = {};if (obj != null) {
-				for (var key in obj) {
-					if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
-				}
-			}newObj.default = obj;return newObj;
-		}
+	  if (obj && obj.__esModule) {
+	    return obj;
+	  } else {
+	    var newObj = {};if (obj != null) {
+	      for (var key in obj) {
+	        if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
+	      }
+	    }newObj.default = obj;return newObj;
+	  }
 	}
 
 	function _classCallCheck(instance, Constructor) {
-		if (!(instance instanceof Constructor)) {
-			throw new TypeError("Cannot call a class as a function");
-		}
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
 	}
 
 	function _possibleConstructorReturn(self, call) {
-		if (!self) {
-			throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-		}return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
 	}
 
 	function _inherits(subClass, superClass) {
-		if (typeof superClass !== "function" && superClass !== null) {
-			throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-		}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 
 	function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-		var desc = {};
-		Object['ke' + 'ys'](descriptor).forEach(function (key) {
-			desc[key] = descriptor[key];
-		});
-		desc.enumerable = !!desc.enumerable;
-		desc.configurable = !!desc.configurable;
+	  var desc = {};
+	  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+	    desc[key] = descriptor[key];
+	  });
+	  desc.enumerable = !!desc.enumerable;
+	  desc.configurable = !!desc.configurable;
 
-		if ('value' in desc || desc.initializer) {
-			desc.writable = true;
-		}
+	  if ('value' in desc || desc.initializer) {
+	    desc.writable = true;
+	  }
 
-		desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-			return decorator(target, property, desc) || desc;
-		}, desc);
+	  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+	    return decorator(target, property, desc) || desc;
+	  }, desc);
 
-		if (context && desc.initializer !== void 0) {
-			desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-			desc.initializer = undefined;
-		}
+	  if (context && desc.initializer !== void 0) {
+	    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+	    desc.initializer = undefined;
+	  }
 
-		if (desc.initializer === void 0) {
-			Object['define' + 'Property'](target, property, desc);
-			desc = null;
-		}
+	  if (desc.initializer === void 0) {
+	    Object['define' + 'Property'](target, property, desc);
+	    desc = null;
+	  }
 
-		return desc;
+	  return desc;
 	}
 
 	var ColorPickerComponent = exports.ColorPickerComponent = (_class = function (_React$Component) {
-		_inherits(ColorPickerComponent, _React$Component);
+	  _inherits(ColorPickerComponent, _React$Component);
 
-		function ColorPickerComponent(props) {
-			_classCallCheck(this, ColorPickerComponent);
+	  function ColorPickerComponent(props) {
+	    _classCallCheck(this, ColorPickerComponent);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ColorPickerComponent).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ColorPickerComponent).call(this, props));
 
-			_this.state = {
-				baseColor: props.defaultColor,
-				color: props.defaultColor,
-				brightnessPosition: 0.5
-			};
-			return _this;
-		}
+	    _this.state = {
+	      baseColor: props.defaultColor,
+	      color: props.defaultColor,
+	      brightnessPosition: 0.5
+	    };
+	    return _this;
+	  }
 
-		_createClass(ColorPickerComponent, [{
-			key: 'onBrightnessPickerColorChanged',
-			value: function onBrightnessPickerColorChanged(position) {
-				var newMainColor = this.getMainColor(position);
+	  _createClass(ColorPickerComponent, [{
+	    key: 'onBrightnessPickerColorChanged',
+	    value: function onBrightnessPickerColorChanged(position) {
+	      var newMainColor = this.getMainColor(position);
 
-				this.setState({
-					brightnessPosition: position,
-					color: newMainColor
-				});
+	      this.setState({
+	        brightnessPosition: position,
+	        color: newMainColor
+	      });
 
-				this.changeColor(newMainColor);
-			}
-		}, {
-			key: 'setBrightnessPickerBase',
-			value: function setBrightnessPickerBase(baseColor) {
-				var newMainColor = this.getMainColor(this.state.brightnessPosition);
+	      this.changeColor(newMainColor);
+	    }
+	  }, {
+	    key: 'setBrightnessPickerBase',
+	    value: function setBrightnessPickerBase(baseColor) {
+	      var newMainColor = this.getMainColor(this.state.brightnessPosition);
 
-				this.setState({
-					baseColor: baseColor,
-					color: newMainColor
-				});
+	      this.setState({
+	        baseColor: baseColor,
+	        color: newMainColor
+	      });
 
-				this.changeColor(newMainColor);
-			}
-		}, {
-			key: 'getMainColor',
-			value: function getMainColor(position) {
-				var baseColor = this.state.baseColor;
-				var newMainColor = new _color.Color(0, 0, 0);
+	      this.changeColor(newMainColor);
+	    }
+	  }, {
+	    key: 'getMainColor',
+	    value: function getMainColor(position) {
+	      var baseColor = this.state.baseColor;
+	      var newMainColor = new _color.Color(0, 0, 0);
 
-				if (position < 0.5) {
-					newMainColor.r = 255 + (baseColor.r - 255) * (position * 2);
-					newMainColor.g = 255 + (baseColor.g - 255) * (position * 2);
-					newMainColor.b = 255 + (baseColor.b - 255) * (position * 2);
-				} else {
-					newMainColor.r = baseColor.r - baseColor.r * ((position - 0.5) * 2);
-					newMainColor.g = baseColor.g - baseColor.g * ((position - 0.5) * 2);
-					newMainColor.b = baseColor.b - baseColor.b * ((position - 0.5) * 2);
-				}
+	      if (position < 0.5) {
+	        newMainColor.r = 255 + (baseColor.r - 255) * (position * 2);
+	        newMainColor.g = 255 + (baseColor.g - 255) * (position * 2);
+	        newMainColor.b = 255 + (baseColor.b - 255) * (position * 2);
+	      } else {
+	        newMainColor.r = baseColor.r - baseColor.r * ((position - 0.5) * 2);
+	        newMainColor.g = baseColor.g - baseColor.g * ((position - 0.5) * 2);
+	        newMainColor.b = baseColor.b - baseColor.b * ((position - 0.5) * 2);
+	      }
 
-				return newMainColor;
-			}
-		}, {
-			key: 'changeColor',
-			value: function changeColor() {
-				this.props.onColorChangedCallback(this.state.color);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				return React.createElement('div', null, React.createElement(_BaseColorPickerComponent.BaseColorPickerComponent, {
-					height: this.props.height,
-					color: this.state.baseColor,
-					onBaseColorChanged: this.setBrightnessPickerBase
-				}), React.createElement(_BrightnessPickerComponent.BrightnessPickerComponent, {
-					height: this.props.height,
-					color: this.state.baseColor,
-					position: this.state.brightnessPosition,
-					onPositionChanged: this.onBrightnessPickerColorChanged
-				}));
-			}
-		}]);
+	      return newMainColor;
+	    }
+	  }, {
+	    key: 'changeColor',
+	    value: function changeColor() {
+	      this.props.onColorChangedCallback(this.state.color);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return React.createElement('div', null, React.createElement(_BaseColorPickerComponent.BaseColorPickerComponent, {
+	        height: this.props.height,
+	        color: this.state.baseColor,
+	        onBaseColorChanged: this.setBrightnessPickerBase
+	      }), React.createElement(_BrightnessPickerComponent.BrightnessPickerComponent, {
+	        height: this.props.height,
+	        color: this.state.baseColor,
+	        position: this.state.brightnessPosition,
+	        onPositionChanged: this.onBrightnessPickerColorChanged
+	      }));
+	    }
+	  }]);
 
-		return ColorPickerComponent;
+	  return ColorPickerComponent;
 	}(React.Component), (_applyDecoratedDescriptor(_class.prototype, 'onBrightnessPickerColorChanged', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'onBrightnessPickerColorChanged'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setBrightnessPickerBase', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'setBrightnessPickerBase'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'getMainColor', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'getMainColor'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'changeColor', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'changeColor'), _class.prototype)), _class);
 
 	ColorPickerComponent.defaultProps = {
-		height: undefined,
-		defaultColor: new _color.Color(255, 0, 0),
-		onColorChangedCallback: undefined
+	  height: undefined,
+	  defaultColor: new _color.Color(255, 0, 0),
+	  onColorChangedCallback: undefined
 	};
 
 	ColorPickerComponent.propTypes = {
-		height: React.PropTypes.any.isRequired,
-		defaultColor: React.PropTypes.any,
-		onColorChangedCallback: React.PropTypes.any
+	  height: React.PropTypes.any.isRequired,
+	  defaultColor: React.PropTypes.any,
+	  onColorChangedCallback: React.PropTypes.any
 	};
 
 /***/ },
@@ -23508,18 +23508,18 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	exports.Color = undefined;
 
 	var _createClass = function () {
-		function defineProperties(target, props) {
-			for (var i = 0; i < props.length; i++) {
-				var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-			}
-		}return function (Constructor, protoProps, staticProps) {
-			if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-		};
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
 	}();
 
 	exports.fromHex = fromHex;
@@ -23529,76 +23529,76 @@
 	var _tinycolor2 = _interopRequireDefault(_tinycolor);
 
 	function _interopRequireDefault(obj) {
-		return obj && obj.__esModule ? obj : { default: obj };
+	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	function _classCallCheck(instance, Constructor) {
-		if (!(instance instanceof Constructor)) {
-			throw new TypeError("Cannot call a class as a function");
-		}
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
 	}
 
 	var Color = exports.Color = function () {
-		function Color(r, g, b) {
-			_classCallCheck(this, Color);
+	  function Color(r, g, b) {
+	    _classCallCheck(this, Color);
 
-			this.r = r;
-			this.g = g;
-			this.b = b;
-		}
+	    this.r = r;
+	    this.g = g;
+	    this.b = b;
+	  }
 
-		_createClass(Color, [{
-			key: 'numberToHex',
-			value: function numberToHex(num) {
-				var res = Math.round(num).toString(16);
-				if (res.length < 2) {
-					res = '0' + res;
-				}
-				return res;
-			}
-		}, {
-			key: 'toHex',
-			value: function toHex() {
-				return this.numberToHex(this.r) + this.numberToHex(this.g) + this.numberToHex(this.b);
-			}
-		}, {
-			key: 'tinyColor',
-			value: function tinyColor() {
-				return (0, _tinycolor2.default)(this.toHex());
-			}
-		}, {
-			key: 'fullScheme',
-			value: function fullScheme(scheme) {
-				var colors = this.tinyColor()[scheme]();
-				var result = [];
+	  _createClass(Color, [{
+	    key: 'numberToHex',
+	    value: function numberToHex(num) {
+	      var res = Math.round(num).toString(16);
+	      if (res.length < 2) {
+	        res = '0' + res;
+	      }
+	      return res;
+	    }
+	  }, {
+	    key: 'toHex',
+	    value: function toHex() {
+	      return this.numberToHex(this.r) + this.numberToHex(this.g) + this.numberToHex(this.b);
+	    }
+	  }, {
+	    key: 'tinyColor',
+	    value: function tinyColor() {
+	      return (0, _tinycolor2.default)(this.toHex());
+	    }
+	  }, {
+	    key: 'fullScheme',
+	    value: function fullScheme(scheme) {
+	      var colors = this.tinyColor()[scheme]();
+	      var result = [];
 
-				for (var i in colors) {
-					if (colors.hasOwnProperty(i)) {
-						result.push(colors[i].toHex());
-						result.push(colors[i].lighten().toHex());
-						result.push(colors[i].brighten().toHex());
-						result.push(colors[i].darken().toHex());
-						result.push(colors[i].desaturate().toHex());
-						result.push(colors[i].saturate().toHex());
-					}
-				}
+	      for (var i in colors) {
+	        if (colors.hasOwnProperty(i)) {
+	          result.push(colors[i].toHex());
+	          result.push(colors[i].lighten().toHex());
+	          result.push(colors[i].brighten().toHex());
+	          result.push(colors[i].darken().toHex());
+	          result.push(colors[i].desaturate().toHex());
+	          result.push(colors[i].saturate().toHex());
+	        }
+	      }
 
-				return result;
-			}
-		}, {
-			key: 'clone',
-			value: function clone() {
-				return new Color(this.r, this.g, this.b);
-			}
-		}]);
+	      return result;
+	    }
+	  }, {
+	    key: 'clone',
+	    value: function clone() {
+	      return new Color(this.r, this.g, this.b);
+	    }
+	  }]);
 
-		return Color;
+	  return Color;
 	}();
 
 	function fromHex(hex) {
-		var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+	  var result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
 
-		return result ? new Color(parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)) : null;
+	  return result ? new Color(parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)) : null;
 	}
 
 /***/ },
@@ -24782,18 +24782,18 @@
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	exports.BaseColorPickerComponent = undefined;
 
 	var _createClass = function () {
-		function defineProperties(target, props) {
-			for (var i = 0; i < props.length; i++) {
-				var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-			}
-		}return function (Constructor, protoProps, staticProps) {
-			if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-		};
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
 	}();
 
 	var _desc, _value, _class;
@@ -24813,122 +24813,122 @@
 	var _styles = __webpack_require__(196);
 
 	function _interopRequireDefault(obj) {
-		return obj && obj.__esModule ? obj : { default: obj };
+	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	function _interopRequireWildcard(obj) {
-		if (obj && obj.__esModule) {
-			return obj;
-		} else {
-			var newObj = {};if (obj != null) {
-				for (var key in obj) {
-					if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
-				}
-			}newObj.default = obj;return newObj;
-		}
+	  if (obj && obj.__esModule) {
+	    return obj;
+	  } else {
+	    var newObj = {};if (obj != null) {
+	      for (var key in obj) {
+	        if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
+	      }
+	    }newObj.default = obj;return newObj;
+	  }
 	}
 
 	function _classCallCheck(instance, Constructor) {
-		if (!(instance instanceof Constructor)) {
-			throw new TypeError("Cannot call a class as a function");
-		}
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
 	}
 
 	function _possibleConstructorReturn(self, call) {
-		if (!self) {
-			throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-		}return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
 	}
 
 	function _inherits(subClass, superClass) {
-		if (typeof superClass !== "function" && superClass !== null) {
-			throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-		}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 
 	function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-		var desc = {};
-		Object['ke' + 'ys'](descriptor).forEach(function (key) {
-			desc[key] = descriptor[key];
-		});
-		desc.enumerable = !!desc.enumerable;
-		desc.configurable = !!desc.configurable;
+	  var desc = {};
+	  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+	    desc[key] = descriptor[key];
+	  });
+	  desc.enumerable = !!desc.enumerable;
+	  desc.configurable = !!desc.configurable;
 
-		if ('value' in desc || desc.initializer) {
-			desc.writable = true;
-		}
+	  if ('value' in desc || desc.initializer) {
+	    desc.writable = true;
+	  }
 
-		desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-			return decorator(target, property, desc) || desc;
-		}, desc);
+	  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+	    return decorator(target, property, desc) || desc;
+	  }, desc);
 
-		if (context && desc.initializer !== void 0) {
-			desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-			desc.initializer = undefined;
-		}
+	  if (context && desc.initializer !== void 0) {
+	    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+	    desc.initializer = undefined;
+	  }
 
-		if (desc.initializer === void 0) {
-			Object['define' + 'Property'](target, property, desc);
-			desc = null;
-		}
+	  if (desc.initializer === void 0) {
+	    Object['define' + 'Property'](target, property, desc);
+	    desc = null;
+	  }
 
-		return desc;
+	  return desc;
 	}
 
 	var BaseColorPickerComponent = exports.BaseColorPickerComponent = (_class = function (_React$Component) {
-		_inherits(BaseColorPickerComponent, _React$Component);
+	  _inherits(BaseColorPickerComponent, _React$Component);
 
-		function BaseColorPickerComponent() {
-			_classCallCheck(this, BaseColorPickerComponent);
+	  function BaseColorPickerComponent() {
+	    _classCallCheck(this, BaseColorPickerComponent);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(BaseColorPickerComponent).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(BaseColorPickerComponent).apply(this, arguments));
+	  }
 
-		_createClass(BaseColorPickerComponent, [{
-			key: 'onPositionChanged',
-			value: function onPositionChanged(position) {
-				var color = new _color.Color(0, 0, 0);
-				var colors = [new _color.Color(0, 169, 224), new _color.Color(50, 52, 144), new _color.Color(234, 22, 136), new _color.Color(235, 46, 46), new _color.Color(253, 233, 45), new _color.Color(0, 158, 84), new _color.Color(0, 158, 84)];
-				var index = position * 5;
-				var index1 = Math.floor(index);
-				var index2 = index1 + 1;
-				var percent = index - index1;
+	  _createClass(BaseColorPickerComponent, [{
+	    key: 'onPositionChanged',
+	    value: function onPositionChanged(position) {
+	      var color = new _color.Color(0, 0, 0);
+	      var colors = [new _color.Color(0, 169, 224), new _color.Color(50, 52, 144), new _color.Color(234, 22, 136), new _color.Color(235, 46, 46), new _color.Color(253, 233, 45), new _color.Color(0, 158, 84), new _color.Color(0, 158, 84)];
+	      var index = position * 5;
+	      var index1 = Math.floor(index);
+	      var index2 = index1 + 1;
+	      var percent = index - index1;
 
-				color.r = colors[index1].r + (colors[index2].r - colors[index1].r) * percent;
-				color.g = colors[index1].g + (colors[index2].g - colors[index1].g) * percent;
-				color.b = colors[index1].b + (colors[index2].b - colors[index1].b) * percent;
+	      color.r = colors[index1].r + (colors[index2].r - colors[index1].r) * percent;
+	      color.g = colors[index1].g + (colors[index2].g - colors[index1].g) * percent;
+	      color.b = colors[index1].b + (colors[index2].b - colors[index1].b) * percent;
 
-				this.props.onBaseColorChanged(color);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var style = Object.assign({}, _styles.colorPickerGradient, _styles.colorPickerHueGradient, {
-					height: this.props.height + 'px'
-				});
+	      this.props.onBaseColorChanged(color);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var style = Object.assign({}, _styles.colorPickerGradient, _styles.colorPickerHueGradient, {
+	        height: this.props.height + 'px'
+	      });
 
-				return React.createElement('div', { style: style }, React.createElement(_ColorPickerCircleComponent.ColorPickerCircleComponent, {
-					size: this.props.height / 2,
-					position: 0.5,
-					top: this.props.height / 4,
-					onPositionChanged: this.onPositionChanged
-				}));
-			}
-		}]);
+	      return React.createElement('div', { style: style }, React.createElement(_ColorPickerCircleComponent.ColorPickerCircleComponent, {
+	        size: this.props.height / 2,
+	        position: 0.5,
+	        top: this.props.height / 4,
+	        onPositionChanged: this.onPositionChanged
+	      }));
+	    }
+	  }]);
 
-		return BaseColorPickerComponent;
+	  return BaseColorPickerComponent;
 	}(React.Component), _applyDecoratedDescriptor(_class.prototype, 'onPositionChanged', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'onPositionChanged'), _class.prototype), _class);
 
 	BaseColorPickerComponent.defaultProps = {
-		height: undefined,
-		color: undefined,
-		onBaseColorChanged: undefined
+	  height: undefined,
+	  color: undefined,
+	  onBaseColorChanged: undefined
 	};
 
 	BaseColorPickerComponent.propTypes = {
-		height: React.PropTypes.any.isRequired,
-		color: React.PropTypes.any,
-		onBaseColorChanged: React.PropTypes.any
+	  height: React.PropTypes.any.isRequired,
+	  color: React.PropTypes.any,
+	  onBaseColorChanged: React.PropTypes.any
 	};
 
 /***/ },
@@ -24940,18 +24940,18 @@
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	exports.ColorPickerCircleComponent = undefined;
 
 	var _createClass = function () {
-		function defineProperties(target, props) {
-			for (var i = 0; i < props.length; i++) {
-				var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-			}
-		}return function (Constructor, protoProps, staticProps) {
-			if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-		};
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
 	}();
 
 	var _desc, _value, _class;
@@ -24967,162 +24967,159 @@
 	var _styles = __webpack_require__(196);
 
 	function _interopRequireDefault(obj) {
-		return obj && obj.__esModule ? obj : { default: obj };
+	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	function _interopRequireWildcard(obj) {
-		if (obj && obj.__esModule) {
-			return obj;
-		} else {
-			var newObj = {};if (obj != null) {
-				for (var key in obj) {
-					if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
-				}
-			}newObj.default = obj;return newObj;
-		}
+	  if (obj && obj.__esModule) {
+	    return obj;
+	  } else {
+	    var newObj = {};if (obj != null) {
+	      for (var key in obj) {
+	        if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
+	      }
+	    }newObj.default = obj;return newObj;
+	  }
 	}
 
 	function _classCallCheck(instance, Constructor) {
-		if (!(instance instanceof Constructor)) {
-			throw new TypeError("Cannot call a class as a function");
-		}
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
 	}
 
 	function _possibleConstructorReturn(self, call) {
-		if (!self) {
-			throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-		}return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
 	}
 
 	function _inherits(subClass, superClass) {
-		if (typeof superClass !== "function" && superClass !== null) {
-			throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-		}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 
 	function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-		var desc = {};
-		Object['ke' + 'ys'](descriptor).forEach(function (key) {
-			desc[key] = descriptor[key];
-		});
-		desc.enumerable = !!desc.enumerable;
-		desc.configurable = !!desc.configurable;
+	  var desc = {};
+	  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+	    desc[key] = descriptor[key];
+	  });
+	  desc.enumerable = !!desc.enumerable;
+	  desc.configurable = !!desc.configurable;
 
-		if ('value' in desc || desc.initializer) {
-			desc.writable = true;
-		}
+	  if ('value' in desc || desc.initializer) {
+	    desc.writable = true;
+	  }
 
-		desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-			return decorator(target, property, desc) || desc;
-		}, desc);
+	  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+	    return decorator(target, property, desc) || desc;
+	  }, desc);
 
-		if (context && desc.initializer !== void 0) {
-			desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-			desc.initializer = undefined;
-		}
+	  if (context && desc.initializer !== void 0) {
+	    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+	    desc.initializer = undefined;
+	  }
 
-		if (desc.initializer === void 0) {
-			Object['define' + 'Property'](target, property, desc);
-			desc = null;
-		}
+	  if (desc.initializer === void 0) {
+	    Object['define' + 'Property'](target, property, desc);
+	    desc = null;
+	  }
 
-		return desc;
+	  return desc;
 	}
 
 	var ColorPickerCircleComponent = exports.ColorPickerCircleComponent = (_class = function (_React$Component) {
-		_inherits(ColorPickerCircleComponent, _React$Component);
+	  _inherits(ColorPickerCircleComponent, _React$Component);
 
-		function ColorPickerCircleComponent(props) {
-			_classCallCheck(this, ColorPickerCircleComponent);
+	  function ColorPickerCircleComponent(props) {
+	    _classCallCheck(this, ColorPickerCircleComponent);
 
-			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ColorPickerCircleComponent).call(this, props));
+	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ColorPickerCircleComponent).call(this, props));
 
-			_this.state = {
-				dragging: false,
-				parentWidth: 0,
-				parentLeft: 0,
-				position: props.position
-			};
-			return _this;
-		}
+	    _this.state = {
+	      dragging: false,
+	      parentWidth: 0,
+	      parentLeft: 0,
+	      position: props.position
+	    };
+	    return _this;
+	  }
 
-		_createClass(ColorPickerCircleComponent, [{
-			key: 'onMouseDown',
-			value: function onMouseDown(e) {
-				this.setState({
-					dragging: true,
-					parentWidth: e.target.parentElement.clientWidth,
-					parentLeft: e.target.parentElement.getBoundingClientRect().left
-				});
+	  _createClass(ColorPickerCircleComponent, [{
+	    key: 'onMouseDown',
+	    value: function onMouseDown(e) {
+	      this.setState({
+	        dragging: true,
+	        parentWidth: e.target.parentElement.clientWidth,
+	        parentLeft: e.target.parentElement.getBoundingClientRect().left
+	      });
 
-				window.addEventListener('mousemove', this.onMouseMove);
-				window.addEventListener('mouseup', this.onMouseUp);
-			}
-		}, {
-			key: 'onMouseMove',
-			value: function onMouseMove(e) {
-				if (!this.state.dragging) {
-					return;
-				}
+	      window.addEventListener('mousemove', this.onMouseMove);
+	      window.addEventListener('mouseup', this.onMouseUp);
+	    }
+	  }, {
+	    key: 'onMouseMove',
+	    value: function onMouseMove(e) {
+	      if (!this.state.dragging) {
+	        return;
+	      }
 
-				this.setState({
-					position: (e.pageX - this.state.parentLeft) / this.state.parentWidth
-				});
+	      this.setState({
+	        position: (e.pageX - this.state.parentLeft) / this.state.parentWidth
+	      });
 
-				if (this.state.position > 1) {
-					this.setState({
-						position: 1
-					});
-				}
-				if (this.state.position < 0) {
-					this.setState({
-						position: 0
-					});
-				}
+	      if (this.state.position > 1) {
+	        this.setState({
+	          position: 1
+	        });
+	      }
+	      if (this.state.position < 0) {
+	        this.setState({
+	          position: 0
+	        });
+	      }
 
-				this.props.onPositionChanged(this.state.position);
-			}
-		}, {
-			key: 'onMouseUp',
-			value: function onMouseUp() {
-				this.setState({
-					dragging: false
-				});
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var size = this.props.size;
-				var style = Object.assign({}, _styles.colorPickerCircle, {
-					height: size + 'px',
-					width: size + 'px',
-					top: this.props.top + 'px',
-					marginLeft: -size / 2 + 'px',
-					left: this.state.position * 100 + '%'
-				});
+	      this.props.onPositionChanged(this.state.position);
+	    }
+	  }, {
+	    key: 'onMouseUp',
+	    value: function onMouseUp() {
+	      this.setState({
+	        dragging: false
+	      });
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var size = this.props.size;
+	      var style = Object.assign({}, _styles.colorPickerCircle, {
+	        height: size + 'px',
+	        width: size + 'px',
+	        top: this.props.top + 'px',
+	        marginLeft: -size / 2 + 'px',
+	        left: this.state.position * 100 + '%'
+	      });
 
-				return React.createElement('div', {
-					style: style,
-					onMouseDown: this.onMouseDown
-				});
-			}
-		}]);
+	      return React.createElement('div', { style: style, onMouseDown: this.onMouseDown });
+	    }
+	  }]);
 
-		return ColorPickerCircleComponent;
+	  return ColorPickerCircleComponent;
 	}(React.Component), (_applyDecoratedDescriptor(_class.prototype, 'onMouseDown', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'onMouseDown'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onMouseMove', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'onMouseMove'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'onMouseUp', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'onMouseUp'), _class.prototype)), _class);
 
 	ColorPickerCircleComponent.defaultProps = {
-		size: undefined,
-		position: undefined,
-		top: undefined,
-		onPositionChanged: undefined
+	  size: undefined,
+	  position: undefined,
+	  top: undefined,
+	  onPositionChanged: undefined
 	};
 
 	ColorPickerCircleComponent.propTypes = {
-		size: React.PropTypes.any.isRequired,
-		position: React.PropTypes.any,
-		top: React.PropTypes.any,
-		onPositionChanged: React.PropTypes.any
+	  size: React.PropTypes.any.isRequired,
+	  position: React.PropTypes.any,
+	  top: React.PropTypes.any,
+	  onPositionChanged: React.PropTypes.any
 	};
 
 /***/ },
@@ -25132,25 +25129,25 @@
 	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	var colorPickerGradient = exports.colorPickerGradient = {
-		position: 'relative',
-		width: '100%',
-		overflow: 'hidden'
+	  position: 'relative',
+	  width: '100%',
+	  overflow: 'hidden'
 	};
 
 	var colorPickerHueGradient = exports.colorPickerHueGradient = {
-		backgroundImage: 'linear-gradient(\n\t\t90deg,\n\t\trgb(0, 169, 224) 0%,\n\t\trgb(50, 52, 144) 20%,\n\t\trgb(234, 22, 136) 40%,\n\t\trgb(235, 46, 46) 60%,\n\t\trgb(253, 233, 45) 80%,\n\t\trgb(0, 158, 84) 100%\n\t)'
+	  backgroundImage: 'linear-gradient(\n    90deg,\n    rgb(0, 169, 224) 0%,\n    rgb(50, 52, 144) 20%,\n    rgb(234, 22, 136) 40%,\n    rgb(235, 46, 46) 60%,\n    rgb(253, 233, 45) 80%,\n    rgb(0, 158, 84) 100%\n  )'
 	};
 
 	var colorPickerCircle = exports.colorPickerCircle = {
-		position: 'absolute',
-		boxSizing: 'border-box',
-		border: 'solid 2px white',
-		borderRadius: '50%',
-		verticalAlign: 'middle',
-		cursor: 'w-resize'
+	  position: 'absolute',
+	  boxSizing: 'border-box',
+	  border: 'solid 2px white',
+	  borderRadius: '50%',
+	  verticalAlign: 'middle',
+	  cursor: 'w-resize'
 	};
 
 /***/ },
@@ -25162,18 +25159,18 @@
 	var _typeof = typeof Symbol === "function" && typeof Symbol.iterator === "symbol" ? function (obj) { return typeof obj; } : function (obj) { return obj && typeof Symbol === "function" && obj.constructor === Symbol ? "symbol" : typeof obj; };
 
 	Object.defineProperty(exports, "__esModule", {
-		value: true
+	  value: true
 	});
 	exports.BrightnessPickerComponent = undefined;
 
 	var _createClass = function () {
-		function defineProperties(target, props) {
-			for (var i = 0; i < props.length; i++) {
-				var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
-			}
-		}return function (Constructor, protoProps, staticProps) {
-			if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
-		};
+	  function defineProperties(target, props) {
+	    for (var i = 0; i < props.length; i++) {
+	      var descriptor = props[i];descriptor.enumerable = descriptor.enumerable || false;descriptor.configurable = true;if ("value" in descriptor) descriptor.writable = true;Object.defineProperty(target, descriptor.key, descriptor);
+	    }
+	  }return function (Constructor, protoProps, staticProps) {
+	    if (protoProps) defineProperties(Constructor.prototype, protoProps);if (staticProps) defineProperties(Constructor, staticProps);return Constructor;
+	  };
 	}();
 
 	var _desc, _value, _class;
@@ -25191,114 +25188,114 @@
 	var _styles = __webpack_require__(196);
 
 	function _interopRequireDefault(obj) {
-		return obj && obj.__esModule ? obj : { default: obj };
+	  return obj && obj.__esModule ? obj : { default: obj };
 	}
 
 	function _interopRequireWildcard(obj) {
-		if (obj && obj.__esModule) {
-			return obj;
-		} else {
-			var newObj = {};if (obj != null) {
-				for (var key in obj) {
-					if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
-				}
-			}newObj.default = obj;return newObj;
-		}
+	  if (obj && obj.__esModule) {
+	    return obj;
+	  } else {
+	    var newObj = {};if (obj != null) {
+	      for (var key in obj) {
+	        if (Object.prototype.hasOwnProperty.call(obj, key)) newObj[key] = obj[key];
+	      }
+	    }newObj.default = obj;return newObj;
+	  }
 	}
 
 	function _classCallCheck(instance, Constructor) {
-		if (!(instance instanceof Constructor)) {
-			throw new TypeError("Cannot call a class as a function");
-		}
+	  if (!(instance instanceof Constructor)) {
+	    throw new TypeError("Cannot call a class as a function");
+	  }
 	}
 
 	function _possibleConstructorReturn(self, call) {
-		if (!self) {
-			throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
-		}return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
+	  if (!self) {
+	    throw new ReferenceError("this hasn't been initialised - super() hasn't been called");
+	  }return call && ((typeof call === "undefined" ? "undefined" : _typeof(call)) === "object" || typeof call === "function") ? call : self;
 	}
 
 	function _inherits(subClass, superClass) {
-		if (typeof superClass !== "function" && superClass !== null) {
-			throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
-		}subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
+	  if (typeof superClass !== "function" && superClass !== null) {
+	    throw new TypeError("Super expression must either be null or a function, not " + (typeof superClass === "undefined" ? "undefined" : _typeof(superClass)));
+	  }subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } });if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass;
 	}
 
 	function _applyDecoratedDescriptor(target, property, decorators, descriptor, context) {
-		var desc = {};
-		Object['ke' + 'ys'](descriptor).forEach(function (key) {
-			desc[key] = descriptor[key];
-		});
-		desc.enumerable = !!desc.enumerable;
-		desc.configurable = !!desc.configurable;
+	  var desc = {};
+	  Object['ke' + 'ys'](descriptor).forEach(function (key) {
+	    desc[key] = descriptor[key];
+	  });
+	  desc.enumerable = !!desc.enumerable;
+	  desc.configurable = !!desc.configurable;
 
-		if ('value' in desc || desc.initializer) {
-			desc.writable = true;
-		}
+	  if ('value' in desc || desc.initializer) {
+	    desc.writable = true;
+	  }
 
-		desc = decorators.slice().reverse().reduce(function (desc, decorator) {
-			return decorator(target, property, desc) || desc;
-		}, desc);
+	  desc = decorators.slice().reverse().reduce(function (desc, decorator) {
+	    return decorator(target, property, desc) || desc;
+	  }, desc);
 
-		if (context && desc.initializer !== void 0) {
-			desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
-			desc.initializer = undefined;
-		}
+	  if (context && desc.initializer !== void 0) {
+	    desc.value = desc.initializer ? desc.initializer.call(context) : void 0;
+	    desc.initializer = undefined;
+	  }
 
-		if (desc.initializer === void 0) {
-			Object['define' + 'Property'](target, property, desc);
-			desc = null;
-		}
+	  if (desc.initializer === void 0) {
+	    Object['define' + 'Property'](target, property, desc);
+	    desc = null;
+	  }
 
-		return desc;
+	  return desc;
 	}
 
 	var BrightnessPickerComponent = exports.BrightnessPickerComponent = (_class = function (_React$Component) {
-		_inherits(BrightnessPickerComponent, _React$Component);
+	  _inherits(BrightnessPickerComponent, _React$Component);
 
-		function BrightnessPickerComponent() {
-			_classCallCheck(this, BrightnessPickerComponent);
+	  function BrightnessPickerComponent() {
+	    _classCallCheck(this, BrightnessPickerComponent);
 
-			return _possibleConstructorReturn(this, Object.getPrototypeOf(BrightnessPickerComponent).apply(this, arguments));
-		}
+	    return _possibleConstructorReturn(this, Object.getPrototypeOf(BrightnessPickerComponent).apply(this, arguments));
+	  }
 
-		_createClass(BrightnessPickerComponent, [{
-			key: 'onPositionChanged',
-			value: function onPositionChanged(position) {
-				this.props.onPositionChanged(position);
-			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var style = Object.assign({}, _styles.colorPickerGradient, {
-					height: this.props.height + 'px',
-					backgroundImage: 'linear-gradient(\n\t\t\t\t90deg, rgb(255, 255, 255) 0%, #' + this.props.color.toHex() + ' 50%, rgb(0, 0, 0) 100%\n\t\t\t)'
-				});
+	  _createClass(BrightnessPickerComponent, [{
+	    key: 'onPositionChanged',
+	    value: function onPositionChanged(position) {
+	      this.props.onPositionChanged(position);
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var style = Object.assign({}, _styles.colorPickerGradient, {
+	        height: this.props.height + 'px',
+	        backgroundImage: 'linear-gradient(\n        90deg, rgb(255, 255, 255) 0%, #' + this.props.color.toHex() + ' 50%, rgb(0, 0, 0) 100%\n      )'
+	      });
 
-				return React.createElement('div', { style: style }, React.createElement(_ColorPickerCircleComponent.ColorPickerCircleComponent, {
-					size: this.props.height / 2,
-					position: this.props.position,
-					top: this.props.height / 4,
-					onPositionChanged: this.onPositionChanged
-				}));
-			}
-		}]);
+	      return React.createElement('div', { style: style }, React.createElement(_ColorPickerCircleComponent.ColorPickerCircleComponent, {
+	        size: this.props.height / 2,
+	        position: this.props.position,
+	        top: this.props.height / 4,
+	        onPositionChanged: this.onPositionChanged
+	      }));
+	    }
+	  }]);
 
-		return BrightnessPickerComponent;
+	  return BrightnessPickerComponent;
 	}(React.Component), _applyDecoratedDescriptor(_class.prototype, 'onPositionChanged', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'onPositionChanged'), _class.prototype), _class);
 
 	BrightnessPickerComponent.defaultProps = {
-		height: undefined,
-		color: undefined,
-		onPositionChanged: undefined,
-		position: undefined
+	  height: undefined,
+	  color: undefined,
+	  onPositionChanged: undefined,
+	  position: undefined
 	};
 
 	BrightnessPickerComponent.propTypes = {
-		height: React.PropTypes.any.isRequired,
-		color: React.PropTypes.any,
-		onPositionChanged: React.PropTypes.any,
-		position: React.PropTypes.any
+	  height: React.PropTypes.any.isRequired,
+	  color: React.PropTypes.any,
+	  onPositionChanged: React.PropTypes.any,
+	  position: React.PropTypes.any
 	};
 
 /***/ },
