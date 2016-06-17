@@ -9,7 +9,7 @@ module.exports = {
 	resolve: {
 		extensions: ['', '.js'],
 		alias: {
-			'color-harmony-generator': path.join(__dirname, '..', '..', 'lib')
+			'color-harmony-generator': path.join(__dirname, '..', '..', 'src')
 		}
 	},
 	module: {

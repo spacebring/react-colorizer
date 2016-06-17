@@ -2,6 +2,7 @@ export const colorPickerGradient = {
   position: 'relative',
   width: '100%',
   overflow: 'hidden',
+  marginTop: '15px',
 };
 
 export const colorPickerHueGradient = {
