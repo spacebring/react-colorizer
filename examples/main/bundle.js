@@ -25644,7 +25644,8 @@
 	  position: 'relative',
 	  width: '100%',
 	  overflow: 'hidden',
-	  marginTop: '15px'
+	  marginTop: '10px',
+	  marginBottom: '10px'
 	};
 
 	var colorPickerHueGradient = exports.colorPickerHueGradient = {
