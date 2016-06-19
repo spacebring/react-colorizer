@@ -1,6 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { ColorPickerComponent, Color, HarmonyTypes } from 'color-harmony-generator';
+import { Scroller, Orientation } from 'react-scrolling';
 
 // can be: TRIAD, TETRAD, MONOCHROMATIC, ANALOGOUS, SPLIT_COMPLEMENT
 const
@@ -29,7 +30,7 @@ function onColorChangedCallback(mainColor) {
 };
 
 ReactDOM.render(
-	<div>
+	<Scroller id="cp" orientation={Orientation.Horizontal} size={{container: 500}}>
 		<h1>Color picker example</h1>
 		<div id="ColorPickerContainer">
 			<ColorPickerComponent
@@ -42,6 +43,6 @@ ReactDOM.render(
 			<div id="SelectedColor"></div>
 		</div>
 		<div id="GeneratedColors"></div>
-	</div>,
+	</Scroller>,
 	document.getElementById('ColorHarmonyGeneratorMainExample')
 );

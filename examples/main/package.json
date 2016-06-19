@@ -16,7 +16,8 @@
   "dependencies": {
     "color-harmony-generator": "^0.0.2",
     "react": "^0.14.5",
-    "react-dom": "^0.14.5"
+    "react-dom": "^0.14.5",
+    "react-scrolling": "0.0.1-rc.15"
   },
   "devDependencies": {
     "babel": "^6.3.26",

@@ -13,6 +13,9 @@ export class ColorPickerCircleComponent extends React.Component {
       parentLeft: 0,
       position: props.position,
     };
+
+    window.addEventListener('mousemove', this.onMouseMove);
+    window.addEventListener('mouseup', this.onMouseUp);
   }
 
   @autobind
@@ -22,9 +25,6 @@ export class ColorPickerCircleComponent extends React.Component {
       parentWidth: e.target.parentElement.clientWidth,
       parentLeft: e.target.parentElement.getBoundingClientRect().left,
     });
-
-    window.addEventListener('mousemove', this.onMouseMove);
-    window.addEventListener('mouseup', this.onMouseUp);
   }
 
   @autobind
@@ -32,6 +32,7 @@ export class ColorPickerCircleComponent extends React.Component {
     if (!this.state.dragging) {
       return;
     }
+    e.stopImmediatePropagation();
 
     this.setState({
       position: (e.pageX - this.state.parentLeft) / this.state.parentWidth,
