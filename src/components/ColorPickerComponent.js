@@ -1,14 +1,23 @@
-import * as React from 'react';
+import React from 'react';
 import autobind from 'autobind-decorator';
 import { Color } from '../utils/color';
 import { BaseColorPickerComponent } from './BaseColorPickerComponent';
 import { BrightnessPickerComponent } from './BrightnessPickerComponent';
 
+const propTypes = {
+  height: React.PropTypes.number.isRequired,
+  defaultColor: React.PropTypes.object,
+  onColorChangedCallback: React.PropTypes.func,
+};
+
+const defaultProps = {
+  defaultColor: new Color(255, 0, 0),
+};
+
 export class ColorPickerComponent extends React.Component {
 
   constructor(props) {
     super(props);
-
     this.state = {
       baseColor: props.defaultColor,
       color: props.defaultColor,
@@ -18,27 +27,21 @@ export class ColorPickerComponent extends React.Component {
 
   @autobind
   onBrightnessPickerColorChanged(position) {
-    const
-      newMainColor = this.getMainColor(position);
-
+    const newMainColor = this.getMainColor(position);
     this.setState({
       brightnessPosition: position,
       color: newMainColor,
     });
-
     this.changeColor(newMainColor);
   }
 
   @autobind
   setBrightnessPickerBase(baseColor) {
-    const
-      newMainColor = this.getMainColor(this.state.brightnessPosition);
-
+    const newMainColor = this.getMainColor(this.state.brightnessPosition);
     this.setState({
       baseColor,
       color: newMainColor,
     });
-
     this.changeColor(newMainColor);
   }
 
@@ -46,7 +49,6 @@ export class ColorPickerComponent extends React.Component {
   getMainColor(position) {
     const baseColor = this.state.baseColor;
     const newMainColor = new Color(0, 0, 0);
-
     if (position < 0.5) {
       newMainColor.r = 255 + (baseColor.r - 255) * (position * 2);
       newMainColor.g = 255 + (baseColor.g - 255) * (position * 2);
@@ -56,7 +58,6 @@ export class ColorPickerComponent extends React.Component {
       newMainColor.g = baseColor.g - baseColor.g * ((position - 0.5) * 2);
       newMainColor.b = baseColor.b - baseColor.b * ((position - 0.5) * 2);
     }
-
     return newMainColor;
   }
 
@@ -84,14 +85,5 @@ export class ColorPickerComponent extends React.Component {
   }
 }
 
-ColorPickerComponent.defaultProps = {
-  height: undefined,
-  defaultColor: new Color(255, 0, 0),
-  onColorChangedCallback: undefined,
-};
-
-ColorPickerComponent.propTypes = {
-  height: React.PropTypes.any.isRequired,
-  defaultColor: React.PropTypes.any,
-  onColorChangedCallback: React.PropTypes.any,
-};
+ColorPickerComponent.propTypes = propTypes;
+ColorPickerComponent.defaultProps = defaultProps;

@@ -1,8 +1,16 @@
-import * as React from 'react';
+import React from 'react';
 import autobind from 'autobind-decorator';
 import { Color } from '../utils/color';
 import { ColorPickerCircleComponent } from './ColorPickerCircleComponent';
 import { colorPickerGradient, colorPickerHueGradient } from '../utils/styles';
+
+const propTypes = {
+  height: React.PropTypes.any.isRequired,
+  color: React.PropTypes.any,
+  onBaseColorChanged: React.PropTypes.any,
+};
+
+const defaultProps = {};
 
 export class BaseColorPickerComponent extends React.Component {
 
@@ -22,11 +30,9 @@ export class BaseColorPickerComponent extends React.Component {
     const index1 = Math.floor(index);
     const index2 = index1 + 1;
     const percent = index - index1;
-
     color.r = colors[index1].r + (colors[index2].r - colors[index1].r) * percent;
     color.g = colors[index1].g + (colors[index2].g - colors[index1].g) * percent;
     color.b = colors[index1].b + (colors[index2].b - colors[index1].b) * percent;
-
     this.props.onBaseColorChanged(color);
   }
 
@@ -48,14 +54,5 @@ export class BaseColorPickerComponent extends React.Component {
   }
 }
 
-BaseColorPickerComponent.defaultProps = {
-  height: undefined,
-  color: undefined,
-  onBaseColorChanged: undefined,
-};
-
-BaseColorPickerComponent.propTypes = {
-  height: React.PropTypes.any.isRequired,
-  color: React.PropTypes.any,
-  onBaseColorChanged: React.PropTypes.any,
-};
+BaseColorPickerComponent.propTypes = propTypes;
+BaseColorPickerComponent.defaultProps = defaultProps;
