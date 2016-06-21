@@ -17,22 +17,22 @@ npm install --save color-harmony-generator
 ### The Gist
 
 ```javascript
-import * as React from 'react';
-import * as ReactDOM from 'react-dom';
+import React from 'react';
+import ReactDOM from 'react-dom';
 import { ColorPickerComponent, Color, HarmonyTypes } from 'color-harmony-generator';
 
 const selectedScheme = HarmonyTypes.TRIAD;
 
 function onColorChangedCallback(selectedColor) {
-	const fullScheme = selectedColor.fullScheme(selectedScheme);
+  const fullScheme = selectedColor.fullScheme(selectedScheme);
 }
 
 ReactDOM.render(
-	<ColorPickerComponent
-		height={50}
-		onColorChangedCallback={onColorChangedCallback}
-	/>,
-	document.getElementById('Container')
+  <ColorPickerComponent
+    height={50}
+    onColorChangedCallback={onColorChangedCallback}
+  />,
+  document.getElementById('Container')
 );
 ```
 
