@@ -3,24 +3,24 @@ import { ColorPickerCircleComponent } from './ColorPickerCircleComponent';
 import { colorPickerGradient } from '../utils/styles';
 
 const propTypes = {
+  color: React.PropTypes.string.isRequired,
   height: React.PropTypes.number.isRequired,
-  color: React.PropTypes.object,
-  onPositionChanged: React.PropTypes.func,
-  position: React.PropTypes.number,
+  position: React.PropTypes.number.isRequired,
+  onPositionChanged: React.PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
 
 export const BrightnessPickerComponent = ({
-  height,
   color,
+  height,
   position,
   onPositionChanged,
 }) => {
   const style = Object.assign({}, colorPickerGradient, {
     height: `${height}px`,
     backgroundImage: `linear-gradient(
-      90deg, rgb(255, 255, 255) 0%, #${color.toHex()} 50%, rgb(0, 0, 0) 100%
+      90deg, rgb(255, 255, 255) 0%, #${color} 50%, rgb(0, 0, 0) 100%
     )`,
   });
   return (

@@ -1,69 +1,72 @@
-import React from 'react';
 import autobind from 'autobind-decorator';
-import { Color } from '../utils/color';
+import React from 'react';
+import tinycolor from 'tinycolor2';
+import {
+  toHex,
+  getColorByPosition,
+  getBrightnessFromRGB,
+} from '../utils/color';
 import { BaseColorPickerComponent } from './BaseColorPickerComponent';
 import { BrightnessPickerComponent } from './BrightnessPickerComponent';
 
 const propTypes = {
   height: React.PropTypes.number.isRequired,
-  defaultColor: React.PropTypes.object,
+  selectedColor: React.PropTypes.string,
   onColorChangedCallback: React.PropTypes.func,
 };
 
 const defaultProps = {
-  defaultColor: new Color(255, 0, 0),
+  selectedColor: '#ff0000',
 };
 
 export class ColorPickerComponent extends React.Component {
 
+  // TODO: calcualte baseColorPosition
   constructor(props) {
     super(props);
+    const baseColor = tinycolor(props.selectedColor).toRgb();
+    const brightness = getBrightnessFromRGB(baseColor);
     this.state = {
-      baseColor: props.defaultColor,
-      color: props.defaultColor,
-      brightnessPosition: 0.5,
+      baseColor,
+      baseColorPosition: 0.5,
+      brightnessPosition: brightness,
     };
   }
 
   @autobind
-  onBrightnessPickerColorChanged(position) {
-    const newMainColor = this.getMainColor(position);
-    this.setState({
-      brightnessPosition: position,
-      color: newMainColor,
-    });
-    this.changeColor(newMainColor);
-  }
-
-  @autobind
-  setBrightnessPickerBase(baseColor) {
-    const newMainColor = this.getMainColor(this.state.brightnessPosition);
+  onBaseColorChange(baseColorPosition) {
+    const baseColor = getColorByPosition(baseColorPosition);
+    const newMainColor = this.getSelectedColor(this.state.brightnessPosition);
     this.setState({
       baseColor,
-      color: newMainColor,
+      baseColorPosition,
     });
-    this.changeColor(newMainColor);
+    this.props.onColorChangedCallback(newMainColor);
   }
 
   @autobind
-  getMainColor(position) {
+  onBrightnessPickerColorChange(brightnessPosition) {
+    const newMainColor = this.getSelectedColor(brightnessPosition);
+    this.setState({
+      brightnessPosition,
+    });
+    this.props.onColorChangedCallback(newMainColor);
+  }
+
+  @autobind
+  getSelectedColor(brightnessPosition) {
     const baseColor = this.state.baseColor;
-    const newMainColor = new Color(0, 0, 0);
-    if (position < 0.5) {
-      newMainColor.r = 255 + (baseColor.r - 255) * (position * 2);
-      newMainColor.g = 255 + (baseColor.g - 255) * (position * 2);
-      newMainColor.b = 255 + (baseColor.b - 255) * (position * 2);
+    const newMainColor = {};
+    if (brightnessPosition < 0.5) {
+      newMainColor.r = 255 + (baseColor.r - 255) * (2 * brightnessPosition);
+      newMainColor.g = 255 + (baseColor.g - 255) * (2 * brightnessPosition);
+      newMainColor.b = 255 + (baseColor.b - 255) * (2 * brightnessPosition);
     } else {
-      newMainColor.r = baseColor.r - baseColor.r * ((position - 0.5) * 2);
-      newMainColor.g = baseColor.g - baseColor.g * ((position - 0.5) * 2);
-      newMainColor.b = baseColor.b - baseColor.b * ((position - 0.5) * 2);
+      newMainColor.r = baseColor.r - baseColor.r * (2 * brightnessPosition - 1);
+      newMainColor.g = baseColor.g - baseColor.g * (2 * brightnessPosition - 1);
+      newMainColor.b = baseColor.b - baseColor.b * (2 * brightnessPosition - 1);
     }
-    return newMainColor;
-  }
-
-  @autobind
-  changeColor() {
-    this.props.onColorChangedCallback(this.state.color);
+    return `#${tinycolor(newMainColor).toHex()}`;
   }
 
   render() {
@@ -71,14 +74,14 @@ export class ColorPickerComponent extends React.Component {
       <div>
         <BaseColorPickerComponent
           height={this.props.height}
-          color={this.state.baseColor}
-          onBaseColorChanged={this.setBrightnessPickerBase}
+          position={this.state.baseColorPosition}
+          onBaseColorChanged={this.onBaseColorChange}
         />
         <BrightnessPickerComponent
           height={this.props.height}
-          color={this.state.baseColor}
+          color={toHex(this.state.baseColor)}
           position={this.state.brightnessPosition}
-          onPositionChanged={this.onBrightnessPickerColorChanged}
+          onPositionChanged={this.onBrightnessPickerColorChange}
         />
       </div>
     );

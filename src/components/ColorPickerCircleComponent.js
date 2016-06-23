@@ -3,14 +3,15 @@ import autobind from 'autobind-decorator';
 import { colorPickerCircle } from '../utils/styles';
 
 const propTypes = {
-  size: React.PropTypes.any.isRequired,
-  position: React.PropTypes.any,
-  top: React.PropTypes.any,
-  onPositionChanged: React.PropTypes.any,
+  size: React.PropTypes.number.isRequired,
+  position: React.PropTypes.number.isRequired,
+  top: React.PropTypes.number.isRequired,
+  onPositionChanged: React.PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
 
+// TODO: do not use dom so much, remove 'parentWidth' and 'parentLeft' from state
 export class ColorPickerCircleComponent extends React.Component {
 
   constructor(props) {
@@ -19,7 +20,6 @@ export class ColorPickerCircleComponent extends React.Component {
       dragging: false,
       parentWidth: 0,
       parentLeft: 0,
-      position: props.position,
     };
   }
 
@@ -39,10 +39,11 @@ export class ColorPickerCircleComponent extends React.Component {
 
   @autobind
   onMouseDown(e) {
+    const parentTargetElement = e.target.parentElement;
     this.setState({
       dragging: true,
-      parentWidth: e.target.parentElement.clientWidth,
-      parentLeft: e.target.parentElement.getBoundingClientRect().left,
+      parentWidth: parentTargetElement.clientWidth,
+      parentLeft: parentTargetElement.getBoundingClientRect().left,
     });
   }
 
@@ -52,8 +53,8 @@ export class ColorPickerCircleComponent extends React.Component {
       return;
     }
     e.stopImmediatePropagation();
-    this.setPosition(e.pageX);
-    this.validatePosition();
+    const position = this.getPosition(e.pageX);
+    this.validatePosition(position);
   }
 
   @autobind
@@ -62,8 +63,8 @@ export class ColorPickerCircleComponent extends React.Component {
       return;
     }
     e.stopImmediatePropagation();
-    this.setPosition(e.changedTouches[0].pageX);
-    this.validatePosition();
+    const position = this.getPosition(e.changedTouches[0].pageX);
+    this.validatePosition(position);
   }
 
   @autobind
@@ -73,34 +74,30 @@ export class ColorPickerCircleComponent extends React.Component {
     });
   }
 
-  setPosition(pageX) {
-    this.setState({
-      position: (pageX - this.state.parentLeft) / this.state.parentWidth,
-    });
+  getPosition(pageX) {
+    return (pageX - this.state.parentLeft) / this.state.parentWidth;
   }
 
-  validatePosition() {
-    if (this.state.position > 1) {
-      this.setState({
-        position: 1,
-      });
+  validatePosition(position) {
+    if (position < 0) {
+      this.props.onPositionChanged(0);
+      return;
     }
-    if (this.state.position < 0) {
-      this.setState({
-        position: 0,
-      });
+    if (position > 1) {
+      this.props.onPositionChanged(1);
+      return;
     }
-    this.props.onPositionChanged(this.state.position);
+    this.props.onPositionChanged(position);
   }
 
   render() {
-    const { size, top } = this.props;
+    const { position, size, top } = this.props;
     const style = Object.assign({}, colorPickerCircle, {
       height: `${size}px`,
       width: `${size}px`,
       top: `${top}px`,
       marginLeft: `${- size / 2}px`,
-      left: `${this.state.position * 100}%`,
+      left: `${position * 100}%`,
     });
     return (
       <div
