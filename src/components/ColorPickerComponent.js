@@ -4,6 +4,7 @@ import tinycolor from 'tinycolor2';
 import {
   toHex,
   getColorByPosition,
+  getBasePositionFromRGB,
   getBrightnessFromRGB,
 } from '../utils/color';
 import { BaseColorPickerComponent } from './BaseColorPickerComponent';
@@ -26,9 +27,10 @@ export class ColorPickerComponent extends React.Component {
     super(props);
     const baseColor = tinycolor(props.selectedColor).toRgb();
     const brightness = getBrightnessFromRGB(baseColor);
+    const basePos = getBasePositionFromRGB(baseColor);
     this.state = {
       baseColor,
-      baseColorPosition: 0.5,
+      baseColorPosition: basePos,
       brightnessPosition: brightness,
     };
   }
