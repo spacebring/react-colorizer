@@ -117,7 +117,7 @@
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Example).call(this, props));
 
 			_this.state = {
-				selectedColor: '#82268b'
+				selectedColor: '#38ff40'
 			};
 			return _this;
 		}
@@ -20072,16 +20072,7 @@
 	    key: 'getSelectedColor',
 	    value: function getSelectedColor(brightnessPosition) {
 	      var baseColor = this.state.baseColor;
-	      var newMainColor = {};
-	      if (brightnessPosition < 0.5) {
-	        newMainColor.r = 255 + (baseColor.r - 255) * (2 * brightnessPosition);
-	        newMainColor.g = 255 + (baseColor.g - 255) * (2 * brightnessPosition);
-	        newMainColor.b = 255 + (baseColor.b - 255) * (2 * brightnessPosition);
-	      } else {
-	        newMainColor.r = baseColor.r - baseColor.r * (2 * brightnessPosition - 1);
-	        newMainColor.g = baseColor.g - baseColor.g * (2 * brightnessPosition - 1);
-	        newMainColor.b = baseColor.b - baseColor.b * (2 * brightnessPosition - 1);
-	      }
+	      var newMainColor = (0, _color.getColorFromBaseAndBrightness)(baseColor, brightnessPosition);
 	      return '#' + (0, _tinycolor2.default)(newMainColor).toHex();
 	    }
 	  }, {
@@ -25447,6 +25438,7 @@
 	exports.fullScheme = fullScheme;
 	exports.fromHex = fromHex;
 	exports.getColorByPosition = getColorByPosition;
+	exports.getColorFromBaseAndBrightness = getColorFromBaseAndBrightness;
 	exports.getBasePositionFromRGB = getBasePositionFromRGB;
 	exports.getBrightnessFromRGB = getBrightnessFromRGB;
 
@@ -25499,39 +25491,33 @@
 	  return result ? new Color(parseInt(result[1], 16), parseInt(result[2], 16), parseInt(result[3], 16)) : null;
 	}
 
-	var colors = [new Color(0, 169, 224), new Color(50, 52, 144), new Color(234, 22, 136), new Color(235, 46, 46), new Color(253, 233, 45), new Color(0, 158, 84), new Color(0, 158, 84)];
+	var defaultSaturation = 1;
 
 	function getColorByPosition(position) {
-	  var index = position * 5;
-	  var index1 = Math.floor(index);
-	  var index2 = index1 + 1;
-	  var percent = index - index1;
-	  return {
-	    r: colors[index1].r + (colors[index2].r - colors[index1].r) * percent,
-	    g: colors[index1].g + (colors[index2].g - colors[index1].g) * percent,
-	    b: colors[index1].b + (colors[index2].b - colors[index1].b) * percent
+	  var color = {
+	    h: position * 360,
+	    s: defaultSaturation,
+	    l: 0.5
 	  };
+	  return (0, _tinycolor2.default)(color).toRgb();
+	}
+
+	function getColorFromBaseAndBrightness(baseColor, brightness) {
+	  var baseHue = (0, _tinycolor2.default)(baseColor).toHsl().h;
+	  var color = {
+	    h: baseHue,
+	    s: defaultSaturation,
+	    l: brightness
+	  };
+	  return (0, _tinycolor2.default)(color).toRgb();
 	}
 
 	function getBasePositionFromRGB(color) {
-	  var index1 = 0;
-	  for (index1 = 0; index1 < 5; ++index1) {
-	    if ((colors[index1].r - color.r) * (colors[index1 + 1].r - color.r) < 0 && (colors[index1].g - color.g) * (colors[index1 + 1].g - color.g) < 0 && (colors[index1].b - color.b) * (colors[index1 + 1].b - color.b) < 0) {
-	      var index2 = index1 + 1;
-	      var posR = (color.r - colors[index1].r) / (colors[index2].r - colors[index1].r);
-	      var posG = (color.g - colors[index1].g) / (colors[index2].g - colors[index1].g);
-	      var posB = (color.b - colors[index1].b) / (colors[index2].b - colors[index1].b);
-	      var pos = (posR + posG + posB) / 3;
-	      var index = index1 + pos;
-	      return index / 5;
-	    }
-	  }
-	  // color not found
-	  return 0.5;
+	  return (0, _tinycolor2.default)(color).toHsl().h / 360;
 	}
 
 	function getBrightnessFromRGB(color) {
-	  return (255 - Math.sqrt(color.r * color.r * 0.241 + color.g * color.g * 0.691 + color.b * color.b * 0.068)) / 255;
+	  return (0, _tinycolor2.default)(color).toHsl().l;
 	}
 
 /***/ },
@@ -25794,7 +25780,7 @@
 	};
 
 	var colorPickerHueGradient = exports.colorPickerHueGradient = {
-	  backgroundImage: 'linear-gradient(\n    90deg,\n    rgb(0, 169, 224) 0%,\n    rgb(50, 52, 144) 20%,\n    rgb(234, 22, 136) 40%,\n    rgb(235, 46, 46) 60%,\n    rgb(253, 233, 45) 80%,\n    rgb(0, 158, 84) 100%\n  )'
+	  backgroundImage: 'linear-gradient(\n    90deg,\n    hsl(0, 100%, 50%) 0%,\n    hsl(60, 100%, 50%) 17%,\n    hsl(120, 100%, 50%) 33%,\n    hsl(180, 100%, 50%) 50%,\n    hsl(240, 100%, 50%) 67%,\n    hsl(300, 100%, 50%) 83%,\n    hsl(360, 100%, 50%) 100%\n  )'
 	};
 
 	var colorPickerCircle = exports.colorPickerCircle = {
@@ -25844,7 +25830,7 @@
 
 	  var style = Object.assign({}, _styles.colorPickerGradient, {
 	    height: height + 'px',
-	    backgroundImage: 'linear-gradient(\n      90deg, rgb(255, 255, 255) 0%, #' + color + ' 50%, rgb(0, 0, 0) 100%\n    )'
+	    backgroundImage: 'linear-gradient(\n      90deg, rgb(0, 0, 0) 0%, #' + color + ' 50%, rgb(255, 255, 255) 100%\n    )'
 	  });
 	  return _react2.default.createElement(
 	    'div',

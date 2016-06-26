@@ -20,7 +20,7 @@ export const BrightnessPickerComponent = ({
   const style = Object.assign({}, colorPickerGradient, {
     height: `${height}px`,
     backgroundImage: `linear-gradient(
-      90deg, rgb(255, 255, 255) 0%, #${color} 50%, rgb(0, 0, 0) 100%
+      90deg, rgb(0, 0, 0) 0%, #${color} 50%, rgb(255, 255, 255) 100%
     )`,
   });
   return (

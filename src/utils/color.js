@@ -47,53 +47,31 @@ export function fromHex(hex) {
     : null;
 }
 
-const colors = [
-  new Color(0, 169, 224),
-  new Color(50, 52, 144),
-  new Color(234, 22, 136),
-  new Color(235, 46, 46),
-  new Color(253, 233, 45),
-  new Color(0, 158, 84),
-  new Color(0, 158, 84),
-];
+const defaultSaturation = 1;
 
 export function getColorByPosition(position) {
-  const index = position * 5;
-  const index1 = Math.floor(index);
-  const index2 = index1 + 1;
-  const percent = index - index1;
-  return {
-    r: colors[index1].r + (colors[index2].r - colors[index1].r) * percent,
-    g: colors[index1].g + (colors[index2].g - colors[index1].g) * percent,
-    b: colors[index1].b + (colors[index2].b - colors[index1].b) * percent,
+  const color = {
+    h: position * 360,
+    s: defaultSaturation,
+    l: 0.5,
   };
+  return tinycolor(color).toRgb();
+}
+
+export function getColorFromBaseAndBrightness(baseColor, brightness) {
+  const baseHue = tinycolor(baseColor).toHsl().h;
+  const color = {
+    h: baseHue,
+    s: defaultSaturation,
+    l: brightness,
+  };
+  return tinycolor(color).toRgb();
 }
 
 export function getBasePositionFromRGB(color) {
-  let index1 = 0;
-  for (index1 = 0; index1 < 5; ++index1) {
-    if (
-      (colors[index1].r - color.r) * (colors[index1 + 1].r - color.r) < 0 &&
-      (colors[index1].g - color.g) * (colors[index1 + 1].g - color.g) < 0 &&
-      (colors[index1].b - color.b) * (colors[index1 + 1].b - color.b) < 0
-    ) {
-      const index2 = index1 + 1;
-      const posR = (color.r - colors[index1].r) / (colors[index2].r - colors[index1].r);
-      const posG = (color.g - colors[index1].g) / (colors[index2].g - colors[index1].g);
-      const posB = (color.b - colors[index1].b) / (colors[index2].b - colors[index1].b);
-      const pos = (posR + posG + posB) / 3;
-      const index = index1 + pos;
-      return index / 5;
-    }
-  }
-  // color not found
-  return 0.5;
+  return tinycolor(color).toHsl().h / 360;
 }
 
 export function getBrightnessFromRGB(color) {
-  return (255 - (Math.sqrt(
-    color.r * color.r * 0.241 +
-    color.g * color.g * 0.691 +
-    color.b * color.b * 0.068
-  ))) / 255;
+  return tinycolor(color).toHsl().l;
 }

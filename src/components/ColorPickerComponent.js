@@ -4,6 +4,7 @@ import tinycolor from 'tinycolor2';
 import {
   toHex,
   getColorByPosition,
+  getColorFromBaseAndBrightness,
   getBasePositionFromRGB,
   getBrightnessFromRGB,
 } from '../utils/color';
@@ -58,16 +59,7 @@ export class ColorPickerComponent extends React.Component {
   @autobind
   getSelectedColor(brightnessPosition) {
     const baseColor = this.state.baseColor;
-    const newMainColor = {};
-    if (brightnessPosition < 0.5) {
-      newMainColor.r = 255 + (baseColor.r - 255) * (2 * brightnessPosition);
-      newMainColor.g = 255 + (baseColor.g - 255) * (2 * brightnessPosition);
-      newMainColor.b = 255 + (baseColor.b - 255) * (2 * brightnessPosition);
-    } else {
-      newMainColor.r = baseColor.r - baseColor.r * (2 * brightnessPosition - 1);
-      newMainColor.g = baseColor.g - baseColor.g * (2 * brightnessPosition - 1);
-      newMainColor.b = baseColor.b - baseColor.b * (2 * brightnessPosition - 1);
-    }
+    const newMainColor = getColorFromBaseAndBrightness(baseColor, brightnessPosition);
     return `#${tinycolor(newMainColor).toHex()}`;
   }
 

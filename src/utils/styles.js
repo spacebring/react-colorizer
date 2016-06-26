@@ -9,12 +9,13 @@ export const colorPickerGradient = {
 export const colorPickerHueGradient = {
   backgroundImage: `linear-gradient(
     90deg,
-    rgb(0, 169, 224) 0%,
-    rgb(50, 52, 144) 20%,
-    rgb(234, 22, 136) 40%,
-    rgb(235, 46, 46) 60%,
-    rgb(253, 233, 45) 80%,
-    rgb(0, 158, 84) 100%
+    hsl(0, 100%, 50%) 0%,
+    hsl(60, 100%, 50%) 17%,
+    hsl(120, 100%, 50%) 33%,
+    hsl(180, 100%, 50%) 50%,
+    hsl(240, 100%, 50%) 67%,
+    hsl(300, 100%, 50%) 83%,
+    hsl(360, 100%, 50%) 100%
   )`,
 };
 
