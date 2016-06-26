@@ -26,14 +26,17 @@ export class ColorPickerComponent extends React.Component {
   // TODO: calcualte baseColorPosition
   constructor(props) {
     super(props);
-    const baseColor = tinycolor(props.selectedColor).toRgb();
-    const brightness = getBrightnessFromRGB(baseColor);
-    const basePos = getBasePositionFromRGB(baseColor);
-    this.state = {
-      baseColor,
-      baseColorPosition: basePos,
-      brightnessPosition: brightness,
-    };
+    this.setColor(this.props.selectedColor);
+  }
+
+  componentWillReceiveProps(nextProps) {
+    if (this.props.selectedColor !== nextProps.selectedColor) {
+      if (nextProps.selectedColor === undefined) {
+        return;
+      }
+      this.setColor(nextProps.selectedColor);
+      this.props.onColorChangedCallback(nextProps.selectedColor);
+    }
   }
 
   @autobind
@@ -61,6 +64,17 @@ export class ColorPickerComponent extends React.Component {
     const baseColor = this.state.baseColor;
     const newMainColor = getColorFromBaseAndBrightness(baseColor, brightnessPosition);
     return `#${tinycolor(newMainColor).toHex()}`;
+  }
+
+  setColor(color) {
+    const baseColor = tinycolor(color).toRgb();
+    const brightness = getBrightnessFromRGB(baseColor);
+    const basePos = getBasePositionFromRGB(baseColor);
+    this.state = {
+      baseColor,
+      baseColorPosition: basePos,
+      brightnessPosition: brightness,
+    };
   }
 
   render() {

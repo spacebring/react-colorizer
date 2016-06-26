@@ -34,6 +34,14 @@ export class Example extends React.Component {
 	componentDidMount() {
 		this.onColorChangedCallback(this.state.selectedColor);
 	}
+	
+	@autobind
+	setRandom() {
+		const newColor = '#'+('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6);
+		this.setState({
+			selectedColor: newColor,
+		});
+	}
 
   render() {
     return (
@@ -47,6 +55,7 @@ export class Example extends React.Component {
 					/>
 				</div>
 				<div>
+					<button onClick={this.setRandom}>Set Random</button>
 					<div id="SelectedLabel">Selected:</div>
 					<div id="SelectedColor"></div>
 				</div>

@@ -146,6 +146,14 @@
 				this.onColorChangedCallback(this.state.selectedColor);
 			}
 		}, {
+			key: 'setRandom',
+			value: function setRandom() {
+				var newColor = '#' + ('00000' + (Math.random() * (1 << 24) | 0).toString(16)).slice(-6);
+				this.setState({
+					selectedColor: newColor
+				});
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
@@ -169,6 +177,11 @@
 						'div',
 						null,
 						_react2.default.createElement(
+							'button',
+							{ onClick: this.setRandom },
+							'Set Random'
+						),
+						_react2.default.createElement(
 							'div',
 							{ id: 'SelectedLabel' },
 							'Selected:'
@@ -181,7 +194,7 @@
 		}]);
 
 		return Example;
-	}(_react2.default.Component), (_applyDecoratedDescriptor(_class.prototype, 'onColorChangedCallback', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'onColorChangedCallback'), _class.prototype)), _class);
+	}(_react2.default.Component), (_applyDecoratedDescriptor(_class.prototype, 'onColorChangedCallback', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'onColorChangedCallback'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setRandom', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'setRandom'), _class.prototype)), _class);
 
 
 	_reactDom2.default.render(_react2.default.createElement(Example, null), document.getElementById('ColorHarmonyGeneratorMainExample'));
@@ -20037,18 +20050,22 @@
 
 	    var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(ColorPickerComponent).call(this, props));
 
-	    var baseColor = (0, _tinycolor2.default)(props.selectedColor).toRgb();
-	    var brightness = (0, _color.getBrightnessFromRGB)(baseColor);
-	    var basePos = (0, _color.getBasePositionFromRGB)(baseColor);
-	    _this.state = {
-	      baseColor: baseColor,
-	      baseColorPosition: basePos,
-	      brightnessPosition: brightness
-	    };
+	    _this.setColor(_this.props.selectedColor);
 	    return _this;
 	  }
 
 	  _createClass(ColorPickerComponent, [{
+	    key: 'componentWillReceiveProps',
+	    value: function componentWillReceiveProps(nextProps) {
+	      if (this.props.selectedColor !== nextProps.selectedColor) {
+	        if (nextProps.selectedColor === undefined) {
+	          return;
+	        }
+	        this.setColor(nextProps.selectedColor);
+	        this.props.onColorChangedCallback(nextProps.selectedColor);
+	      }
+	    }
+	  }, {
 	    key: 'onBaseColorChange',
 	    value: function onBaseColorChange(baseColorPosition) {
 	      var baseColor = (0, _color.getColorByPosition)(baseColorPosition);
@@ -20074,6 +20091,18 @@
 	      var baseColor = this.state.baseColor;
 	      var newMainColor = (0, _color.getColorFromBaseAndBrightness)(baseColor, brightnessPosition);
 	      return '#' + (0, _tinycolor2.default)(newMainColor).toHex();
+	    }
+	  }, {
+	    key: 'setColor',
+	    value: function setColor(color) {
+	      var baseColor = (0, _tinycolor2.default)(color).toRgb();
+	      var brightness = (0, _color.getBrightnessFromRGB)(baseColor);
+	      var basePos = (0, _color.getBasePositionFromRGB)(baseColor);
+	      this.state = {
+	        baseColor: baseColor,
+	        baseColorPosition: basePos,
+	        brightnessPosition: brightness
+	      };
 	    }
 	  }, {
 	    key: 'render',
@@ -25692,6 +25721,7 @@
 	      if (!this.state.dragging) {
 	        return;
 	      }
+	      e.preventDefault();
 	      e.stopImmediatePropagation();
 	      var position = this.getPosition(e.pageX);
 	      this.validatePosition(position);
