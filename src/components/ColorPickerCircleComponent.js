@@ -52,6 +52,7 @@ export class ColorPickerCircleComponent extends React.Component {
     if (!this.state.dragging) {
       return;
     }
+    e.preventDefault();
     e.stopImmediatePropagation();
     const position = this.getPosition(e.pageX);
     this.validatePosition(position);
