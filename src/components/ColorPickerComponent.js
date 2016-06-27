@@ -62,7 +62,7 @@ export class ColorPickerComponent extends React.Component {
   @autobind
   getSelectedColor(brightnessPosition) {
     const baseColor = this.state.baseColor;
-    const newMainColor = getColorFromBaseAndBrightness(baseColor, brightnessPosition);
+    const newMainColor = getColorFromBaseAndBrightness(baseColor, 1 - brightnessPosition);
     return `#${tinycolor(newMainColor).toHex()}`;
   }
 
@@ -73,7 +73,7 @@ export class ColorPickerComponent extends React.Component {
     this.state = {
       baseColor,
       baseColorPosition: basePos,
-      brightnessPosition: brightness,
+      brightnessPosition: 1 - brightness,
     };
   }
 
