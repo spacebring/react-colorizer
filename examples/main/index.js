@@ -9,7 +9,7 @@ export class Example extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {
-			selectedColor: '#38ff40',
+			selectedColor: '#e56500',
 			cpVisible: false,
 		};
 	}

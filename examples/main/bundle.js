@@ -117,7 +117,7 @@
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Example).call(this, props));
 
 			_this.state = {
-				selectedColor: '#38ff40',
+				selectedColor: '#e56500',
 				cpVisible: false
 			};
 			return _this;
@@ -20102,7 +20102,7 @@
 	    key: 'getSelectedColor',
 	    value: function getSelectedColor(brightnessPosition) {
 	      var baseColor = this.state.baseColor;
-	      var newMainColor = (0, _color.getColorFromBaseAndBrightness)(baseColor, brightnessPosition);
+	      var newMainColor = (0, _color.getColorFromBaseAndBrightness)(baseColor, 1 - brightnessPosition);
 	      return '#' + (0, _tinycolor2.default)(newMainColor).toHex();
 	    }
 	  }, {
@@ -20114,7 +20114,7 @@
 	      this.state = {
 	        baseColor: baseColor,
 	        baseColorPosition: basePos,
-	        brightnessPosition: brightness
+	        brightnessPosition: 1 - brightness
 	      };
 	    }
 	  }, {
@@ -25873,7 +25873,7 @@
 
 	  var style = Object.assign({}, _styles.colorPickerGradient, {
 	    height: height + 'px',
-	    backgroundImage: 'linear-gradient(\n      90deg, rgb(0, 0, 0) 0%, #' + color + ' 50%, rgb(255, 255, 255) 100%\n    )'
+	    backgroundImage: 'linear-gradient(\n      90deg, rgb(255, 255, 255) 0%, #' + color + ' 50%, rgb(0, 0, 0) 100%\n    )'
 	  });
 	  return _react2.default.createElement(
 	    'div',
