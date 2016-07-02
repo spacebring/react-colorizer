@@ -10,6 +10,7 @@ export class Example extends React.Component {
 		super(props);
 		this.state = {
 			selectedColor: '#38ff40',
+			cpVisible: false,
 		};
 	}
 
@@ -42,25 +43,35 @@ export class Example extends React.Component {
 			selectedColor: newColor,
 		});
 	}
+	
+	@autobind
+	showColorPicker() {
+		this.setState({
+			cpVisible: true,
+		});
+	}
 
   render() {
     return (
       <Scroller id="cp" orientation={Orientation.Horizontal} size={{container: 500}}>
-				<h1>Color picker example</h1>
-				<div id="ColorPickerContainer">
-					<ColorPickerComponent
-						height={50}
-						selectedColor={this.state.selectedColor}
-						onColorChangedCallback={this.onColorChangedCallback}
-					/>
-				</div>
-				<div>
-					<button onClick={this.setRandom}>Set Random</button>
-					<div id="SelectedLabel">Selected:</div>
-					<div id="SelectedColor"></div>
-				</div>
-				<div id="GeneratedColors"></div>
-			</Scroller>
+		<h1>Color picker example</h1>
+		<button onClick={this.showColorPicker}>Show color picker</button>
+		<div id="ColorPickerContainer">
+			{this.state.cpVisible ? (
+				<ColorPickerComponent
+					height={50}
+					selectedColor={this.state.selectedColor}
+					onColorChangedCallback={this.onColorChangedCallback}
+				/>
+			) : undefined}
+		</div>
+		<div>
+			<button onClick={this.setRandom}>Set Random</button>
+			<div id="SelectedLabel">Selected:</div>
+			<div id="SelectedColor"></div>
+		</div>
+		<div id="GeneratedColors"></div>
+	</Scroller>
     );
   }
 }

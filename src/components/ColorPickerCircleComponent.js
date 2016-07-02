@@ -24,15 +24,15 @@ export class ColorPickerCircleComponent extends React.Component {
   }
 
   componentDidMount() {
-    window.addEventListener('mousemove', this.onMouseMove);
-    window.addEventListener('touchmove', this.onTouchMove);
+    window.addEventListener('mousemove', this.onMouseMove, true);
+    window.addEventListener('touchmove', this.onTouchMove, true);
     window.addEventListener('mouseup', this.onMouseUp);
     window.addEventListener('touchend', this.onMouseUp);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('mousemove', this.onMouseMove);
-    window.removeEventListener('touchmove', this.onTouchMove);
+    window.removeEventListener('mousemove', this.onMouseMove, true);
+    window.removeEventListener('touchmove', this.onTouchMove, true);
     window.removeEventListener('mouseup', this.onMouseUp);
     window.removeEventListener('touchend', this.onMouseUp);
   }

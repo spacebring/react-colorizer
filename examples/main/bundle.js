@@ -117,7 +117,8 @@
 			var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Example).call(this, props));
 
 			_this.state = {
-				selectedColor: '#38ff40'
+				selectedColor: '#38ff40',
+				cpVisible: false
 			};
 			return _this;
 		}
@@ -154,6 +155,13 @@
 				});
 			}
 		}, {
+			key: 'showColorPicker',
+			value: function showColorPicker() {
+				this.setState({
+					cpVisible: true
+				});
+			}
+		}, {
 			key: 'render',
 			value: function render() {
 				return _react2.default.createElement(
@@ -165,13 +173,18 @@
 						'Color picker example'
 					),
 					_react2.default.createElement(
+						'button',
+						{ onClick: this.showColorPicker },
+						'Show color picker'
+					),
+					_react2.default.createElement(
 						'div',
 						{ id: 'ColorPickerContainer' },
-						_react2.default.createElement(_colorHarmonyGenerator.ColorPickerComponent, {
+						this.state.cpVisible ? _react2.default.createElement(_colorHarmonyGenerator.ColorPickerComponent, {
 							height: 50,
 							selectedColor: this.state.selectedColor,
 							onColorChangedCallback: this.onColorChangedCallback
-						})
+						}) : undefined
 					),
 					_react2.default.createElement(
 						'div',
@@ -194,7 +207,7 @@
 		}]);
 
 		return Example;
-	}(_react2.default.Component), (_applyDecoratedDescriptor(_class.prototype, 'onColorChangedCallback', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'onColorChangedCallback'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setRandom', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'setRandom'), _class.prototype)), _class);
+	}(_react2.default.Component), (_applyDecoratedDescriptor(_class.prototype, 'onColorChangedCallback', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'onColorChangedCallback'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'setRandom', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'setRandom'), _class.prototype), _applyDecoratedDescriptor(_class.prototype, 'showColorPicker', [_autobindDecorator2.default], Object.getOwnPropertyDescriptor(_class.prototype, 'showColorPicker'), _class.prototype)), _class);
 
 
 	_reactDom2.default.render(_react2.default.createElement(Example, null), document.getElementById('ColorHarmonyGeneratorMainExample'));
@@ -25692,16 +25705,16 @@
 	  _createClass(ColorPickerCircleComponent, [{
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
-	      window.addEventListener('mousemove', this.onMouseMove);
-	      window.addEventListener('touchmove', this.onTouchMove);
+	      window.addEventListener('mousemove', this.onMouseMove, true);
+	      window.addEventListener('touchmove', this.onTouchMove, true);
 	      window.addEventListener('mouseup', this.onMouseUp);
 	      window.addEventListener('touchend', this.onMouseUp);
 	    }
 	  }, {
 	    key: 'componentWillUnmount',
 	    value: function componentWillUnmount() {
-	      window.removeEventListener('mousemove', this.onMouseMove);
-	      window.removeEventListener('touchmove', this.onTouchMove);
+	      window.removeEventListener('mousemove', this.onMouseMove, true);
+	      window.removeEventListener('touchmove', this.onTouchMove, true);
 	      window.removeEventListener('mouseup', this.onMouseUp);
 	      window.removeEventListener('touchend', this.onMouseUp);
 	    }
