@@ -3,37 +3,37 @@ import { ColorPickerCircleComponent } from './ColorPickerCircleComponent';
 import { colorPickerGradient } from '../utils/styles';
 
 const propTypes = {
-  color: React.PropTypes.string.isRequired,
   height: React.PropTypes.number.isRequired,
-  position: React.PropTypes.number.isRequired,
-  onPositionChanged: React.PropTypes.func.isRequired,
+  hue: React.PropTypes.number.isRequired,
+  value: React.PropTypes.number.isRequired,
+  onValueChanged: React.PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
 
-export const BrightnessPickerComponent = ({
-  color,
+export const SaturationPickerComponent = ({
   height,
-  position,
-  onPositionChanged,
+  hue,
+  value,
+  onValueChanged,
 }) => {
   const style = Object.assign({}, colorPickerGradient, {
     height: `${height}px`,
     backgroundImage: `linear-gradient(
-      90deg, rgb(255, 255, 255) 0%, #${color} 50%, rgb(0, 0, 0) 100%
+      90deg, hsl(${hue}, 0%, 50%) 0%, hsl(${hue}, 100%, 50%) 100%
     )`,
   });
   return (
     <div style={style} >
       <ColorPickerCircleComponent
         size={height / 2}
-        position={position}
+        position={value}
         top={height / 4}
-        onPositionChanged={onPositionChanged}
+        onPositionChanged={onValueChanged}
       />
     </div>
   );
 };
 
-BrightnessPickerComponent.propTypes = propTypes;
-BrightnessPickerComponent.defaultProps = defaultProps;
+SaturationPickerComponent.propTypes = propTypes;
+SaturationPickerComponent.defaultProps = defaultProps;

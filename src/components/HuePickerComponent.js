@@ -4,16 +4,16 @@ import { colorPickerGradient, colorPickerHueGradient } from '../utils/styles';
 
 const propTypes = {
   height: React.PropTypes.number.isRequired,
-  position: React.PropTypes.number.isRequired,
-  onBaseColorChanged: React.PropTypes.func.isRequired,
+  value: React.PropTypes.number.isRequired,
+  onValueChanged: React.PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
 
-export const BaseColorPickerComponent = ({
+export const HuePickerComponent = ({
   height,
-  position,
-  onBaseColorChanged,
+  value,
+  onValueChanged,
 }) => {
   const style = Object.assign({}, colorPickerGradient, colorPickerHueGradient, {
     height: `${height}px`,
@@ -22,13 +22,13 @@ export const BaseColorPickerComponent = ({
     <div style={style} >
       <ColorPickerCircleComponent
         size={height / 2}
-        position={position}
+        position={value / 360}
         top={height / 4}
-        onPositionChanged={onBaseColorChanged}
+        onPositionChanged={pos => onValueChanged(pos * 360)}
       />
     </div>
   );
 };
 
-BaseColorPickerComponent.propTypes = propTypes;
-BaseColorPickerComponent.defaultProps = defaultProps;
+HuePickerComponent.propTypes = propTypes;
+HuePickerComponent.defaultProps = defaultProps;

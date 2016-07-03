@@ -16,6 +16,7 @@ export class Example extends React.Component {
 
   @autobind
   onColorChangedCallback(selectedColor) {
+		this.setState({ selectedColor });
 		const selected = document.getElementById('SelectedColor');
 		selected.style.backgroundColor = selectedColor;
 		selected.innerText = selectedColor;
@@ -39,9 +40,7 @@ export class Example extends React.Component {
 	@autobind
 	setRandom() {
 		const newColor = '#'+('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6);
-		this.setState({
-			selectedColor: newColor,
-		});
+		this.onColorChangedCallback(newColor);
 	}
 	
 	@autobind

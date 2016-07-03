@@ -45,6 +45,7 @@ export class ColorPickerCircleComponent extends React.Component {
       parentWidth: parentTargetElement.clientWidth,
       parentLeft: parentTargetElement.getBoundingClientRect().left,
     });
+    ColorPickerCircleComponent.dragging = true;
   }
 
   @autobind
@@ -74,6 +75,7 @@ export class ColorPickerCircleComponent extends React.Component {
     this.setState({
       dragging: false,
     });
+    ColorPickerCircleComponent.dragging = false;
   }
 
   getPosition(pageX) {
