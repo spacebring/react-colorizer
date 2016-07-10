@@ -1,6 +1,6 @@
 import React from 'react';
 import autobind from 'autobind-decorator';
-import { colorPickerCircle } from '../utils/styles';
+import { colorPickerCircle, colorPickerTarget } from '../utils/styles';
 
 const propTypes = {
   size: React.PropTypes.number.isRequired,
@@ -96,19 +96,28 @@ export class ColorPickerCircleComponent extends React.Component {
 
   render() {
     const { position, size, top } = this.props;
-    const style = Object.assign({}, colorPickerCircle, {
+    const styleCircle = Object.assign({}, colorPickerCircle, {
       height: `${size}px`,
       width: `${size}px`,
       top: `${top}px`,
       marginLeft: `${- size / 2}px`,
       left: `${position * 100}%`,
     });
+    const styleTarget = Object.assign({}, colorPickerTarget, {
+      height: `${size / 2}px`,
+      width: `${size / 2}px`,
+    });
+
     return (
       <div
-        style={style}
+        style={styleCircle}
         onMouseDown={this.onMouseDown}
         onTouchStart={this.onMouseDown}
       >
+        <div
+          style={styleTarget}
+        >
+        </div>
       </div>
     );
   }

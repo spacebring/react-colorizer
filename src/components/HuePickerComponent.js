@@ -21,9 +21,9 @@ export const HuePickerComponent = ({
   return (
     <div style={style} >
       <ColorPickerCircleComponent
-        size={height / 2}
+        size={height}
         position={value / 360}
-        top={height / 4}
+        top={0}
         onPositionChanged={pos => onValueChanged(pos * 360)}
       />
     </div>

@@ -22,8 +22,16 @@ export const colorPickerHueGradient = {
 export const colorPickerCircle = {
   position: 'absolute',
   boxSizing: 'border-box',
+  borderRadius: '50%',
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  cursor: 'crosshair',
+};
+
+export const colorPickerTarget = {
+  boxSizing: 'border-box',
   border: 'solid 2px white',
   borderRadius: '50%',
-  verticalAlign: 'middle',
-  cursor: 'w-resize',
+  pointerEvents: 'none',
 };

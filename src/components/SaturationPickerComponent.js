@@ -26,9 +26,9 @@ export const SaturationPickerComponent = ({
   return (
     <div style={style} >
       <ColorPickerCircleComponent
-        size={height / 2}
+        size={height}
         position={value}
-        top={height / 4}
+        top={0}
         onPositionChanged={onValueChanged}
       />
     </div>
