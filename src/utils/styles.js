@@ -26,7 +26,6 @@ export const colorPickerCircle = {
   display: 'flex',
   alignItems: 'center',
   justifyContent: 'center',
-  cursor: 'crosshair',
 };
 
 export const colorPickerTarget = {
