@@ -55,7 +55,7 @@ export class ColorPickerCircleComponent extends React.Component {
     }
     e.preventDefault();
     e.stopImmediatePropagation();
-    const position = this.getPosition(e.pageX);
+    const position = this.getPosition(e.clientX);
     this.validatePosition(position);
   }
 
@@ -66,7 +66,7 @@ export class ColorPickerCircleComponent extends React.Component {
     }
     e.preventDefault();
     e.stopImmediatePropagation();
-    const position = this.getPosition(e.changedTouches[0].pageX);
+    const position = this.getPosition(e.changedTouches[0].clientX);
     this.validatePosition(position);
   }
 
@@ -78,8 +78,8 @@ export class ColorPickerCircleComponent extends React.Component {
     ColorPickerCircleComponent.dragging = false;
   }
 
-  getPosition(pageX) {
-    return (pageX - this.state.parentLeft) / this.state.parentWidth;
+  getPosition(positionX) {
+    return (positionX - this.state.parentLeft) / this.state.parentWidth;
   }
 
   validatePosition(position) {
