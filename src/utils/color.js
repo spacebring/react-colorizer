@@ -20,19 +20,18 @@ export function toHex(color) {
   return numberToHex(color.r) + numberToHex(color.g) + numberToHex(color.b);
 }
 
-export function fullScheme(color, scheme) {
-  const colors = tinycolor(color)[scheme]();
+export function fullScheme(mainColor, scheme) {
+  const colors = tinycolor(mainColor)[scheme]();
   const result = [];
-  for (const i in colors) {
-    if (colors.hasOwnProperty(i)) {
-      result.push(colors[i].toHex());
-      result.push(colors[i].lighten().toHex());
-      result.push(colors[i].brighten().toHex());
-      result.push(colors[i].darken().toHex());
-      result.push(colors[i].desaturate().toHex());
-      result.push(colors[i].saturate().toHex());
-    }
-  }
+  Object.keys(colors).forEach(colorKey => {
+    const color = colors[colorKey];
+    result.push(color.toHex());
+    result.push(color.lighten().toHex());
+    result.push(color.brighten().toHex());
+    result.push(color.darken().toHex());
+    result.push(color.desaturate().toHex());
+    result.push(color.saturate().toHex());
+  });
   return result;
 }
 

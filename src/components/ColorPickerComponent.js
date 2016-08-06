@@ -1,7 +1,6 @@
 import autobind from 'autobind-decorator';
 import React from 'react';
 import tinycolor from 'tinycolor2';
-import { ColorPickerCircleComponent } from './ColorPickerCircleComponent';
 import { HuePickerComponent } from './HuePickerComponent';
 import { SaturationPickerComponent } from './SaturationPickerComponent';
 import { LightnessPickerComponent } from './LightnessPickerComponent';
@@ -20,93 +19,92 @@ export class ColorPickerComponent extends React.Component {
 
   constructor(props) {
     super(props);
-    const color = tinycolor(this.props.selectedColor).toHsl();
-    this.state = {
-      color: {
-        hue: color.h,
-        saturation: color.s,
-        lightness: color.l,
+    const inputTinycolor = tinycolor(props.selectedColor);
+    const inputColorAny = inputTinycolor.toHsl();
+    const inputColorHEX = `#${inputTinycolor.toHex()}`;
+    this.cache = {
+      colorInput: inputColorHEX,
+      colorParsed: {
+        hue: inputColorAny.h,
+        saturation: inputColorAny.s,
+        lightness: inputColorAny.l,
       },
     };
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.selectedColor === undefined ||
-      ColorPickerCircleComponent.dragging) {
+    if (nextProps.selectedColor === this.cache.colorInput) {
       return;
     }
-    this.setColor(nextProps.selectedColor);
+    const inputColorAny = tinycolor(nextProps.selectedColor).toHsl();
+    this.setCachedColor({
+      hue: inputColorAny.h,
+      saturation: inputColorAny.s,
+      lightness: inputColorAny.l,
+    });
   }
 
   @autobind
   onHueChanged(hue) {
-    const newColor = Object.assign({}, this.state.color, {
+    const newColor = Object.assign({}, this.cache.colorParsed, {
       hue,
     });
-    this.onColorChanged(newColor);
+    this.setCachedColor(newColor);
   }
 
   @autobind
   onSaturationChanged(saturation) {
-    const newColor = Object.assign({}, this.state.color, {
+    const newColor = Object.assign({}, this.cache.colorParsed, {
       saturation,
     });
-    this.onColorChanged(newColor);
+    this.setCachedColor(newColor);
   }
 
   @autobind
   onLightnessChange(lightness) {
-    const newColor = Object.assign({}, this.state.color, {
+    const newColor = Object.assign({}, this.cache.colorParsed, {
       lightness,
     });
-    this.onColorChanged(newColor);
+    this.setCachedColor(newColor);
   }
 
-  onColorChanged(newColor) {
-    this.setState({
-      color: newColor,
-    });
-    const hslColor = {
-      h: newColor.hue,
-      s: newColor.saturation,
-      l: newColor.lightness,
+  setCachedColor(newColorParsed) {
+    const { onColorChangedCallback } = this.props;
+    const newColorHSL = {
+      h: newColorParsed.hue,
+      s: newColorParsed.saturation,
+      l: newColorParsed.lightness,
     };
-    const hex = tinycolor(hslColor).toHex();
-    if (this.props.onColorChangedCallback) {
-      this.props.onColorChangedCallback(`#${hex}`);
+    const newColorHEX = `#${tinycolor(newColorHSL).toHex()}`;
+    this.cache = Object.assign({}, this.cache, {
+      colorInput: newColorHEX,
+      colorParsed: newColorParsed,
+    });
+    if (onColorChangedCallback) {
+      onColorChangedCallback(newColorHEX);
     }
   }
 
-  setColor(color) {
-    const hslColor = tinycolor(color).toHsl();
-    this.setState({
-      color: {
-        hue: hslColor.h,
-        saturation: hslColor.s,
-        lightness: hslColor.l,
-      },
-    });
-  }
-
   render() {
+    const { colorParsed } = this.cache;
     return (
       <div>
         <HuePickerComponent
           height={this.props.height}
-          value={this.state.color.hue}
+          value={colorParsed.hue}
           onValueChanged={this.onHueChanged}
         />
         <SaturationPickerComponent
           height={this.props.height}
-          hue={this.state.color.hue}
-          value={this.state.color.saturation}
+          hue={colorParsed.hue}
+          value={colorParsed.saturation}
           onValueChanged={this.onSaturationChanged}
         />
         <LightnessPickerComponent
           height={this.props.height}
-          hue={this.state.color.hue}
-          saturation={this.state.color.saturation}
-          value={this.state.color.lightness}
+          hue={colorParsed.hue}
+          saturation={colorParsed.saturation}
+          value={colorParsed.lightness}
           onValueChanged={this.onLightnessChange}
         />
       </div>
