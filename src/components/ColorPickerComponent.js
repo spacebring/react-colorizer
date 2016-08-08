@@ -50,6 +50,7 @@ export class ColorPickerComponent extends React.Component {
       hue,
     });
     this.setCachedColor(newColor);
+    this.onColorChangedCallback();
   }
 
   @autobind
@@ -58,6 +59,7 @@ export class ColorPickerComponent extends React.Component {
       saturation,
     });
     this.setCachedColor(newColor);
+    this.onColorChangedCallback();
   }
 
   @autobind
@@ -66,10 +68,17 @@ export class ColorPickerComponent extends React.Component {
       lightness,
     });
     this.setCachedColor(newColor);
+    this.onColorChangedCallback();
+  }
+
+  onColorChangedCallback() {
+    const { onColorChangedCallback } = this.props;
+    if (onColorChangedCallback) {
+      onColorChangedCallback(this.cache.colorInput);
+    }
   }
 
   setCachedColor(newColorParsed) {
-    const { onColorChangedCallback } = this.props;
     const newColorHSL = {
       h: newColorParsed.hue,
       s: newColorParsed.saturation,
@@ -80,9 +89,6 @@ export class ColorPickerComponent extends React.Component {
       colorInput: newColorHEX,
       colorParsed: newColorParsed,
     });
-    if (onColorChangedCallback) {
-      onColorChangedCallback(newColorHEX);
-    }
   }
 
   render() {
