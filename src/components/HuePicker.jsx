@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorPickerCircleComponent } from './ColorPickerCircleComponent';
+import ColorPickerCircle from './ColorPickerCircle';
 import { colorPickerGradient, colorPickerHueGradient } from '../utils/styles';
 
 const propTypes = {
@@ -10,7 +10,7 @@ const propTypes = {
 
 const defaultProps = {};
 
-export const HuePickerComponent = ({
+const HuePicker = ({
   height,
   value,
   onValueChanged,
@@ -20,7 +20,7 @@ export const HuePickerComponent = ({
   });
   return (
     <div style={style} >
-      <ColorPickerCircleComponent
+      <ColorPickerCircle
         size={height}
         position={value / 360}
         top={0}
@@ -30,5 +30,7 @@ export const HuePickerComponent = ({
   );
 };
 
-HuePickerComponent.propTypes = propTypes;
-HuePickerComponent.defaultProps = defaultProps;
+HuePicker.propTypes = propTypes;
+HuePicker.defaultProps = defaultProps;
+
+export default HuePicker;

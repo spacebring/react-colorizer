@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorPickerCircleComponent } from './ColorPickerCircleComponent';
+import ColorPickerCircle from './ColorPickerCircle';
 import { colorPickerGradient } from '../utils/styles';
 
 const propTypes = {
@@ -12,7 +12,7 @@ const propTypes = {
 
 const defaultProps = {};
 
-export const LightnessPickerComponent = ({
+const LightnessPicker = ({
   height,
   hue,
   saturation,
@@ -29,7 +29,7 @@ export const LightnessPickerComponent = ({
   });
   return (
     <div style={style} >
-      <ColorPickerCircleComponent
+      <ColorPickerCircle
         size={height}
         position={1 - value}
         top={0}
@@ -39,5 +39,7 @@ export const LightnessPickerComponent = ({
   );
 };
 
-LightnessPickerComponent.propTypes = propTypes;
-LightnessPickerComponent.defaultProps = defaultProps;
+LightnessPicker.propTypes = propTypes;
+LightnessPicker.defaultProps = defaultProps;
+
+export default LightnessPicker;

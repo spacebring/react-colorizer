@@ -1,9 +1,9 @@
 import autobind from 'autobind-decorator';
 import React from 'react';
 import tinycolor from 'tinycolor2';
-import { HuePickerComponent } from './HuePickerComponent';
-import { SaturationPickerComponent } from './SaturationPickerComponent';
-import { LightnessPickerComponent } from './LightnessPickerComponent';
+import HuePicker from './HuePicker';
+import SaturationPicker from './SaturationPicker';
+import LightnessPicker from './LightnessPicker';
 
 const propTypes = {
   height: React.PropTypes.number.isRequired,
@@ -15,7 +15,7 @@ const defaultProps = {
   selectedColor: '#ff0000',
 };
 
-export class ColorPickerComponent extends React.Component {
+export default class ColorPickerComponent extends React.Component {
 
   constructor(props) {
     super(props);
@@ -95,18 +95,18 @@ export class ColorPickerComponent extends React.Component {
     const { colorParsed } = this.cache;
     return (
       <div>
-        <HuePickerComponent
+        <HuePicker
           height={this.props.height}
           value={colorParsed.hue}
           onValueChanged={this.onHueChanged}
         />
-        <SaturationPickerComponent
+        <SaturationPicker
           height={this.props.height}
           hue={colorParsed.hue}
           value={colorParsed.saturation}
           onValueChanged={this.onSaturationChanged}
         />
-        <LightnessPickerComponent
+        <LightnessPicker
           height={this.props.height}
           hue={colorParsed.hue}
           saturation={colorParsed.saturation}

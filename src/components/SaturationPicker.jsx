@@ -1,5 +1,5 @@
 import React from 'react';
-import { ColorPickerCircleComponent } from './ColorPickerCircleComponent';
+import ColorPickerCircle from './ColorPickerCircle';
 import { colorPickerGradient } from '../utils/styles';
 
 const propTypes = {
@@ -11,7 +11,7 @@ const propTypes = {
 
 const defaultProps = {};
 
-export const SaturationPickerComponent = ({
+const SaturationPicker = ({
   height,
   hue,
   value,
@@ -25,7 +25,7 @@ export const SaturationPickerComponent = ({
   });
   return (
     <div style={style} >
-      <ColorPickerCircleComponent
+      <ColorPickerCircle
         size={height}
         position={value}
         top={0}
@@ -35,5 +35,7 @@ export const SaturationPickerComponent = ({
   );
 };
 
-SaturationPickerComponent.propTypes = propTypes;
-SaturationPickerComponent.defaultProps = defaultProps;
+SaturationPicker.propTypes = propTypes;
+SaturationPicker.defaultProps = defaultProps;
+
+export default SaturationPicker;

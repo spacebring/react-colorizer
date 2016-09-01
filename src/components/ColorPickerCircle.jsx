@@ -11,8 +11,9 @@ const propTypes = {
 
 const defaultProps = {};
 
+// TODO: do not use static ColorPickerCircle
 // TODO: do not use dom so much, remove 'parentWidth' and 'parentLeft' from state
-export class ColorPickerCircleComponent extends React.Component {
+export default class ColorPickerCircle extends React.Component {
 
   constructor(props) {
     super(props);
@@ -45,7 +46,7 @@ export class ColorPickerCircleComponent extends React.Component {
       parentWidth: parentTargetElement.clientWidth,
       parentLeft: parentTargetElement.getBoundingClientRect().left,
     });
-    ColorPickerCircleComponent.dragging = true;
+    ColorPickerCircle.dragging = true;
   }
 
   @autobind
@@ -75,7 +76,7 @@ export class ColorPickerCircleComponent extends React.Component {
     this.setState({
       dragging: false,
     });
-    ColorPickerCircleComponent.dragging = false;
+    ColorPickerCircle.dragging = false;
   }
 
   getPosition(positionX) {
@@ -100,7 +101,7 @@ export class ColorPickerCircleComponent extends React.Component {
       height: `${size}px`,
       width: `${size}px`,
       top: `${top}px`,
-      marginLeft: `${- size / 2}px`,
+      marginLeft: `${-size / 2}px`,
       left: `${position * 100}%`,
     });
     const styleTarget = Object.assign({}, colorPickerTarget, {
@@ -114,14 +115,11 @@ export class ColorPickerCircleComponent extends React.Component {
         onMouseDown={this.onMouseDown}
         onTouchStart={this.onMouseDown}
       >
-        <div
-          style={styleTarget}
-        >
-        </div>
+        <div style={styleTarget} />
       </div>
     );
   }
 }
 
-ColorPickerCircleComponent.propTypes = propTypes;
-ColorPickerCircleComponent.defaultProps = defaultProps;
+ColorPickerCircle.propTypes = propTypes;
+ColorPickerCircle.defaultProps = defaultProps;
