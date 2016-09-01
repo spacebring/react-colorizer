@@ -40,6 +40,14 @@ ReactDOM.render(
 
 * Main ([source](https://github.com/opensource-cards/color-harmony-generator/tree/master/examples/main))
 
+### API
+
+prop             | type                 | default value
+-----------------|----------------------|--------------
+`height`         | `number`             |
+`selectedColor`  | `string`             | '#ff0000'
+`onColorChanged` | `func`               |
+
 ### Web site
 
 http://opensource-cards.github.io/color-harmony-generator
