@@ -10,11 +10,7 @@ const propTypes = {
 
 const defaultProps = {};
 
-const HuePicker = ({
-  height,
-  value,
-  onValueChanged,
-}) => {
+const HuePicker = ({ height, value, onValueChanged }) => {
   const style = Object.assign({}, colorPickerGradient, colorPickerHueGradient, {
     height: `${height}px`,
   });

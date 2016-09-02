@@ -1,4 +1,3 @@
-import autobind from 'autobind-decorator';
 import React from 'react';
 import tinycolor from 'tinycolor2';
 import HuePicker from './HuePicker';
@@ -7,19 +6,19 @@ import LightnessPicker from './LightnessPicker';
 
 const propTypes = {
   height: React.PropTypes.number.isRequired,
-  selectedColor: React.PropTypes.string,
-  onColorChangedCallback: React.PropTypes.func,
+  color: React.PropTypes.string,
+  onColorChanged: React.PropTypes.func,
 };
 
 const defaultProps = {
-  selectedColor: '#ff0000',
+  color: '#ff0000',
 };
 
-export default class ColorPickerComponent extends React.Component {
+export default class ColorPicker extends React.Component {
 
   constructor(props) {
     super(props);
-    const inputTinycolor = tinycolor(props.selectedColor);
+    const inputTinycolor = tinycolor(props.color);
     const inputColorAny = inputTinycolor.toHsl();
     const inputColorHEX = `#${inputTinycolor.toHex()}`;
     this.cache = {
@@ -30,13 +29,16 @@ export default class ColorPickerComponent extends React.Component {
         lightness: inputColorAny.l,
       },
     };
+    this.onHueChanged = this.onHueChanged.bind(this);
+    this.onSaturationChanged = this.onSaturationChanged.bind(this);
+    this.onLightnessChange = this.onLightnessChange.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.selectedColor === this.cache.colorInput) {
+    if (nextProps.color === this.cache.colorInput) {
       return;
     }
-    const inputColorAny = tinycolor(nextProps.selectedColor).toHsl();
+    const inputColorAny = tinycolor(nextProps.color).toHsl();
     this.setCachedColor({
       hue: inputColorAny.h,
       saturation: inputColorAny.s,
@@ -44,37 +46,34 @@ export default class ColorPickerComponent extends React.Component {
     });
   }
 
-  @autobind
   onHueChanged(hue) {
     const newColor = Object.assign({}, this.cache.colorParsed, {
       hue,
     });
     this.setCachedColor(newColor);
-    this.onColorChangedCallback();
+    this.onColorChanged();
   }
 
-  @autobind
   onSaturationChanged(saturation) {
     const newColor = Object.assign({}, this.cache.colorParsed, {
       saturation,
     });
     this.setCachedColor(newColor);
-    this.onColorChangedCallback();
+    this.onColorChanged();
   }
 
-  @autobind
   onLightnessChange(lightness) {
     const newColor = Object.assign({}, this.cache.colorParsed, {
       lightness,
     });
     this.setCachedColor(newColor);
-    this.onColorChangedCallback();
+    this.onColorChanged();
   }
 
-  onColorChangedCallback() {
-    const { onColorChangedCallback } = this.props;
-    if (onColorChangedCallback) {
-      onColorChangedCallback(this.cache.colorInput);
+  onColorChanged() {
+    const { onColorChanged } = this.props;
+    if (onColorChanged) {
+      onColorChanged(this.cache.colorInput);
     }
   }
 
@@ -118,5 +117,5 @@ export default class ColorPickerComponent extends React.Component {
   }
 }
 
-ColorPickerComponent.propTypes = propTypes;
-ColorPickerComponent.defaultProps = defaultProps;
+ColorPicker.propTypes = propTypes;
+ColorPicker.defaultProps = defaultProps;

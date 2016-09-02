@@ -1,18 +1,6 @@
 {
-  "name": "color-harmony-generator-main-example",
+  "name": "react-colorizer-main-example",
   "version": "0.0.0",
-  "description": "Color harmony generator main example.",
-  "keywords": [
-    "color",
-    "harmony",
-    "generator",
-    "main"
-  ],
-  "license": "MIT",
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:opensource-cards/color-harmony-generator.git"
-  },
   "dependencies": {
     "react-dom": "^15.3.0",
     "react-scrolling": "0.0.1-rc.27"

@@ -1,5 +1,4 @@
 import React from 'react';
-import autobind from 'autobind-decorator';
 import { colorPickerCircle, colorPickerTarget } from '../utils/styles';
 
 const propTypes = {
@@ -22,6 +21,10 @@ export default class ColorPickerCircle extends React.Component {
       parentWidth: 0,
       parentLeft: 0,
     };
+    this.onMouseDown = this.onMouseDown.bind(this);
+    this.onMouseMove = this.onMouseMove.bind(this);
+    this.onTouchMove = this.onTouchMove.bind(this);
+    this.onMouseUp = this.onMouseUp.bind(this);
   }
 
   componentDidMount() {
@@ -38,7 +41,6 @@ export default class ColorPickerCircle extends React.Component {
     window.removeEventListener('touchend', this.onMouseUp);
   }
 
-  @autobind
   onMouseDown(e) {
     const parentTargetElement = e.target.parentElement;
     this.setState({
@@ -49,7 +51,6 @@ export default class ColorPickerCircle extends React.Component {
     ColorPickerCircle.dragging = true;
   }
 
-  @autobind
   onMouseMove(e) {
     if (!this.state.dragging) {
       return;
@@ -60,7 +61,6 @@ export default class ColorPickerCircle extends React.Component {
     this.validatePosition(position);
   }
 
-  @autobind
   onTouchMove(e) {
     if (!this.state.dragging) {
       return;
@@ -71,7 +71,6 @@ export default class ColorPickerCircle extends React.Component {
     this.validatePosition(position);
   }
 
-  @autobind
   onMouseUp() {
     this.setState({
       dragging: false,

@@ -1,8 +1,8 @@
-# color-harmony-generator
+# react-colorizer
 
-[![npm package](https://badge.fury.io/js/color-harmony-generator.svg)](https://www.npmjs.org/package/color-harmony-generator)
-[![Dependency Status](https://david-dm.org/opensource-cards/color-harmony-generator.svg)](https://david-dm.org/opensource-cards/color-harmony-generator)
-[![devDependency Status](https://david-dm.org/opensource-cards/color-harmony-generator/dev-status.svg)](https://david-dm.org/opensource-cards/color-harmony-generator#info=devDependencies)
+[![npm package](https://badge.fury.io/js/react-colorizer.svg)](https://www.npmjs.org/package/react-colorizer)
+[![Dependency Status](https://david-dm.org/opensource-cards/react-colorizer.svg)](https://david-dm.org/opensource-cards/react-colorizer)
+[![devDependency Status](https://david-dm.org/opensource-cards/react-colorizer/dev-status.svg)](https://david-dm.org/opensource-cards/react-colorizer#info=devDependencies)
 
 Library for generation of harmonious color themes. Include react components for picking colors.
 
@@ -11,7 +11,7 @@ Library for generation of harmonious color themes. Include react components for 
 Using [npm](https://www.npmjs.com/):
 
 ```
-npm install --save color-harmony-generator
+npm install --save react-colorizer
 ```
 
 ### The Gist
@@ -19,18 +19,18 @@ npm install --save color-harmony-generator
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ColorPickerComponent, Color, HarmonyTypes } from 'color-harmony-generator';
+import { ColorPicker, Color, HarmonyTypes } from 'react-colorizer';
 
 const selectedScheme = HarmonyTypes.TRIAD;
 
-function onColorChangedCallback(selectedColor) {
-  const fullScheme = selectedColor.fullScheme(selectedScheme);
+function onColorChanged(color) {
+  const fullScheme = color.fullScheme(selectedScheme);
 }
 
 ReactDOM.render(
-  <ColorPickerComponent
+  <ColorPicker
     height={50}
-    onColorChangedCallback={onColorChangedCallback}
+    onColorChanged={onColorChanged}
   />,
   document.getElementById('Container')
 );
@@ -38,19 +38,19 @@ ReactDOM.render(
 
 ### Examples
 
-* Main ([source](https://github.com/opensource-cards/color-harmony-generator/tree/master/examples/main))
+* Main ([source](https://github.com/opensource-cards/react-colorizer/tree/master/examples/main))
 
 ### API
 
 prop             | type                 | default value
 -----------------|----------------------|--------------
+`color`          | `string`             | '#ff0000'
 `height`         | `number`             |
-`selectedColor`  | `string`             | '#ff0000'
 `onColorChanged` | `func`               |
 
 ### Web site
 
-http://opensource-cards.github.io/color-harmony-generator
+http://opensource-cards.github.io/react-colorizer
 
 ### License
 

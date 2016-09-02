@@ -1,9 +1,10 @@
+
 export const colorPickerGradient = {
+  marginBottom: '10px',
+  marginTop: '10px',
+  overflow: 'hidden',
   position: 'relative',
   width: '100%',
-  overflow: 'hidden',
-  marginTop: '10px',
-  marginBottom: '10px',
 };
 
 export const colorPickerHueGradient = {
@@ -20,17 +21,17 @@ export const colorPickerHueGradient = {
 };
 
 export const colorPickerCircle = {
-  position: 'absolute',
-  boxSizing: 'border-box',
-  borderRadius: '50%',
-  display: 'flex',
   alignItems: 'center',
+  borderRadius: '50%',
+  boxSizing: 'border-box',
+  display: 'flex',
   justifyContent: 'center',
+  position: 'absolute',
 };
 
 export const colorPickerTarget = {
-  boxSizing: 'border-box',
   border: 'solid 2px white',
   borderRadius: '50%',
+  boxSizing: 'border-box',
   pointerEvents: 'none',
 };

@@ -11,12 +11,7 @@ const propTypes = {
 
 const defaultProps = {};
 
-const SaturationPicker = ({
-  height,
-  hue,
-  value,
-  onValueChanged,
-}) => {
+const SaturationPicker = ({ height, hue, value, onValueChanged }) => {
   const style = Object.assign({}, colorPickerGradient, {
     height: `${height}px`,
     backgroundImage: `linear-gradient(

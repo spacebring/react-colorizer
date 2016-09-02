@@ -7,14 +7,14 @@ module.exports = {
 		filename: 'bundle.js'
 	},
 	resolve: {
-		extensions: ['', '.js'],
+		extensions: ['', '.js', '.jsx'],
 		alias: {
-			'color-harmony-generator': path.join(__dirname, '..', '..', 'src')
+			'react-colorizer': path.join(__dirname, '..', '..', 'src')
 		}
 	},
 	module: {
 		loaders: [
-			{ test: /\.(js)(\?.*)?$/, loader: 'babel-loader', exclude: /node_modules/ }
+			{ test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ }
 		]
 	}
 };
