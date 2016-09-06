@@ -26,10 +26,9 @@ class Example extends React.Component {
     const container = document.getElementById('GeneratedColors');
     container.innerHTML = '';
     for (let i in colors) {
-      const color = colors[i];
       const elem = document.createElement('div');
-      elem.innerText = '#' + color;
-      elem.style.backgroundColor = '#' + color;
+      elem.innerText = colors[i];
+      elem.style.backgroundColor = colors[i];
       container.appendChild(elem);
     }
   }

@@ -25,12 +25,12 @@ export function fullScheme(mainColor, scheme) {
   const result = [];
   Object.keys(colors).forEach(colorKey => {
     const color = colors[colorKey];
-    result.push(color.toHex());
-    result.push(color.lighten().toHex());
-    result.push(color.brighten().toHex());
-    result.push(color.darken().toHex());
-    result.push(color.desaturate().toHex());
-    result.push(color.saturate().toHex());
+    result.push(`#${color.toHex()}`);
+    result.push(`#${color.lighten().toHex()}`);
+    result.push(`#${color.brighten().toHex()}`);
+    result.push(`#${color.darken().toHex()}`);
+    result.push(`#${color.desaturate().toHex()}`);
+    result.push(`#${color.saturate().toHex()}`);
   });
   return result;
 }
