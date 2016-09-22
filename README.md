@@ -11,7 +11,7 @@ Library for generation of harmonious color themes. Include react components for 
 Using [npm](https://www.npmjs.com/):
 
 ```
-npm install --save react-colorizer
+npm install react-colorizer --save
 ```
 
 ### The Gist
