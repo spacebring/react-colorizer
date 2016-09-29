@@ -6,6 +6,8 @@
 
 Library for generation of harmonious color themes. Include react components for picking colors.
 
+![](https://github.com/opensource-cards/react-colorizer/blob/master/demo.gif)
+
 ### Installation
 
 Using [npm](https://www.npmjs.com/):
