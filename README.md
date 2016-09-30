@@ -50,10 +50,6 @@ prop             | type                 | default value
 `height`         | `number`             |
 `onColorChanged` | `func`               |
 
-### Web site
-
-http://opensource-cards.github.io/react-colorizer
-
 ### License
 
 MIT
