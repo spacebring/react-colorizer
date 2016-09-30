@@ -3,6 +3,7 @@
 [![npm package](https://badge.fury.io/js/react-colorizer.svg)](https://www.npmjs.org/package/react-colorizer)
 [![Dependency Status](https://david-dm.org/opensource-cards/react-colorizer.svg)](https://david-dm.org/opensource-cards/react-colorizer)
 [![devDependency Status](https://david-dm.org/opensource-cards/react-colorizer/dev-status.svg)](https://david-dm.org/opensource-cards/react-colorizer#info=devDependencies)
+[![peerDependency Status](https://david-dm.org/opensource-cards/react-colorizer/peer-status.svg)](https://david-dm.org/opensource-cards/react-colorizer#info=peerDependencies)
 
 Library for generation of harmonious color themes. Include react components for picking colors.
 
