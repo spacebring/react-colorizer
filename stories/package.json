@@ -1,6 +1,4 @@
 {
-  "name": "react-colorizer-main-example",
-  "version": "0.0.0",
   "dependencies": {
     "react-dom": "^15.3.0",
     "react-scrolling": "0.0.1-rc.27"

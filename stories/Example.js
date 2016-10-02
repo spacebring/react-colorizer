@@ -1,9 +1,8 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { ColorPicker, HarmonyTypes, fullScheme } from 'react-colorizer';
 import { Scroller, Orientation } from 'react-scrolling';
 
-class Example extends React.Component {
+export class Example extends React.Component {
 
   constructor(props) {
     super(props);
@@ -38,7 +37,7 @@ class Example extends React.Component {
   }
 
   setRandom() {
-    const newColor = '#'+('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6);
+    const newColor = '#' + ('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6);
     this.onColorChanged(newColor);
   }
 
@@ -51,29 +50,39 @@ class Example extends React.Component {
   render() {
     return (
       <Scroller id="cp" orientation={Orientation.Horizontal} size={{container: 500}}>
-    <h1>Color picker example</h1>
-    <button onClick={this.showColorPicker}>Show color picker</button>
-    <div id="ColorPickerContainer">
-      {this.state.cpVisible ? (
-        <ColorPicker
-          height={50}
-          color={this.state.color}
-          onColorChanged={this.onColorChanged}
-        />
-      ) : undefined}
-    </div>
-    <div>
-      <button onClick={this.setRandom}>Set Random</button>
-      <div id="SelectedLabel">Selected:</div>
-      <div id="SelectedColor"></div>
-    </div>
-    <div id="GeneratedColors"></div>
-  </Scroller>
+        <style>
+          {`#ColorPickerContainer {
+              width: 300px;
+          }
+
+          #SelectedLabel {
+              margin-top: 5px;
+          }
+
+          #SelectedColor {
+              margin: 5px 0;
+              padding: 10px;
+              display: inline-block;
+          }`}
+        </style>
+        <h1>Color picker example</h1>
+        <button onClick={this.showColorPicker}>Show color picker</button>
+        <div id="ColorPickerContainer">
+          {this.state.cpVisible ? (
+            <ColorPicker
+              height={50}
+              color={this.state.color}
+              onColorChanged={this.onColorChanged}
+            />
+          ) : undefined}
+        </div>
+        <div>
+          <button onClick={this.setRandom}>Set Random</button>
+          <div id="SelectedLabel">Selected:</div>
+          <div id="SelectedColor"></div>
+        </div>
+        <div id="GeneratedColors"></div>
+      </Scroller>
     );
   }
 }
-
-ReactDOM.render(
-  <Example/>,
-  document.getElementById('Container')
-);
