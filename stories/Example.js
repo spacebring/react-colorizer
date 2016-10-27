@@ -72,6 +72,7 @@ export class Example extends React.Component {
             <ColorPicker
               height={50}
               color={this.state.color}
+              width={255}
               onColorChanged={this.onColorChanged}
             />
           ) : undefined}

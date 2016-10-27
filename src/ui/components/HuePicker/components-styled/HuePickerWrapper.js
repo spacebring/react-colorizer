@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import COLOR_PICKER_GRADIENT from '../../../utils/styles';
+import { COLOR_PICKER_GRADIENT_WEB } from '../../../utils/styles';
 
 export default styled.div`
-  ${COLOR_PICKER_GRADIENT}
+  ${COLOR_PICKER_GRADIENT_WEB}
   background-image: linear-gradient(
     90deg,
     hsl(0, 100%, 50%) 0%,
@@ -13,4 +13,6 @@ export default styled.div`
     hsl(300, 100%, 50%) 83%,
     hsl(360, 100%, 50%) 100%
   );
+  height: ${props => props.height}px;
+  width: ${props => props.width}px;
 `;

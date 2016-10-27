@@ -1,3 +1,3 @@
-import LightnessPicker from './component';
+import LightnessPicker from './component/index';
 
 export default LightnessPicker;

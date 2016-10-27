@@ -6,8 +6,9 @@ import SaturationPicker from '../../SaturationPicker';
 import LightnessPicker from '../../LightnessPicker';
 
 const propTypes = {
-  height: React.PropTypes.number.isRequired,
   color: React.PropTypes.string,
+  height: React.PropTypes.number.isRequired,
+  width: React.PropTypes.number.isRequired,
   onColorChanged: React.PropTypes.func,
 };
 
@@ -93,18 +94,20 @@ export default class ColorPicker extends React.Component {
 
   render() {
     const { colorParsed } = this.cache;
-    const { height } = this.props;
+    const { height, width } = this.props;
     return (
       <ColorPickerWrapper>
         <HuePicker
           height={height}
           value={colorParsed.hue}
+          width={width}
           onValueChanged={this.onHueChanged}
         />
         <SaturationPicker
           height={height}
           hue={colorParsed.hue}
           value={colorParsed.saturation}
+          width={width}
           onValueChanged={this.onSaturationChanged}
         />
         <LightnessPicker
@@ -112,6 +115,7 @@ export default class ColorPicker extends React.Component {
           hue={colorParsed.hue}
           saturation={colorParsed.saturation}
           value={colorParsed.lightness}
+          width={width}
           onValueChanged={this.onLightnessChange}
         />
       </ColorPickerWrapper>

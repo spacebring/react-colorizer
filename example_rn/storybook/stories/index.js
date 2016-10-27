@@ -7,6 +7,7 @@ storiesOf('Examples', module)
     <ColorPicker
       height={50}
       color="#e56500"
+      width={255}
       onColorChanged={this.onColorChanged}
     />
   ));

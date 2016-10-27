@@ -33,6 +33,7 @@ function onColorChanged(color) {
 ReactDOM.render(
   <ColorPicker
     height={50}
+    width={255}
     onColorChanged={onColorChanged}
   />,
   document.getElementById('Container')

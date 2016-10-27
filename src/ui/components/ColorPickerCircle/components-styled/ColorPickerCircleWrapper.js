@@ -7,4 +7,5 @@ export default styled.div`
   display: flex;
   justify-content: center;
   position: absolute;
+  margin-left: 0;
 `;

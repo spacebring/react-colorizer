@@ -1,3 +1,3 @@
-import SaturationPicker from './component';
+import SaturationPicker from './component/index';
 
 export default SaturationPicker;
