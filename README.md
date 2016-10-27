@@ -5,7 +5,7 @@
 [![devDependency Status](https://david-dm.org/opensource-cards/react-colorizer/dev-status.svg)](https://david-dm.org/opensource-cards/react-colorizer#info=devDependencies)
 [![peerDependency Status](https://david-dm.org/opensource-cards/react-colorizer/peer-status.svg)](https://david-dm.org/opensource-cards/react-colorizer#info=peerDependencies)
 
-Library for generation of harmonious color themes. Include react components for picking colors.
+A React and React Native library for generation of harmonious color themes.
 
 ![](https://github.com/opensource-cards/react-colorizer/blob/master/demo.gif)
 
