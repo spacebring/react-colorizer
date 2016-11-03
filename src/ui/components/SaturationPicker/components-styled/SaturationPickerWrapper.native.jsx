@@ -19,9 +19,9 @@ const propTypes = {
 
 const defaultProps = {};
 
-const HuePickerWrapper = ({ children, height, width }) => {
+const HuePickerWrapper = ({ children, height, hue, width }) => {
   const newStyle = Object.assign({}, { height, width }, COLOR_PICKER_GRADIENT_OBJ_NATIVE);
-  const fill = new LinearGradient(['blue', 'red', 'yellow'], 0, 0, height, width);
+  const fill = new LinearGradient([`hsl(${hue}%, 0%, 50%) 0%`, `hsl(${hue}%, 100%, 50%) 100%`], 0, 0, width, 0);
   return (
     <View style={newStyle} >
       <Surface height={height} width={width} >
