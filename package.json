@@ -20,7 +20,7 @@
     "clean": "rimraf lib",
     "lint": "eslint src",
     "build": "npm run lint && npm run clean && babel src --out-dir lib",
-    "build-storybook": "build-storybook",
+    "build-storybook": "build-storybook -o docs",
     "storybook": "start-storybook -p 6006"
   },
   "license": "MIT",
@@ -33,7 +33,8 @@
   ],
   "main": "lib/index.js",
   "dependencies": {
-    "react": "^15.0.0",
+    "react": "^15.3.2",
+    "react-dom": "^15.3.2",
     "styled-components": "^1.0.8",
     "tinycolor2": "^1.4.1"
   },
