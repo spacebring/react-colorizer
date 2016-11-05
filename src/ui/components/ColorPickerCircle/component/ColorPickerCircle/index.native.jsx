@@ -15,6 +15,7 @@ const propTypes = {
 const defaultProps = {};
 
 // TODO: remove parentLeft
+// TODO: implement events
 export default class ColorPickerCircle extends React.Component {
 
   constructor(props) {

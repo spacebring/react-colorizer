@@ -8,7 +8,3 @@ export default halfSize => (
     border-radius: ${halfSize};
   `
 );
-
-/*
-border-radius: 50%;
-*/

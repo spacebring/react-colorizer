@@ -1,14 +1,6 @@
 import React from 'react';
-import { View } from 'react-native';
 import { LinearGradient, Shape, Surface } from 'react-native/Libraries/ART/ReactNativeART';
-// import styled from 'styled-components/native';
-import { COLOR_PICKER_GRADIENT_OBJ_NATIVE } from '../../../utils/styles';
-
-/*
-export default styled.View`
-  ${COLOR_PICKER_GRADIENT_NATIVE}
-`;
-*/
+import GradientObjNative from '../../../components-styled/GradientObjNative';
 
 const propTypes = {
   children: React.PropTypes.object.isRequired,
@@ -19,10 +11,22 @@ const propTypes = {
 const defaultProps = {};
 
 const HuePickerWrapper = ({ children, height, width }) => {
-  const newStyle = Object.assign({}, { height, width }, COLOR_PICKER_GRADIENT_OBJ_NATIVE);
-  const fill = new LinearGradient(['hsl(0, 100%, 50%) 0%', 'hsl(60, 100%, 50%) 17%', 'hsl(120, 100%, 50%) 33%', 'hsl(180, 100%, 50%) 50%', 'hsl(240, 100%, 50%) 67%', 'hsl(300, 100%, 50%) 83%', 'hsl(360, 100%, 50%) 100%'], 0, 0, width, 0);
+  const newStyle = { height, width };
+  const fill = new LinearGradient([
+    'hsl(0, 100%, 50%) 0%',
+    'hsl(60, 100%, 50%) 17%',
+    'hsl(120, 100%, 50%) 33%',
+    'hsl(180, 100%, 50%) 50%',
+    'hsl(240, 100%, 50%) 67%',
+    'hsl(300, 100%, 50%) 83%',
+    'hsl(360, 100%, 50%) 100%'],
+    0,
+    0,
+    width,
+    0
+  );
   return (
-    <View style={newStyle} >
+    <GradientObjNative style={newStyle} >
       <Surface height={height} width={width} >
         <Shape
           fill={fill}
@@ -30,7 +34,7 @@ const HuePickerWrapper = ({ children, height, width }) => {
         />
       </Surface>
       {children}
-    </View>
+    </GradientObjNative>
   );
 };
 

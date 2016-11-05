@@ -7,16 +7,4 @@ export const COLOR_PICKER_GRADIENT_WEB = `
   width: 100%;
 `;
 
-export const COLOR_PICKER_GRADIENT_NATIVE = `
-  margin-bottom: 10;
-  margin-top: 10;
-  overflow: hidden;
-  position: relative;
-`;
-
-export const COLOR_PICKER_GRADIENT_OBJ_NATIVE = {
-  marginBottom: 10,
-  marginTop: 10,
-  overflow: 'hidden',
-  position: 'relative',
-};
+export default COLOR_PICKER_GRADIENT_WEB;
