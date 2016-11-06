@@ -1,7 +1,7 @@
 import React from 'react';
 import { TouchableWithoutFeedback } from 'react-native';
-import createColorPickerCircleWrapper from '../../components-styled/ColorPickerCircleWrapper';
-import createColorPickerTargetWrapper from '../../components-styled/ColorPickerTargetWrapper';
+import ColorPickerCircleWrapper from '../../components-styled/ColorPickerCircleWrapper';
+import ColorPickerTargetWrapper from '../../components-styled/ColorPickerTargetWrapper';
 import validatePosition from '../../utils/position-validation';
 
 const propTypes = {
@@ -96,13 +96,13 @@ export default class ColorPickerCircle extends React.Component {
       width: size,
       top,
       left: Math.round(position * width) - halfSize,
+      borderRadius: halfSize,
     };
     const styleTarget = {
       height: halfSize,
       width: halfSize,
+      borderRadius: halfSize,
     };
-    const ColorPickerCircleWrapper = createColorPickerCircleWrapper(halfSize);
-    const ColorPickerTargetWrapper = createColorPickerTargetWrapper(halfSize);
     return (
       <TouchableWithoutFeedback onPressIn={this.onPressIn} >
         <ColorPickerCircleWrapper style={styleCircle} >
