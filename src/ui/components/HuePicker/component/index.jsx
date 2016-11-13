@@ -1,6 +1,7 @@
 import React from 'react';
 import HuePickerWrapper from '../components-styled/HuePickerWrapper';
 import ColorPickerCircle from '../../ColorPickerCircle';
+import getPosition from '../../../utils/position';
 
 const propTypes = {
   height: React.PropTypes.number.isRequired,
@@ -13,17 +14,17 @@ const defaultProps = {};
 
 const HuePicker = ({ height, value, width, onValueChanged }) => {
   return (
-    <HuePickerWrapper height={height} width={width} >
+    <HuePickerWrapper height={height} width={width} onValueChanged={pos => onValueChanged(pos * 360)} >
       <ColorPickerCircle
-        size={height}
         position={value / 360}
+        size={height}
         top={0}
         width={width}
         onPositionChanged={pos => onValueChanged(pos * 360)}
       />
     </HuePickerWrapper>
   );
-};
+}
 
 HuePicker.propTypes = propTypes;
 HuePicker.defaultProps = defaultProps;

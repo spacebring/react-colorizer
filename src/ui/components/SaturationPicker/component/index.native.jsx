@@ -16,8 +16,8 @@ const SaturationPicker = ({ height, hue, value, width, onValueChanged }) => {
   return (
     <SaturationPickerWrapper height={height} hue={hue} width={width} >
       <ColorPickerCircle
-        size={height}
         position={value}
+        size={height}
         top={0}
         width={width}
         onPositionChanged={onValueChanged}

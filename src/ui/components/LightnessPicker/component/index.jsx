@@ -28,10 +28,11 @@ const LightnessPicker = ({
       hue={hue}
       saturationPercent={saturationPercent}
       width={width}
+      onValueChanged={pos => onValueChanged(1 - pos)}
     >
       <ColorPickerCircle
-        size={height}
         position={1 - value}
+        size={height}
         top={0}
         width={width}
         onPositionChanged={pos => onValueChanged(1 - pos)}

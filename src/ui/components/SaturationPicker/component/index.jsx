@@ -14,10 +14,10 @@ const defaultProps = {};
 
 const SaturationPicker = ({ height, hue, value, width, onValueChanged }) => {
   return (
-    <SaturationPickerWrapper height={height} hue={hue} width={width} >
+    <SaturationPickerWrapper height={height} hue={hue} width={width} onValueChanged={onValueChanged} >
       <ColorPickerCircle
-        size={height}
         position={value}
+        size={height}
         top={0}
         width={width}
         onPositionChanged={onValueChanged}

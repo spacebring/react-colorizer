@@ -1,8 +1,8 @@
 import React from 'react';
 import { TouchableWithoutFeedback } from 'react-native';
-import ColorPickerCircleWrapper from '../../components-styled/ColorPickerCircleWrapper';
-import ColorPickerTargetWrapper from '../../components-styled/ColorPickerTargetWrapper';
-import validatePosition from '../../utils/position-validation';
+import ColorPickerCircleWrapper from '../components-styled/ColorPickerCircleWrapper';
+import ColorPickerTargetWrapper from '../components-styled/ColorPickerTargetWrapper';
+import validatePosition from '../utils/position-validation';
 
 const propTypes = {
   size: React.PropTypes.number.isRequired,
@@ -14,8 +14,6 @@ const propTypes = {
 
 const defaultProps = {};
 
-// TODO: remove parentLeft
-// TODO: implement events
 export default class ColorPickerCircle extends React.Component {
 
   constructor(props) {

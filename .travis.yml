@@ -3,6 +3,8 @@ node_js:
   - "6.0"
 script:
   - npm run build
+notifications:
+  webhooks: https://outlook.office365.com/webhook/2c733d58-5377-45ee-bf1a-1eba8918657f@20b5593d-fc66-4328-8465-68dc7e8e3adf/TravisCI/825534f49f644571ac7207ac42abeb7a/5d004942-769c-464a-b930-7bc4716e8757
 branches:
   only:
     - master
