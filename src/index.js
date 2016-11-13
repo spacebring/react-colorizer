@@ -7,3 +7,10 @@ export {
   fromHex,
   HarmonyTypes,
 };
+
+export default {
+  ColorPicker,
+  fullScheme,
+  fromHex,
+  HarmonyTypes,
+};
