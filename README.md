@@ -33,6 +33,7 @@ function onColorChanged(color) {
 ReactDOM.render(
   <ColorPicker
     height={50}
+    color="#e56500"
     width={255}
     onColorChanged={onColorChanged}
   />,
@@ -50,6 +51,7 @@ prop             | type                 | default value
 -----------------|----------------------|--------------
 `color`          | `string`             | '#ff0000'
 `height`         | `number`             |
+`width`          | `number`             |
 `onColorChanged` | `func`               |
 
 ### License
