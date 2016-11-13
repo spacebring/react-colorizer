@@ -26,6 +26,7 @@ class BarWrapper extends React.Component {
 
   render() {
     const { children, className, style } = this.props;
+    console.log(style);
     return (
       <div
         className={className}

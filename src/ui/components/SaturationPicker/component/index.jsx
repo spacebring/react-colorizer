@@ -13,8 +13,18 @@ const propTypes = {
 const defaultProps = {};
 
 const SaturationPicker = ({ height, hue, value, width, onValueChanged }) => {
+  const saturationPickerWrapperStyle = {
+    backgroundImage: `linear-gradient(
+      90deg, hsl(${hue}, 0%, 50%) 0%, hsl(${hue}, 100%, 50%) 100%
+    )`,
+  };
   return (
-    <SaturationPickerWrapper height={height} hue={hue} width={width} onValueChanged={onValueChanged} >
+    <SaturationPickerWrapper
+      height={height}
+      style={saturationPickerWrapperStyle}
+      width={width}
+      onValueChanged={onValueChanged}
+    >
       <ColorPickerCircle
         position={value}
         size={height}

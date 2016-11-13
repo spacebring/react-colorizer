@@ -1,17 +1,13 @@
 import tinycolor from 'tinycolor2';
 
-class Color {
-  constructor(r, g, b) {
-    this.r = r;
-    this.g = g;
-    this.b = b;
-  }
+function getColor(r, g, b) {
+  return { r, g, b };
 }
 
 function numberToHex(num) {
-  let res = Math.round(num).toString(16);
+  const res = Math.round(num).toString(16);
   if (res.length < 2) {
-    res = `0${res}`;
+    return `0${res}`;
   }
   return res;
 }
@@ -38,7 +34,7 @@ export function fullScheme(mainColor, scheme) {
 export function fromHex(hex) {
   const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
   return result
-    ? new Color(
+    ? getColor(
       parseInt(result[1], 16),
       parseInt(result[2], 16),
       parseInt(result[3], 16),

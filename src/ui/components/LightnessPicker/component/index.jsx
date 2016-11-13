@@ -22,11 +22,17 @@ const LightnessPicker = ({
   onValueChanged,
 }) => {
   const saturationPercent = saturation * 100;
+  const lightnessPickerWrapperStyle = {
+    backgroundImage: `linear-gradient(90deg,
+      hsl(${hue}, ${saturationPercent}%, 100%) 0%, 
+      hsl(${hue}, ${saturationPercent}%, 50%) 50%, 
+      hsl(${hue}, ${saturationPercent}%, 0%) 100%
+    )`,
+  };
   return (
     <LightnessPickerWrapper
       height={height}
-      hue={hue}
-      saturationPercent={saturationPercent}
+      style={lightnessPickerWrapperStyle}
       width={width}
       onValueChanged={pos => onValueChanged(1 - pos)}
     >
