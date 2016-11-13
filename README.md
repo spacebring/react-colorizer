@@ -43,7 +43,7 @@ ReactDOM.render(
 
 ### Examples
 
-* Main ([source](https://github.com/opensource-cards/react-colorizer/tree/master/examples/main))
+* Storybook ([source](https://github.com/opensource-cards/react-colorizer/tree/master/stories))
 
 ### API
 
