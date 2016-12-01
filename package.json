@@ -57,7 +57,7 @@
     "eslint-plugin-react": "^6.6.0",
     "react": "~15.3.2",
     "react-dom": "~15.3.2",
-    "react-native": "^0.37.0",
+    "react-native": "^0.38.0",
     "rimraf": "^2.5.4",
     "styled-components": "^1.1.2"
   }
