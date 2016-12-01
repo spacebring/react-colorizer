@@ -1,6 +1,6 @@
 {
   "name": "react-colorizer",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Library for generation of harmonious color themes.",
   "keywords": [
     "react",
@@ -14,14 +14,14 @@
     "url": "https://github.com/rtkhanas"
   },
   "scripts": {
-    "rn-watch": "babel ./src --out-dir=./example_rn/lib --watch",
-    "rn-storybook": "cd example_rn && npm run storybook",
-    "rn-run-ios": "cd example_rn && react-native run-ios",
+    "storybook-web-build": "cd ./storybooks/web && npm run build-storybook",
+    "storybook-web": "cd ./storybooks/web && npm run storybook",
+    "storybook-native-watch": "babel ./src --out-dir=./storybooks/native/lib --watch",
+    "storybook-native": "cd ./storybooks/native && npm run storybook",
+    "storybook-ios": "cd ./storybooks/native && react-native run-ios",
     "clean": "rimraf lib",
     "lint": "eslint src",
-    "build": "npm run lint && npm run clean && babel src --out-dir lib",
-    "build-storybook": "build-storybook -o docs",
-    "storybook": "start-storybook -p 6006"
+    "build": "npm run lint && npm run clean && babel src --out-dir lib"
   },
   "license": "MIT",
   "repository": {
@@ -33,13 +33,12 @@
   ],
   "main": "lib/index.js",
   "dependencies": {
-    "react": "^15.3.2",
-    "react-dom": "^15.3.2",
-    "styled-components": "^1.0.8",
     "tinycolor2": "^1.4.1"
   },
   "peerDependencies": {
-    "react-native": "^0.37.0"
+    "react": "~15.3.2",
+    "react-native": "^0.38.0",
+    "styled-components": "^1.1.2"
   },
   "devDependencies": {
     "babel": "^6.3.26",
@@ -56,7 +55,10 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.2",
     "eslint-plugin-react": "^6.6.0",
+    "react": "~15.3.2",
+    "react-dom": "~15.3.2",
+    "react-native": "^0.37.0",
     "rimraf": "^2.5.4",
-    "@kadira/storybook": "^2.21.0"
+    "styled-components": "^1.1.2"
   }
 }

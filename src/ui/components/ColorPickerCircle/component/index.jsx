@@ -44,7 +44,7 @@ export default class ColorPickerCircle extends React.Component {
   onMouseDown(e) {
     e.preventDefault();
     e.stopPropagation();
-    const parentTargetElement = e.target.parentElement;
+    // const parentTargetElement = e.target.parentElement;
     this.setState({
       dragging: true,
     });
@@ -87,7 +87,8 @@ export default class ColorPickerCircle extends React.Component {
       height: size,
       width: size,
       top,
-      left: Math.round(position * width) - halfSize,
+      left: 0,
+      transform: `translateX(${Math.round(position * width) - halfSize}px)`,
     };
     const styleTarget = {
       height: halfSize,
