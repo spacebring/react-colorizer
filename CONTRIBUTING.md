@@ -16,7 +16,7 @@
 
 - `npm install` or better `yarn install` in the example's root directory.
 
-- `storybook-ios` run the native app's development server at [http://localhost:7007](http://localhost:7007) with hot module reloading and iOS emulator.
+- `npm run storybook-ios` run the native app's development server at [http://localhost:7007](http://localhost:7007) with hot module reloading and iOS emulator.
 
 ## Running Tests
 
