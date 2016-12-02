@@ -16,11 +16,7 @@
 
 - `npm install` or better `yarn install` in the example's root directory.
 
-- `npm run storybook-native-watch` constantly build source files and put to the example folder.
-
-- `npm run storybook-native` run the native app's development server at [http://localhost:7007](http://localhost:7007) with hot module reloading.
-
-- `npm run storybook-ios` run the native app on iOS emulator.
+- `storybook-ios` run the native app's development server at [http://localhost:7007](http://localhost:7007) with hot module reloading and iOS emulator.
 
 ## Running Tests
 
