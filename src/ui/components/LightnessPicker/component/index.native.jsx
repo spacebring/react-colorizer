@@ -1,6 +1,5 @@
 import React from 'react';
 import LightnessPickerWrapper from '../components-styled/LightnessPickerWrapper';
-import ColorPickerCircle from '../../ColorPickerCircle';
 
 const propTypes = {
   height: React.PropTypes.number.isRequired,
@@ -26,17 +25,11 @@ const LightnessPicker = ({
     <LightnessPickerWrapper
       height={height}
       hue={hue}
+      position={1 - value}
       saturationPercent={saturationPercent}
       width={width}
-    >
-      <ColorPickerCircle
-        position={1 - value}
-        size={height}
-        top={0}
-        width={width}
-        onPositionChanged={pos => onValueChanged(1 - pos)}
-      />
-    </LightnessPickerWrapper>
+      onValueChanged={pos => onValueChanged(1 - pos)}
+    />
   );
 };
 

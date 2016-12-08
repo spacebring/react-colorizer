@@ -5,10 +5,13 @@ import validatePosition from '../utils/position-validation';
 import getPosition from '../../../utils/position';
 
 const propTypes = {
-  size: React.PropTypes.number.isRequired,
+  barDom: React.PropTypes.object,
+  dragging: React.PropTypes.bool.isRequired,
   position: React.PropTypes.number.isRequired,
+  size: React.PropTypes.number.isRequired,
   top: React.PropTypes.number.isRequired,
   width: React.PropTypes.number.isRequired,
+  onDraggingChanged: React.PropTypes.func.isRequired,
   onPositionChanged: React.PropTypes.func.isRequired,
 };
 
@@ -18,12 +21,6 @@ export default class ColorPickerCircle extends React.Component {
 
   constructor(props) {
     super(props);
-    this.state = {
-      dragging: false,
-    };
-    this.cache = {
-      parentDOM: undefined,
-    };
     this.onGestureResponderStart = this.onGestureResponderStart.bind(this);
     this.onMouseResponderMove = this.onMouseResponderMove.bind(this);
     this.onTouchResponderMove = this.onTouchResponderMove.bind(this);
@@ -47,46 +44,35 @@ export default class ColorPickerCircle extends React.Component {
   onGestureResponderStart(e) {
     e.preventDefault();
     e.stopPropagation();
-    this.setState({
-      dragging: true,
-    });
-    // parent is always correct in this moment, so we remember it
-    this.cache = Object.assign({}, {
-      parentDOM: e.target.parentElement,
-    });
+    this.props.onDraggingChanged(true);
   }
 
   onMouseResponderMove(e) {
-    if (!this.state.dragging) {
+    if (!this.props.dragging) {
       return;
     }
     e.preventDefault();
     e.stopImmediatePropagation();
     const { width, onPositionChanged } = this.props;
-    const barLeft = this.cache.parentDOM.getBoundingClientRect().left;
+    const barLeft = this.props.barDom.getBoundingClientRect().left;
     const position = getPosition(barLeft, e.clientX, width);
     validatePosition(position, onPositionChanged);
   }
 
   onTouchResponderMove(e) {
-    if (!this.state.dragging) {
+    if (!this.props.dragging) {
       return;
     }
     e.preventDefault();
     e.stopImmediatePropagation();
     const { width, onPositionChanged } = this.props;
-    const barLeft = this.cache.parentDOM.getBoundingClientRect().left;
+    const barLeft = this.props.barDom.getBoundingClientRect().left;
     const position = getPosition(barLeft, e.changedTouches[0].clientX, width);
     validatePosition(position, onPositionChanged);
   }
 
   onGestureResponderEnd() {
-    this.setState({
-      dragging: false,
-    });
-    this.cache = Object.assign({}, {
-      parentDOM: undefined,
-    });
+    this.props.onDraggingChanged(false);
   }
 
   render() {

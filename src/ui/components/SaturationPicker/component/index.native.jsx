@@ -1,6 +1,5 @@
 import React from 'react';
 import SaturationPickerWrapper from '../components-styled/SaturationPickerWrapper';
-import ColorPickerCircle from '../../ColorPickerCircle';
 
 const propTypes = {
   height: React.PropTypes.number.isRequired,
@@ -14,15 +13,13 @@ const defaultProps = {};
 
 const SaturationPicker = ({ height, hue, value, width, onValueChanged }) => {
   return (
-    <SaturationPickerWrapper height={height} hue={hue} width={width} >
-      <ColorPickerCircle
-        position={value}
-        size={height}
-        top={0}
-        width={width}
-        onPositionChanged={onValueChanged}
-      />
-    </SaturationPickerWrapper>
+    <SaturationPickerWrapper
+      height={height}
+      hue={hue}
+      position={value}
+      width={width}
+      onValueChanged={onValueChanged}
+    />
   );
 };
 

@@ -5,11 +5,13 @@ import ColorPickerTargetWrapper from '../components-styled/ColorPickerTargetWrap
 import validatePosition from '../utils/position-validation';
 
 const propTypes = {
-  size: React.PropTypes.number.isRequired,
+  dragging: React.PropTypes.bool.isRequired,
   position: React.PropTypes.number.isRequired,
+  size: React.PropTypes.number.isRequired,
   top: React.PropTypes.number.isRequired,
   width: React.PropTypes.number.isRequired,
-  onPositionChanged: React.PropTypes.func.isRequired,
+  onDraggingChanged: React.PropTypes.func.isRequired,
+  onValueChanged: React.PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
@@ -58,22 +60,22 @@ export default class ColorPickerCircle extends React.Component {
     if (!this.state.dragging) {
       return;
     }
-    const { onPositionChanged } = this.props;
+    const { onValueChanged } = this.props;
     e.preventDefault();
     e.stopImmediatePropagation();
     const position = this.getPosition(e.clientX);
-    validatePosition(position, onPositionChanged);
+    validatePosition(position, onValueChanged);
   }
 
   onTouchMove(e) {
     if (!this.state.dragging) {
       return;
     }
-    const { onPositionChanged } = this.props;
+    const { onValueChanged } = this.props;
     e.preventDefault();
     e.stopImmediatePropagation();
     const position = this.getPosition(e.changedTouches[0].clientX);
-    validatePosition(position, onPositionChanged);
+    validatePosition(position, onValueChanged);
   }
 
   onMouseUp() {

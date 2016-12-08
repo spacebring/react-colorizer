@@ -1,9 +1,10 @@
 import React from 'react';
+import { View } from 'react-native';
 import ColorPickerCircle from '../ColorPickerCircle';
 import getPosition from '../../utils/position';
 
 const propTypes = {
-  className: React.PropTypes.string,
+  children: React.PropTypes.any.isRequired,
   height: React.PropTypes.number.isRequired,
   position: React.PropTypes.number.isRequired,
   style: React.PropTypes.object,
@@ -38,27 +39,33 @@ class BarWrapper extends React.Component {
     this.onDraggingChanged(true);
   }
 
-  render() {
-    const { className, height, position, style, width, onValueChanged } = this.props;
+  renderHandler() {
+    const { height, position, width, onValueChanged } = this.props;
     return (
-      <div
-        className={className}
+      <ColorPickerCircle
+        barDom={this.barDom}
+        dragging={this.state.dragging}
+        position={position}
+        size={height}
+        top={0}
+        width={width}
+        onDraggingChanged={this.onDraggingChanged}
+        onPositionChanged={onValueChanged}
+      />
+    );
+  }
+
+  render() {
+    const { children, style } = this.props;
+    return (
+      <View
         ref={(barDom) => { this.barDom = barDom; }}
         style={style}
         onMouseDown={this.onTapStart}
         onTouchStart={this.onTapStart}
       >
-        <ColorPickerCircle
-          barDom={this.barDom}
-          dragging={this.state.dragging}
-          position={position}
-          size={height}
-          top={0}
-          width={width}
-          onDraggingChanged={this.onDraggingChanged}
-          onPositionChanged={onValueChanged}
-        />
-      </div>
+        {children ? children(this.renderHandler()) : this.renderHandler()}
+      </View>
     );
   }
 }
