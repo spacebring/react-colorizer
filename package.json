@@ -4,8 +4,8 @@
   "description": "Library for generation of harmonious color themes.",
   "keywords": [
     "react",
-    "colorizer",,
-    "color"
+    "colorizer",
+    "color",
     "harmony",
     "generator"
   ],
