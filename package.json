@@ -4,8 +4,8 @@
   "description": "Library for generation of harmonious color themes.",
   "keywords": [
     "react",
-    "color",
-    "colorizer",
+    "colorizer",,
+    "color"
     "harmony",
     "generator"
   ],
@@ -19,10 +19,10 @@
     "storybook-native-watch": "babel ./src --out-dir=./storybooks/native/lib --watch",
     "storybook-native": "cd ./storybooks/native && npm run storybook",
     "storybook-emulator-ios": "cd ./storybooks/native && react-native run-ios",
-    "storybook-ios": "npm run storybook-native-watch & npm run storybook-native & npm run storybook-emulator-ios",
     "clean": "rimraf lib",
     "lint": "eslint src",
-    "build": "npm run lint && npm run clean && babel src --out-dir lib"
+    "build": "npm run lint && npm run clean && babel src --out-dir lib",
+    "release": "npm run build && npm run storybook-web-build"
   },
   "license": "MIT",
   "repository": {
@@ -38,7 +38,7 @@
   },
   "peerDependencies": {
     "react": "~15.3.2",
-    "react-native": "^0.38.0",
+    "react-native": "^0.39.0",
     "styled-components": "^1.1.2"
   },
   "devDependencies": {
@@ -58,7 +58,7 @@
     "eslint-plugin-react": "^6.6.0",
     "react": "~15.3.2",
     "react-dom": "~15.3.2",
-    "react-native": "^0.38.0",
+    "react-native": "^0.39.0",
     "rimraf": "^2.5.4",
     "styled-components": "^1.1.2"
   }
