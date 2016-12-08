@@ -21,62 +21,71 @@ export default class ColorPickerCircle extends React.Component {
     this.state = {
       dragging: false,
     };
-    this.onMouseDown = this.onMouseDown.bind(this);
-    this.onMouseMove = this.onMouseMove.bind(this);
-    this.onTouchMove = this.onTouchMove.bind(this);
-    this.onMouseUp = this.onMouseUp.bind(this);
+    this.cache = {
+      parentDOM: undefined,
+    };
+    this.onGestureResponderStart = this.onGestureResponderStart.bind(this);
+    this.onMouseResponderMove = this.onMouseResponderMove.bind(this);
+    this.onTouchResponderMove = this.onTouchResponderMove.bind(this);
+    this.onGestureResponderEnd = this.onGestureResponderEnd.bind(this);
   }
 
   componentDidMount() {
-    window.addEventListener('mousemove', this.onMouseMove, true);
-    window.addEventListener('touchmove', this.onTouchMove, true);
-    window.addEventListener('mouseup', this.onMouseUp);
-    window.addEventListener('touchend', this.onMouseUp);
+    window.addEventListener('mousemove', this.onMouseResponderMove, true);
+    window.addEventListener('touchmove', this.onTouchResponderMove, true);
+    window.addEventListener('mouseup', this.onGestureResponderEnd);
+    window.addEventListener('touchend', this.onGestureResponderEnd);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('mousemove', this.onMouseMove, true);
-    window.removeEventListener('touchmove', this.onTouchMove, true);
-    window.removeEventListener('mouseup', this.onMouseUp);
-    window.removeEventListener('touchend', this.onMouseUp);
+    window.removeEventListener('mousemove', this.onMouseResponderMove, true);
+    window.removeEventListener('touchmove', this.onTouchResponderMove, true);
+    window.removeEventListener('mouseup', this.onGestureResponderEnd);
+    window.removeEventListener('touchend', this.onGestureResponderEnd);
   }
 
-  onMouseDown(e) {
+  onGestureResponderStart(e) {
     e.preventDefault();
     e.stopPropagation();
-    // const parentTargetElement = e.target.parentElement;
     this.setState({
       dragging: true,
     });
+    // parent is always correct in this moment, so we remember it
+    this.cache = Object.assign({}, {
+      parentDOM: e.target.parentElement,
+    });
   }
 
-  onMouseMove(e) {
+  onMouseResponderMove(e) {
     if (!this.state.dragging) {
       return;
     }
     e.preventDefault();
     e.stopImmediatePropagation();
     const { width, onPositionChanged } = this.props;
-    const barLeft = e.target.parentElement.getBoundingClientRect().left;
+    const barLeft = this.cache.parentDOM.getBoundingClientRect().left;
     const position = getPosition(barLeft, e.clientX, width);
     validatePosition(position, onPositionChanged);
   }
 
-  onTouchMove(e) {
+  onTouchResponderMove(e) {
     if (!this.state.dragging) {
       return;
     }
     e.preventDefault();
     e.stopImmediatePropagation();
     const { width, onPositionChanged } = this.props;
-    const barLeft = e.target.parentElement.getBoundingClientRect().left;
+    const barLeft = this.cache.parentDOM.getBoundingClientRect().left;
     const position = getPosition(barLeft, e.changedTouches[0].clientX, width);
     validatePosition(position, onPositionChanged);
   }
 
-  onMouseUp() {
+  onGestureResponderEnd() {
     this.setState({
       dragging: false,
+    });
+    this.cache = Object.assign({}, {
+      parentDOM: undefined,
     });
   }
 
@@ -97,8 +106,8 @@ export default class ColorPickerCircle extends React.Component {
     return (
       <ColorPickerCircleWrapper
         style={styleCircle}
-        onMouseDown={this.onMouseDown}
-        onTouchStart={this.onMouseDown}
+        onMouseDown={this.onGestureResponderStart}
+        onTouchStart={this.onGestureResponderStart}
       >
         <ColorPickerTargetWrapper style={styleTarget} />
       </ColorPickerCircleWrapper>
