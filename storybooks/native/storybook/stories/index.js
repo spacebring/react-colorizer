@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/react-native-storybook';
-import { ColorPicker } from '../../lib';
+import ColorPicker from '../../lib';
 
 storiesOf('examples', module)
   .add('main', () => (

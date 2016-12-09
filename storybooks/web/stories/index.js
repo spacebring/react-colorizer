@@ -1,6 +1,6 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
-import { ColorPicker, HarmonyTypes, fullScheme } from 'react-colorizer';
+import ColorPicker, { HarmonyTypes, fullScheme } from 'react-colorizer';
 
 const COLORIZER_WIDTH = 510;
 const COLORIZER_HEIGHT = 50;
