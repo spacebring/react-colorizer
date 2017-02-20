@@ -50,7 +50,7 @@ prop             | type                 | default value
 `width`          | `number`             |
 `onColorChanged` | `func`               |
 
-## Want to contribute?
+### Want to contribute?
 
 Please see [CONTRIBUTING.md](CONTRIBUTING.md)
 
