@@ -41,10 +41,6 @@ ReactDOM.render(
 );
 ```
 
-### Examples
-
-* Storybook ([source](https://github.com/opensource-cards/react-colorizer/tree/master/stories))
-
 ### API
 
 prop             | type                 | default value
