@@ -1,5 +1,6 @@
 # react-colorizer
 
+[![Build Status](https://travis-ci.org/opensource-cards/react-colorizer.svg?branch=master)](https://travis-ci.org/opensource-cards/react-colorizer)
 [![npm package](https://badge.fury.io/js/react-colorizer.svg)](https://www.npmjs.org/package/react-colorizer)
 [![Dependency Status](https://david-dm.org/opensource-cards/react-colorizer.svg)](https://david-dm.org/opensource-cards/react-colorizer)
 [![devDependency Status](https://david-dm.org/opensource-cards/react-colorizer/dev-status.svg)](https://david-dm.org/opensource-cards/react-colorizer#info=devDependencies)
