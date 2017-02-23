@@ -10,8 +10,8 @@
     "generator"
   ],
   "author": {
-    "name": "Rostyslav Khanas",
-    "url": "https://github.com/rtkhanas"
+    "name": "Ross Khanas",
+    "email": "rk@try.cards"
   },
   "scripts": {
     "storybook-web-build": "cd ./storybooks/web && npm run build-storybook",
@@ -22,7 +22,7 @@
     "clean": "rimraf lib",
     "lint": "eslint src",
     "test": "mocha --recursive --compilers js:babel-core/register",
-    "build": "npm run lint && npm run clean && babel src --out-dir lib && npm run test",
+    "build": "npm run lint && npm test && npm run clean && babel src --out-dir lib",
     "release": "npm run build && npm run storybook-web-build"
   },
   "license": "MIT",
@@ -43,30 +43,27 @@
     "styled-components": "^1.1.2"
   },
   "devDependencies": {
-    "babel": "^6.3.26",
-    "babel-cli": "^6.16.0",
-    "babel-core": "^6.16.0",
-    "babel-eslint": "^7.0.0",
-    "babel-loader": "^6.2.5",
-    "babel-plugin-transform-object-rest-spread": "^6.16.0",
-    "babel-preset-es2015": "^6.16.0",
-    "babel-preset-react": "^6.16.0",
-    "babel-preset-stage-0": "^6.16.0",
+    "babel": "^6.23.0",
+    "babel-cli": "^6.10.1",
+    "babel-core": "^6.10.4",
+    "babel-eslint": "^7.1.1",
+    "babel-loader": "^6.3.2",
+    "babel-preset-es2015": "^6.9.0",
+    "babel-preset-react": "^6.23.0",
     "chai": "^3.5.0",
-    "enzyme": "^2.6.0",
-    "eslint": "^3.10.0",
-    "eslint-config-airbnb": "^13.0.0",
+    "enzyme": "^2.7.1",
+    "eslint": "^3.1.1",
+    "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^2.2.2",
-    "eslint-plugin-react": "^6.6.0",
-    "jsdom": "^9.8.3",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.0",
+    "jsdom": "^9.11.0",
     "jsdom-global": "^2.1.0",
-    "mocha": "^3.2.0",
+    "mocha": "^3.1.0",
     "react": "~15.3.2",
     "react-addons-test-utils": "~15.3.2",
     "react-dom": "~15.3.2",
-    "react-native": "^0.39.0",
-    "rimraf": "^2.5.4",
-    "styled-components": "^1.1.2"
+    "rimraf": "^2.6.0",
+    "styled-components": "^1.4.3"
   }
 }
