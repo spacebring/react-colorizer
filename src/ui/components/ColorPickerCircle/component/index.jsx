@@ -53,9 +53,13 @@ export default class ColorPickerCircle extends React.Component {
     }
     e.preventDefault();
     e.stopImmediatePropagation();
-    const { width, onPositionChanged } = this.props;
-    const barLeft = this.props.barDom.getBoundingClientRect().left;
-    const position = getPosition(barLeft, e.clientX, width);
+    const { onPositionChanged } = this.props;
+    const barDomBoundingClientRect = this.props.barDom.getBoundingClientRect();
+    const position = getPosition(
+      barDomBoundingClientRect.left,
+      e.clientX,
+      barDomBoundingClientRect.width,
+    );
     validatePosition(position, onPositionChanged);
   }
 
@@ -65,9 +69,13 @@ export default class ColorPickerCircle extends React.Component {
     }
     e.preventDefault();
     e.stopImmediatePropagation();
-    const { width, onPositionChanged } = this.props;
-    const barLeft = this.props.barDom.getBoundingClientRect().left;
-    const position = getPosition(barLeft, e.changedTouches[0].clientX, width);
+    const { onPositionChanged } = this.props;
+    const barDomBoundingClientRect = this.props.barDom.getBoundingClientRect();
+    const position = getPosition(
+      barDomBoundingClientRect.left,
+      e.changedTouches[0].clientX,
+      barDomBoundingClientRect.width,
+    );
     validatePosition(position, onPositionChanged);
   }
 
