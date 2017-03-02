@@ -32,9 +32,13 @@ class BarWrapper extends React.Component {
   }
 
   onTapStart(e) {
-    const { width, onValueChanged } = this.props;
-    const hueBarLeft = e.target.getBoundingClientRect().left;
-    const newPosition = getPosition(hueBarLeft, e.clientX, width);
+    const { onValueChanged } = this.props;
+    const targetBoundingClientRect = e.target.getBoundingClientRect();
+    const newPosition = getPosition(
+      targetBoundingClientRect.left,
+      e.clientX,
+      targetBoundingClientRect.width,
+    );
     onValueChanged(newPosition);
     this.onDraggingChanged(true);
   }
