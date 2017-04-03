@@ -14,6 +14,7 @@ const propTypes = {
 
 const defaultProps = {
   color: '#ff0000',
+  onColorChanged: undefined,
 };
 
 export default class ColorPicker extends React.Component {

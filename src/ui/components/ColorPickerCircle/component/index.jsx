@@ -9,13 +9,14 @@ const propTypes = {
   dragging: React.PropTypes.bool.isRequired,
   position: React.PropTypes.number.isRequired,
   size: React.PropTypes.number.isRequired,
-  top: React.PropTypes.number.isRequired,
   width: React.PropTypes.number.isRequired,
   onDraggingChanged: React.PropTypes.func.isRequired,
   onPositionChanged: React.PropTypes.func.isRequired,
 };
 
-const defaultProps = {};
+const defaultProps = {
+  barDom: undefined,
+};
 
 export default class ColorPickerCircle extends React.Component {
 
@@ -84,12 +85,12 @@ export default class ColorPickerCircle extends React.Component {
   }
 
   render() {
-    const { position, size, top, width } = this.props;
+    const { position, size, width } = this.props;
     const halfSize = size / 2;
     const styleCircle = {
       height: size,
       width: size,
-      top,
+      top: 0,
       left: 0,
       transform: `translateX(${Math.round(position * width) - halfSize}px)`,
     };

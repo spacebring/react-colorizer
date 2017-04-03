@@ -3,17 +3,15 @@ import ColorPickerCircle from '../ColorPickerCircle';
 import getPosition from '../../utils/position';
 
 const propTypes = {
-  className: React.PropTypes.string,
   height: React.PropTypes.number.isRequired,
   position: React.PropTypes.number.isRequired,
-  style: React.PropTypes.object,
   width: React.PropTypes.number.isRequired,
   onValueChanged: React.PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
 
-class BarWrapper extends React.Component {
+export default class BarWrapper extends React.Component {
 
   constructor(props) {
     super(props);
@@ -21,7 +19,9 @@ class BarWrapper extends React.Component {
       dragging: false,
     };
     this.onDraggingChanged = this.onDraggingChanged.bind(this);
-    this.onTapStart = this.onTapStart.bind(this);
+    this.onMouseDown = this.onMouseDown.bind(this);
+    this.onTouchStart = this.onTouchStart.bind(this);
+    this.onSetBarDom = this.onSetBarDom.bind(this);
   }
 
   onDraggingChanged(dragging) {
@@ -30,7 +30,7 @@ class BarWrapper extends React.Component {
     });
   }
 
-  onTapStart(e) {
+  onMouseDown(e) {
     const { onValueChanged } = this.props;
     const targetBoundingClientRect = e.target.getBoundingClientRect();
     const newPosition = getPosition(
@@ -42,22 +42,36 @@ class BarWrapper extends React.Component {
     this.onDraggingChanged(true);
   }
 
+  onTouchStart(e) {
+    const { onValueChanged } = this.props;
+    const targetBoundingClientRect = e.target.getBoundingClientRect();
+    const newPosition = getPosition(
+      targetBoundingClientRect.left,
+      e.touches[0].clientX,
+      targetBoundingClientRect.width,
+    );
+    onValueChanged(newPosition);
+    this.onDraggingChanged(true);
+  }
+
+  onSetBarDom(barDom) {
+    this.barDom = barDom;
+  }
+
   render() {
-    const { className, height, position, style, width, onValueChanged } = this.props;
+    const { height, position, width, onValueChanged, ...props } = this.props;
     return (
       <div
-        className={className}
-        ref={(barDom) => { this.barDom = barDom; }}
-        style={style}
-        onMouseDown={this.onTapStart}
-        onTouchStart={this.onTapStart}
+        ref={this.onSetBarDom}
+        onMouseDown={this.onMouseDown}
+        onTouchStart={this.onTouchStart}
+        {...props}
       >
         <ColorPickerCircle
           barDom={this.barDom}
           dragging={this.state.dragging}
           position={position}
           size={height}
-          top={0}
           width={width}
           onDraggingChanged={this.onDraggingChanged}
           onPositionChanged={onValueChanged}
@@ -69,5 +83,3 @@ class BarWrapper extends React.Component {
 
 BarWrapper.propTypes = propTypes;
 BarWrapper.defaultProps = defaultProps;
-
-export default BarWrapper;

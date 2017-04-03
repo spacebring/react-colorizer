@@ -7,14 +7,13 @@ const propTypes = {
   children: React.PropTypes.any.isRequired,
   height: React.PropTypes.number.isRequired,
   position: React.PropTypes.number.isRequired,
-  style: React.PropTypes.object,
   width: React.PropTypes.number.isRequired,
   onValueChanged: React.PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
 
-class BarWrapper extends React.Component {
+export default class BarWrapper extends React.Component {
 
   constructor(props) {
     super(props);
@@ -23,6 +22,7 @@ class BarWrapper extends React.Component {
     };
     this.onDraggingChanged = this.onDraggingChanged.bind(this);
     this.onTapStart = this.onTapStart.bind(this);
+    this.onSetBarDom = this.onSetBarDom.bind(this);
   }
 
   onDraggingChanged(dragging) {
@@ -43,6 +43,10 @@ class BarWrapper extends React.Component {
     this.onDraggingChanged(true);
   }
 
+  onSetBarDom(barDom) {
+    this.barDom = barDom;
+  }
+
   renderHandler() {
     const { height, position, width, onValueChanged } = this.props;
     return (
@@ -51,7 +55,6 @@ class BarWrapper extends React.Component {
         dragging={this.state.dragging}
         position={position}
         size={height}
-        top={0}
         width={width}
         onDraggingChanged={this.onDraggingChanged}
         onPositionChanged={onValueChanged}
@@ -60,13 +63,13 @@ class BarWrapper extends React.Component {
   }
 
   render() {
-    const { children, style } = this.props;
+    const { children, ...props } = this.props;
     return (
       <View
-        ref={(barDom) => { this.barDom = barDom; }}
-        style={style}
+        ref={this.onSetBarDom}
         onMouseDown={this.onTapStart}
         onTouchStart={this.onTapStart}
+        {...props}
       >
         {children ? children(this.renderHandler()) : this.renderHandler()}
       </View>
@@ -76,5 +79,3 @@ class BarWrapper extends React.Component {
 
 BarWrapper.propTypes = propTypes;
 BarWrapper.defaultProps = defaultProps;
-
-export default BarWrapper;
