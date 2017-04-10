@@ -12,10 +12,8 @@ A library for generation of harmonious color themes for React and React Native.
 
 ### Installation
 
-Using [npm](https://www.npmjs.com/):
-
 ```
-yarn add react-colorizer
+yarn add react-gesture
 ```
 
 ### The Gist
