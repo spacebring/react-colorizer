@@ -31,7 +31,9 @@
     "url": "git@github.com:opensource-cards/react-colorizer.git"
   },
   "files": [
-    "lib"
+    "lib",
+    "harmony-types.js",
+    "utils-color.js"
   ],
   "main": "lib/index.js",
   "dependencies": {

@@ -15,7 +15,7 @@ A library for generation of harmonious color themes for React and React Native.
 Using [npm](https://www.npmjs.com/):
 
 ```
-npm install react-colorizer --save
+yarn add react-colorizer
 ```
 
 ### The Gist
