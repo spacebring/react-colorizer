@@ -11,6 +11,7 @@ const propTypes = {
   positionRight: React.PropTypes.number.isRequired,
   size: React.PropTypes.number.isRequired,
   top: React.PropTypes.number.isRequired,
+  width: React.PropTypes.number.isRequired,
   onDraggingChanged: React.PropTypes.func.isRequired,
   onValueChanged: React.PropTypes.func.isRequired,
 };
@@ -92,8 +93,7 @@ export default class ColorPickerCircle extends React.PureComponent {
   }
 
   render() {
-    const { position, size, top, positionLeft, positionRight } = this.props;
-    const width = positionRight - positionLeft;
+    const { position, size, top, width } = this.props;
     const halfSize = size / 2;
     const styleCircle = {
       height: size,

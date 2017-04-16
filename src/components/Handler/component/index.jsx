@@ -11,6 +11,7 @@ const propTypes = {
   positionLeft: React.PropTypes.number.isRequired,
   positionRight: React.PropTypes.number.isRequired,
   size: React.PropTypes.number.isRequired,
+  width: React.PropTypes.number.isRequired,
   onDraggingChanged: React.PropTypes.func.isRequired,
   onPositionChanged: React.PropTypes.func.isRequired,
 };
@@ -82,9 +83,10 @@ export default class Handler extends React.PureComponent {
   }
 
   render() {
-    const { position, positionLeft, positionRight, size } = this.props;
+    const { width } = this.props;
+    const { position, size } = this.props;
     const halfSize = size / 2;
-    const width = positionRight - positionLeft;
+    // NOTE: pass real width to make it work when component is scaled
     return (
       <ColorPickerCircleWrapper
         style={{

@@ -34,7 +34,7 @@ class Example extends React.Component {
   render() {
     const colors = fullScheme(this.state.color, this.state.harmony);
     return (
-      <div>
+      <div style={{ transform: 'scale3d(0.5, 0.5, 1)' }} >
         <ColorPicker
           height={COLORIZER_HEIGHT}
           color={this.state.color}

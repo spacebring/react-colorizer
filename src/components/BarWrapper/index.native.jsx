@@ -7,6 +7,7 @@ const propTypes = {
   children: React.PropTypes.any.isRequired,
   height: React.PropTypes.number.isRequired,
   position: React.PropTypes.number.isRequired,
+  width: React.PropTypes.number.isRequired,
   onValueChanged: React.PropTypes.func.isRequired,
 };
 
@@ -51,7 +52,7 @@ export default class BarWrapper extends React.Component {
   }
 
   renderHandler(height, position, onValueChanged) {
-    const { dragging, isDomInitialized } = this.state;
+    const { dragging, isDomInitialized, width } = this.state;
     if (!isDomInitialized) {
       return null;
     }
@@ -64,6 +65,7 @@ export default class BarWrapper extends React.Component {
         positionLeft={barDomBoundingClientRect.left}
         positionRight={barDomBoundingClientRect.right}
         size={height}
+        width={width}
         onDraggingChanged={this.onDraggingChanged}
         onPositionChanged={onValueChanged}
       />
