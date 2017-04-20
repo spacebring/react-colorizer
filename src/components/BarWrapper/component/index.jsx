@@ -46,12 +46,6 @@ export default class BarWrapper extends React.Component {
     window.removeEventListener('touchcancel', this.onTouchCancel);
   }
 
-  onDraggingChanged(dragging) {
-    this.setState({
-      dragging,
-    });
-  }
-
   onMouseDown(e) {
     const targetBoundingClientRect = e.target.getBoundingClientRect();
     const clientX = e.clientX;
@@ -64,13 +58,6 @@ export default class BarWrapper extends React.Component {
     this.setOnHoldTimerInitIfNeed(e, this.getOnHoldHandler(clientX, targetBoundingClientRect));
   }
 
-  onSetBarDom(barDom) {
-    this.barDom = barDom;
-    this.setState(() => ({
-      isDomInitialized: true,
-    }));
-  }
-
   onMouseUp() {
     this.setCancelTimer();
   }
@@ -81,6 +68,19 @@ export default class BarWrapper extends React.Component {
 
   onTouchCancel() {
     this.setCancelTimer();
+  }
+
+  onDraggingChanged(dragging) {
+    this.setState({
+      dragging,
+    });
+  }
+
+  onSetBarDom(barDom) {
+    this.barDom = barDom;
+    this.setState(() => ({
+      isDomInitialized: true,
+    }));
   }
 
   getOnHoldHandler(clientX, targetBoundingClientRect) {
