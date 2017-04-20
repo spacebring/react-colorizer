@@ -1,8 +1,10 @@
 import React from 'react';
-import Handler from '../Handler';
-import getPosition from '../../utils/position';
+import { View } from 'react-native';
+import Handler from '../../Handler';
+import getPosition from '../../../utils/position';
 
 const propTypes = {
+  children: React.PropTypes.any.isRequired,
   height: React.PropTypes.number.isRequired,
   position: React.PropTypes.number.isRequired,
   width: React.PropTypes.number.isRequired,
@@ -20,8 +22,7 @@ export default class BarWrapper extends React.Component {
       isDomInitialized: false,
     };
     this.onDraggingChanged = this.onDraggingChanged.bind(this);
-    this.onMouseDown = this.onMouseDown.bind(this);
-    this.onTouchStart = this.onTouchStart.bind(this);
+    this.onTapStart = this.onTapStart.bind(this);
     this.onSetBarDom = this.onSetBarDom.bind(this);
   }
 
@@ -31,24 +32,12 @@ export default class BarWrapper extends React.Component {
     });
   }
 
-  onMouseDown(e) {
+  onTapStart(e) {
     const { onValueChanged } = this.props;
     const targetBoundingClientRect = e.target.getBoundingClientRect();
     const newPosition = getPosition(
       targetBoundingClientRect.left,
       e.clientX,
-      targetBoundingClientRect.width,
-    );
-    onValueChanged(newPosition);
-    this.onDraggingChanged(true);
-  }
-
-  onTouchStart(e) {
-    const { onValueChanged } = this.props;
-    const targetBoundingClientRect = e.target.getBoundingClientRect();
-    const newPosition = getPosition(
-      targetBoundingClientRect.left,
-      e.touches[0].clientX,
       targetBoundingClientRect.width,
     );
     onValueChanged(newPosition);
@@ -63,8 +52,7 @@ export default class BarWrapper extends React.Component {
   }
 
   renderHandler(height, position, onValueChanged) {
-    const { width } = this.props;
-    const { dragging, isDomInitialized } = this.state;
+    const { dragging, isDomInitialized, width } = this.state;
     if (!isDomInitialized) {
       return null;
     }
@@ -85,16 +73,20 @@ export default class BarWrapper extends React.Component {
   }
 
   render() {
-    const { height, position, onValueChanged, ...props } = this.props;
+    const { children, height, position, onValueChanged, ...props } = this.props;
     return (
-      <div
+      <View
         ref={this.onSetBarDom}
-        onMouseDown={this.onMouseDown}
-        onTouchStart={this.onTouchStart}
+        onMouseDown={this.onTapStart}
+        onTouchStart={this.onTapStart}
         {...props}
       >
-        {this.renderHandler(height, position, onValueChanged)}
-      </div>
+        {children ? (
+          children(this.renderHandler(height, position, onValueChanged))
+        ) : (
+          this.renderHandler(height, position, onValueChanged)
+        )}
+      </View>
     );
   }
 }

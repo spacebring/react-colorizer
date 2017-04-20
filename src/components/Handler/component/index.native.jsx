@@ -2,7 +2,6 @@ import React from 'react';
 import { TouchableWithoutFeedback } from 'react-native';
 import ColorPickerCircleWrapper from '../components-styled/ColorPickerCircleWrapper';
 import ColorPickerTargetWrapper from '../components-styled/ColorPickerTargetWrapper';
-import validatePosition from '../utils/position-validation';
 
 const propTypes = {
   dragging: React.PropTypes.bool.isRequired,
@@ -32,53 +31,11 @@ export default class ColorPickerCircle extends React.PureComponent {
     this.onMouseUp = this.onMouseUp.bind(this);
   }
 
-  /*
-  componentDidMount() {
-    window.addEventListener('mousemove', this.onMouseMove, true);
-    window.addEventListener('touchmove', this.onTouchMove, true);
-    window.addEventListener('mouseup', this.onMouseUp);
-    window.addEventListener('touchend', this.onMouseUp);
-  }
+  onPressIn() { }
 
-  componentWillUnmount() {
-    window.removeEventListener('mousemove', this.onMouseMove, true);
-    window.removeEventListener('touchmove', this.onTouchMove, true);
-    window.removeEventListener('mouseup', this.onMouseUp);
-    window.removeEventListener('touchend', this.onMouseUp);
-  }
-  */
+  onMouseMove() { }
 
-  onPressIn(e) {
-    /*
-    const parentTargetElement = e.target.parentElement;
-    this.setState({
-      dragging: true,
-      parentLeft: parentTargetElement.getBoundingClientRect().left,
-    });
-    */
-  }
-
-  onMouseMove(e) {
-    if (!this.state.dragging) {
-      return;
-    }
-    const { onValueChanged } = this.props;
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    const position = this.getPosition(e.clientX);
-    validatePosition(position, onValueChanged);
-  }
-
-  onTouchMove(e) {
-    if (!this.state.dragging) {
-      return;
-    }
-    const { onValueChanged } = this.props;
-    e.preventDefault();
-    e.stopImmediatePropagation();
-    const position = this.getPosition(e.changedTouches[0].clientX);
-    validatePosition(position, onValueChanged);
-  }
+  onTouchMove() { }
 
   onMouseUp() {
     this.setState({

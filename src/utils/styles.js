@@ -6,4 +6,4 @@ export const COLOR_PICKER_GRADIENT_WEB = `
   overflow: hidden;
   position: relative;
 `;
-/* eslint-enable */
+/* eslint-enable import/prefer-default-export */

@@ -43,7 +43,9 @@ export default class Handler extends React.PureComponent {
   }
 
   onGestureResponderStart(e) {
+    // prevent selecting text
     e.preventDefault();
+    // parents don't need to know about this event
     e.stopPropagation();
     this.props.onDraggingChanged(true);
   }
@@ -53,7 +55,9 @@ export default class Handler extends React.PureComponent {
     if (!dragging) {
       return;
     }
+    // prevent selecting text
     e.preventDefault();
+    // prevent any other movement
     e.stopImmediatePropagation();
     const position = getPosition(
       positionLeft,
@@ -68,7 +72,9 @@ export default class Handler extends React.PureComponent {
     if (!dragging) {
       return;
     }
+    // prevent selecting text
     e.preventDefault();
+    // prevent any other movement
     e.stopImmediatePropagation();
     const position = getPosition(
       positionLeft,
