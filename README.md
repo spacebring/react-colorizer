@@ -13,7 +13,7 @@ A library for generation of harmonious color themes for React and React Native.
 ### Installation
 
 ```
-yarn add react-gesture
+yarn add react-colorizer
 ```
 
 ### The Gist
@@ -21,7 +21,8 @@ yarn add react-gesture
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { ColorPicker, Color, HarmonyTypes } from 'react-colorizer';
+import ColorPicker from 'react-colorizer';
+import { Color, HarmonyTypes } from 'color-harmony-generator';
 
 const selectedScheme = HarmonyTypes.TRIAD;
 

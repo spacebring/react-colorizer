@@ -1,9 +1,7 @@
 import styled from 'styled-components';
-import BarWrapper from '../../../BarWrapper';
-import { COLOR_PICKER_GRADIENT_WEB } from '../../../../utils/styles';
+import BarWrapperWeb from '../../../../components-styled/BarWrapper.web';
 
-export default styled(BarWrapper)`
-  ${COLOR_PICKER_GRADIENT_WEB}
+export default styled(BarWrapperWeb)`
   background-image: linear-gradient(
     90deg,
     hsl(0, 100%, 50%) 0%,
@@ -14,6 +12,4 @@ export default styled(BarWrapper)`
     hsl(300, 100%, 50%) 83%,
     hsl(360, 100%, 50%) 100%
   );
-  height: ${props => props.height}px;
-  width: ${props => props.width}px;
 `;

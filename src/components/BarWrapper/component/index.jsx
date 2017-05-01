@@ -2,6 +2,7 @@
 import React from 'react';
 import { HOLD_TIME } from '../utils/config';
 import Handler from '../../Handler';
+import BarWrapperStyled from '../../../components-styled/BarWrapperStyled';
 import getPosition from '../../../utils/position';
 
 const propTypes = {
@@ -136,16 +137,18 @@ export default class BarWrapper extends React.Component {
   }
 
   render() {
-    const { height, position, onValueChanged, ...props } = this.props;
+    const { height, position, width, onValueChanged, ...props } = this.props;
     return (
-      <div
-        ref={this.onSetBarDom}
+      <BarWrapperStyled
+        innerRef={this.onSetBarDom}
+        styleHeight={height}
+        styleWidth={width}
         onMouseDown={this.onMouseDown}
         onTouchStart={this.onTouchStart}
         {...props}
       >
         {this.renderHandler(height, position, onValueChanged)}
-      </div>
+      </BarWrapperStyled>
     );
   }
 }

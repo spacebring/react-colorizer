@@ -1,5 +1,5 @@
 import React from 'react';
-import SaturationPickerWrapper from './SaturationPickerWrapper';
+import SaturationPickerWrapper from './component/SaturationPickerWrapper';
 
 const propTypes = {
   height: React.PropTypes.number.isRequired,

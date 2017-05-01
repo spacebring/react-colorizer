@@ -1,9 +1,4 @@
 import styled from 'styled-components';
-import BarWrapper from '../../../BarWrapper';
-import { COLOR_PICKER_GRADIENT_WEB } from '../../../../utils/styles';
+import BarWrapperWeb from '../../../../components-styled/BarWrapper.web';
 
-export default styled(BarWrapper)`
-  ${COLOR_PICKER_GRADIENT_WEB}
-  height: ${props => props.height}px;
-  width: ${props => props.width}px;
-`;
+export default styled(BarWrapperWeb)``;

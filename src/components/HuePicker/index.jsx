@@ -1,5 +1,5 @@
 import React from 'react';
-import HuePickerWrapper from './HuePickerWrapper';
+import HuePickerWrapper from './component/HuePickerWrapper';
 
 const propTypes = {
   height: React.PropTypes.number.isRequired,

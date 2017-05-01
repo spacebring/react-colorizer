@@ -31,9 +31,7 @@
     "url": "git@github.com:opensource-cards/react-colorizer.git"
   },
   "files": [
-    "lib",
-    "harmony-types.js",
-    "utils-color.js"
+    "lib"
   ],
   "main": "lib/index.js",
   "dependencies": {
@@ -54,6 +52,7 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.23.0",
     "chai": "^3.5.0",
+    "color-harmony-generator": "^0.1.0",
     "enzyme": "^2.7.1",
     "eslint": "^3.1.1",
     "eslint-config-airbnb": "^14.1.0",

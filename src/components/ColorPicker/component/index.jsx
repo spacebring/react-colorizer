@@ -23,9 +23,8 @@ export default class ColorPicker extends React.Component {
     super(props);
     const inputTinycolor = tinycolor(props.color);
     const inputColorAny = inputTinycolor.toHsl();
-    const inputColorHEX = `#${inputTinycolor.toHex()}`;
     this.cache = {
-      colorInput: inputColorHEX,
+      colorInput: `#${inputTinycolor.toHex()}`,
       colorParsed: {
         hue: inputColorAny.h,
         saturation: inputColorAny.s,

@@ -1,5 +1,5 @@
 import React from 'react';
-import LightnessPickerWrapper from './LightnessPickerWrapper';
+import LightnessPickerWrapper from './component/LightnessPickerWrapper';
 
 const propTypes = {
   height: React.PropTypes.number.isRequired,
