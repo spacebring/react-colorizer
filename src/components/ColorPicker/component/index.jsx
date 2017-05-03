@@ -22,14 +22,9 @@ export default class ColorPicker extends React.Component {
   constructor(props) {
     super(props);
     const inputTinycolor = tinycolor(props.color);
-    const inputColorAny = inputTinycolor.toHsl();
     this.cache = {
       colorInput: `#${inputTinycolor.toHex()}`,
-      colorParsed: {
-        hue: inputColorAny.h,
-        saturation: inputColorAny.s,
-        lightness: inputColorAny.l,
-      },
+      colorParsed: inputTinycolor.toHsl(),
     };
     this.onHueChanged = this.onHueChanged.bind(this);
     this.onSaturationChanged = this.onSaturationChanged.bind(this);
@@ -40,35 +35,21 @@ export default class ColorPicker extends React.Component {
     if (nextProps.color === this.cache.colorInput) {
       return;
     }
-    const inputColorAny = tinycolor(nextProps.color).toHsl();
-    this.setCachedColor({
-      hue: inputColorAny.h,
-      saturation: inputColorAny.s,
-      lightness: inputColorAny.l,
-    });
+    this.setCachedColor(tinycolor(nextProps.color).toHsl());
   }
 
-  onHueChanged(hue) {
-    const newColor = Object.assign({}, this.cache.colorParsed, {
-      hue,
-    });
-    this.setCachedColor(newColor);
+  onHueChanged(h) {
+    this.setCachedColor(Object.assign({}, this.cache.colorParsed, { h }));
     this.onColorChanged();
   }
 
-  onSaturationChanged(saturation) {
-    const newColor = Object.assign({}, this.cache.colorParsed, {
-      saturation,
-    });
-    this.setCachedColor(newColor);
+  onSaturationChanged(s) {
+    this.setCachedColor(Object.assign({}, this.cache.colorParsed, { s }));
     this.onColorChanged();
   }
 
-  onLightnessChange(lightness) {
-    const newColor = Object.assign({}, this.cache.colorParsed, {
-      lightness,
-    });
-    this.setCachedColor(newColor);
+  onLightnessChange(l) {
+    this.setCachedColor(Object.assign({}, this.cache.colorParsed, { l }));
     this.onColorChanged();
   }
 
@@ -80,14 +61,8 @@ export default class ColorPicker extends React.Component {
   }
 
   setCachedColor(newColorParsed) {
-    const newColorHSL = {
-      h: newColorParsed.hue,
-      s: newColorParsed.saturation,
-      l: newColorParsed.lightness,
-    };
-    const newColorHEX = `#${tinycolor(newColorHSL).toHex()}`;
     this.cache = Object.assign({}, this.cache, {
-      colorInput: newColorHEX,
+      colorInput: `#${tinycolor(newColorParsed).toHex()}`,
       colorParsed: newColorParsed,
     });
   }
@@ -99,22 +74,22 @@ export default class ColorPicker extends React.Component {
       <ColorPickerWrapper>
         <HuePicker
           height={height}
-          value={colorParsed.hue}
+          value={colorParsed.h}
           width={width}
           onValueChanged={this.onHueChanged}
         />
         <SaturationPicker
           height={height}
-          hue={colorParsed.hue}
-          value={colorParsed.saturation}
+          hue={colorParsed.h}
+          value={colorParsed.s}
           width={width}
           onValueChanged={this.onSaturationChanged}
         />
         <LightnessPicker
           height={height}
-          hue={colorParsed.hue}
-          saturation={colorParsed.saturation}
-          value={colorParsed.lightness}
+          hue={colorParsed.h}
+          saturation={colorParsed.s}
+          value={colorParsed.l}
           width={width}
           onValueChanged={this.onLightnessChange}
         />
