@@ -11,7 +11,7 @@ class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: '#e56500',
+      color: 'hsl(26, 100%, 44%)',
       harmony: HarmonyTypes.TRIAD,
     };
     this.onColorChanged = this.onColorChanged.bind(this);

@@ -1,6 +1,6 @@
 import React from 'react';
-import tinycolor from 'tinycolor2';
 import ColorPickerWrapper from '../components-styled/ColorPickerWrapper';
+import { getHSLObject } from '../utils/color-converter';
 import HuePicker from '../../HuePicker';
 import SaturationPicker from '../../SaturationPicker';
 import LightnessPicker from '../../LightnessPicker';
@@ -13,7 +13,7 @@ const propTypes = {
 };
 
 const defaultProps = {
-  color: '#ff0000',
+  color: 'hsl(0, 100%, 50%)',
   onColorChanged: undefined,
 };
 
@@ -21,10 +21,9 @@ export default class ColorPicker extends React.Component {
 
   constructor(props) {
     super(props);
-    const inputTinycolor = tinycolor(props.color);
     this.cache = {
-      colorInput: `#${inputTinycolor.toHex()}`,
-      colorParsed: inputTinycolor.toHsl(),
+      colorInput: props.color,
+      colorParsed: getHSLObject(props.color),
     };
     this.onHueChanged = this.onHueChanged.bind(this);
     this.onSaturationChanged = this.onSaturationChanged.bind(this);
@@ -35,7 +34,7 @@ export default class ColorPicker extends React.Component {
     if (nextProps.color === this.cache.colorInput) {
       return;
     }
-    this.setCachedColor(tinycolor(nextProps.color).toHsl());
+    this.setCachedColor(getHSLObject(nextProps.color));
   }
 
   onHueChanged(h) {
@@ -62,7 +61,7 @@ export default class ColorPicker extends React.Component {
 
   setCachedColor(newColorParsed) {
     this.cache = Object.assign({}, this.cache, {
-      colorInput: `#${tinycolor(newColorParsed).toHex()}`,
+      colorInput: `hsl(${Math.round(newColorParsed.h)}, ${Math.round(newColorParsed.s * 100)}%, ${Math.round(newColorParsed.l * 100)}%)`,
       colorParsed: newColorParsed,
     });
   }
