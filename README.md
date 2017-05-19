@@ -22,7 +22,7 @@ yarn add react-colorizer
 import React from 'react';
 import ReactDOM from 'react-dom';
 import ColorPicker from 'react-colorizer';
-import { Color, HarmonyTypes } from 'color-harmony-generator';
+import fullScheme, { HarmonyTypes } from 'color-harmony-generator';
 
 const selectedScheme = HarmonyTypes.TRIAD;
 

@@ -1,9 +1,9 @@
 import React from 'react';
 import { storiesOf } from '@kadira/storybook';
 import ColorPicker from 'react-colorizer';
-import { HarmonyTypes, fullScheme } from 'color-harmony-generator';
+import fullScheme, { HarmonyTypes } from 'color-harmony-generator';
 
-const COLORIZER_WIDTH = 510;
+const COLORIZER_WIDTH = 800;
 const COLORIZER_HEIGHT = 50;
 
 class Example extends React.Component {
