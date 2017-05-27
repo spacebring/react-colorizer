@@ -1,4 +1,5 @@
 /* global window */
+import PropTypes from 'prop-types';
 import React from 'react';
 import { HOLD_TIME } from '../utils/config';
 import Handler from '../../Handler';
@@ -6,10 +7,10 @@ import BarWrapperStyled from '../../../components-styled/BarWrapperStyled';
 import getPosition from '../../../utils/position';
 
 const propTypes = {
-  height: React.PropTypes.number.isRequired,
-  position: React.PropTypes.number.isRequired,
-  width: React.PropTypes.number.isRequired,
-  onValueChanged: React.PropTypes.func.isRequired,
+  height: PropTypes.number.isRequired,
+  position: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
+  onValueChanged: PropTypes.func.isRequired,
 };
 
 const defaultProps = {};

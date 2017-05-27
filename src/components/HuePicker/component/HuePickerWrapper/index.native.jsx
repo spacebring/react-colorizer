@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { LinearGradient, Shape, Surface } from 'react-native/Libraries/ART/ReactNativeART';
 import styled from 'styled-components/native';
@@ -7,9 +8,9 @@ import GradientWrapper from '../../../../components-styled/GradientWrapper.nativ
 const BarWrapperStyled = styled(BarWrapper)``;
 
 const propTypes = {
-  height: React.PropTypes.number.isRequired,
-  position: React.PropTypes.number.isRequired,
-  width: React.PropTypes.number.isRequired,
+  height: PropTypes.number.isRequired,
+  position: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
 };
 
 const defaultProps = {};

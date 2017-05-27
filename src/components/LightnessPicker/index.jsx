@@ -1,13 +1,14 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import LightnessPickerWrapper from './component/LightnessPickerWrapper';
 
 const propTypes = {
-  height: React.PropTypes.number.isRequired,
-  hue: React.PropTypes.number.isRequired,
-  saturation: React.PropTypes.number.isRequired,
-  value: React.PropTypes.number.isRequired,
-  width: React.PropTypes.number.isRequired,
-  onValueChanged: React.PropTypes.func.isRequired,
+  height: PropTypes.number.isRequired,
+  hue: PropTypes.number.isRequired,
+  saturation: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
+  onValueChanged: PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
@@ -19,24 +20,16 @@ const LightnessPicker = ({
   value,
   width,
   onValueChanged,
-}) => {
-  const saturationPercent = saturation * 100;
-  return (
-    <LightnessPickerWrapper
-      height={height}
-      position={1 - value}
-      style={{
-        backgroundImage: `linear-gradient(90deg,
-          hsl(${hue}, ${saturationPercent}%, 100%) 0%, 
-          hsl(${hue}, ${saturationPercent}%, 50%) 50%, 
-          hsl(${hue}, ${saturationPercent}%, 0%) 100%
-        )`,
-      }}
-      width={width}
-      onValueChanged={pos => onValueChanged(1 - pos)}
-    />
-  );
-};
+}) => (
+  <LightnessPickerWrapper
+    height={height}
+    hue={hue}
+    position={1 - value}
+    saturationPercent={saturation * 100}
+    width={width}
+    onValueChanged={pos => onValueChanged(1 - pos)}
+  />
+);
 
 LightnessPicker.propTypes = propTypes;
 LightnessPicker.defaultProps = defaultProps;

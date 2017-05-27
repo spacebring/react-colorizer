@@ -1,4 +1,5 @@
 /* global window */
+import PropTypes from 'prop-types';
 import React from 'react';
 import ColorPickerCircleWrapper from '../components-styled/ColorPickerCircleWrapper';
 import ColorPickerTargetWrapper from '../components-styled/ColorPickerTargetWrapper';
@@ -6,14 +7,14 @@ import validatePosition from '../utils/position-validation';
 import getPosition from '../../../utils/position';
 
 const propTypes = {
-  dragging: React.PropTypes.bool.isRequired,
-  position: React.PropTypes.number.isRequired,
-  positionLeft: React.PropTypes.number.isRequired,
-  positionRight: React.PropTypes.number.isRequired,
-  size: React.PropTypes.number.isRequired,
-  width: React.PropTypes.number.isRequired,
-  onDraggingChanged: React.PropTypes.func.isRequired,
-  onPositionChanged: React.PropTypes.func.isRequired,
+  dragging: PropTypes.bool.isRequired,
+  position: PropTypes.number.isRequired,
+  positionLeft: PropTypes.number.isRequired,
+  positionRight: PropTypes.number.isRequired,
+  size: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
+  onDraggingChanged: PropTypes.func.isRequired,
+  onPositionChanged: PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
@@ -91,26 +92,15 @@ export default class Handler extends React.PureComponent {
   render() {
     const { width } = this.props;
     const { position, size } = this.props;
-    const halfSize = size / 2;
-    // NOTE: pass real width to make it work when component is scaled
     return (
       <ColorPickerCircleWrapper
-        style={{
-          height: size,
-          width: size,
-          top: 0,
-          left: 0,
-          transform: `translate3d(${Math.round(position * width) - halfSize}px, 0, 0)`,
-        }}
+        position={position}
+        size={size}
+        width={width}
         onMouseDown={this.onGestureResponderStart}
         onTouchStart={this.onGestureResponderStart}
       >
-        <ColorPickerTargetWrapper
-          style={{
-            height: halfSize,
-            width: halfSize,
-          }}
-        />
+        <ColorPickerTargetWrapper size={size} />
       </ColorPickerCircleWrapper>
     );
   }

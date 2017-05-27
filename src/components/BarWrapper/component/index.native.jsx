@@ -1,14 +1,15 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import { View } from 'react-native';
 import Handler from '../../Handler';
 import getPosition from '../../../utils/position';
 
 const propTypes = {
-  children: React.PropTypes.any.isRequired,
-  height: React.PropTypes.number.isRequired,
-  position: React.PropTypes.number.isRequired,
-  width: React.PropTypes.number.isRequired,
-  onValueChanged: React.PropTypes.func.isRequired,
+  children: PropTypes.any.isRequired,
+  height: PropTypes.number.isRequired,
+  position: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
+  onValueChanged: PropTypes.func.isRequired,
 };
 
 const defaultProps = {};

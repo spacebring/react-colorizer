@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import ColorPickerWrapper from '../components-styled/ColorPickerWrapper';
 import { getHSLObject } from '../utils/color-converter';
@@ -6,10 +7,10 @@ import SaturationPicker from '../../SaturationPicker';
 import LightnessPicker from '../../LightnessPicker';
 
 const propTypes = {
-  color: React.PropTypes.string,
-  height: React.PropTypes.number.isRequired,
-  width: React.PropTypes.number.isRequired,
-  onColorChanged: React.PropTypes.func,
+  color: PropTypes.string,
+  height: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
+  onColorChanged: PropTypes.func,
 };
 
 const defaultProps = {

@@ -1,12 +1,13 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import SaturationPickerWrapper from './component/SaturationPickerWrapper';
 
 const propTypes = {
-  height: React.PropTypes.number.isRequired,
-  hue: React.PropTypes.number.isRequired,
-  value: React.PropTypes.number.isRequired,
-  width: React.PropTypes.number.isRequired,
-  onValueChanged: React.PropTypes.func.isRequired,
+  height: PropTypes.number.isRequired,
+  hue: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
+  onValueChanged: PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
@@ -14,12 +15,8 @@ const defaultProps = {};
 const SaturationPicker = ({ height, hue, value, width, onValueChanged }) => (
   <SaturationPickerWrapper
     height={height}
+    hue={hue}
     position={value}
-    style={{
-      backgroundImage: `linear-gradient(
-        90deg, hsl(${hue}, 0%, 50%) 0%, hsl(${hue}, 100%, 50%) 100%
-      )`,
-    }}
     width={width}
     onValueChanged={onValueChanged}
   />

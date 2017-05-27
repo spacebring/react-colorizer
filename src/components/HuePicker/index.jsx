@@ -1,11 +1,12 @@
+import PropTypes from 'prop-types';
 import React from 'react';
 import HuePickerWrapper from './component/HuePickerWrapper';
 
 const propTypes = {
-  height: React.PropTypes.number.isRequired,
-  value: React.PropTypes.number.isRequired,
-  width: React.PropTypes.number.isRequired,
-  onValueChanged: React.PropTypes.func.isRequired,
+  height: PropTypes.number.isRequired,
+  value: PropTypes.number.isRequired,
+  width: PropTypes.number.isRequired,
+  onValueChanged: PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
