@@ -12,17 +12,31 @@ const propTypes = {
 
 const defaultProps = {};
 
-const SaturationPicker = ({ height, hue, value, width, onValueChanged }) => (
-  <SaturationPickerWrapper
-    height={height}
-    hue={hue}
-    position={value}
-    width={width}
-    onValueChanged={onValueChanged}
-  />
-);
+export default class SaturationPicker extends React.PureComponent {
+
+  constructor(props) {
+    super(props);
+    this.onValueChanged = this.onValueChanged.bind(this);
+  }
+
+  onValueChanged(pos) {
+    const { onValueChanged } = this.props;
+    onValueChanged(pos * 100);
+  }
+
+  render() {
+    const { height, hue, value, width } = this.props;
+    return (
+      <SaturationPickerWrapper
+        height={height}
+        hue={hue}
+        position={value / 100}
+        width={width}
+        onValueChanged={this.onValueChanged}
+      />
+    );
+  }
+}
 
 SaturationPicker.propTypes = propTypes;
 SaturationPicker.defaultProps = defaultProps;
-
-export default SaturationPicker;

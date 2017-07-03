@@ -11,16 +11,19 @@ const propTypes = {
 
 const defaultProps = {};
 
-const HuePicker = ({ height, value, width, onValueChanged }) => (
-  <HuePickerWrapper
-    height={height}
-    position={value / 360}
-    width={width}
-    onValueChanged={pos => onValueChanged(pos * 360)}
-  />
-);
+export default class HuePicker extends React.PureComponent {
+  render() {
+    const { height, value, width, onValueChanged } = this.props;
+    return (
+      <HuePickerWrapper
+        height={height}
+        position={value / 360}
+        width={width}
+        onValueChanged={pos => onValueChanged(pos * 360)}
+      />
+    );
+  }
+}
 
 HuePicker.propTypes = propTypes;
 HuePicker.defaultProps = defaultProps;
-
-export default HuePicker;

@@ -13,25 +13,38 @@ const propTypes = {
 
 const defaultProps = {};
 
-const LightnessPicker = ({
-  height,
-  hue,
-  saturation,
-  value,
-  width,
-  onValueChanged,
-}) => (
-  <LightnessPickerWrapper
-    height={height}
-    hue={hue}
-    position={1 - value}
-    saturationPercent={saturation * 100}
-    width={width}
-    onValueChanged={pos => onValueChanged(1 - pos)}
-  />
-);
+export default class LightnessPicker extends React.PureComponent {
+
+  constructor(props) {
+    super(props);
+    this.onValueChanged = this.onValueChanged.bind(this);
+  }
+
+  onValueChanged(pos) {
+    const { onValueChanged } = this.props;
+    onValueChanged(100 - (pos * 100));
+  }
+
+  render() {
+    const {
+      height,
+      hue,
+      saturation,
+      value,
+      width,
+    } = this.props;
+    return (
+      <LightnessPickerWrapper
+        height={height}
+        hue={hue}
+        position={1 - (value / 100)}
+        saturationPercent={saturation * 100}
+        width={width}
+        onValueChanged={this.onValueChanged}
+      />
+    );
+  }
+}
 
 LightnessPicker.propTypes = propTypes;
 LightnessPicker.defaultProps = defaultProps;
-
-export default LightnessPicker;

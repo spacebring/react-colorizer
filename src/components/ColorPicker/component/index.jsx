@@ -62,7 +62,7 @@ export default class ColorPicker extends React.Component {
 
   setCachedColor(newColorParsed) {
     this.cache = Object.assign({}, this.cache, {
-      colorInput: `hsl(${Math.round(newColorParsed.h)}, ${Math.round(newColorParsed.s * 100)}%, ${Math.round(newColorParsed.l * 100)}%)`,
+      colorInput: `hsl(${Math.round(newColorParsed.h)}, ${Math.round(newColorParsed.s)}%, ${Math.round(newColorParsed.l)}%)`,
       colorParsed: newColorParsed,
     });
   }
