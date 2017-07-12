@@ -1,10 +1,14 @@
-language: node_js
-node_js:
-  - "6.0"
-script:
-  - npm run build
-notifications:
-  slack: cards-inc:NJt6wNBjKHUWl15RMjvGRbcA
+after_script: greenkeeper-lockfile-upload
+before_install: yarn global add greenkeeper-lockfile@1
+before_script: greenkeeper-lockfile-update
 branches:
   only:
     - master
+cache: yarn
+language: node_js
+node_js:
+  - "6.0"
+notifications:
+  slack: cards-inc:NJt6wNBjKHUWl15RMjvGRbcA
+script:
+  - npm run build
