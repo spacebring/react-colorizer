@@ -4,6 +4,7 @@ before_script: greenkeeper-lockfile-update
 branches:
   only:
     - master
+    - /^greenkeeper/.*$/
 cache: yarn
 language: node_js
 node_js:
