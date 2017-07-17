@@ -20,6 +20,6 @@
     "babel-preset-react-native": "1.9.0",
     "jest": "17.0.3",
     "react-test-renderer": "15.4.1",
-    "@kadira/react-native-storybook": "^2.0.0"
+    "@storybook/react-native": "3.1.9"
   }
 }

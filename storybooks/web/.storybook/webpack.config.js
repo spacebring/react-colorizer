@@ -2,14 +2,18 @@ const path = require('path');
 
 module.exports = {
   resolve: {
-    extensions: ['', '.js', '.jsx'],
+    extensions: ['.js', '.jsx'],
     alias: {
-      'react-colorizer': path.join(__dirname, '..', '..', '..', 'src')
-    }
+      'react-colorizer': path.join(__dirname, '..', '..', '..', 'src'),
+    },
   },
   module: {
-    loaders: [
-      { test: /\.jsx?$/, loader: 'babel-loader', exclude: /node_modules/ }
-    ]
-  }
+    rules: [
+      {
+        test: /\.jsx?$/,
+        loader: 'babel-loader',
+        exclude: /node_modules/,
+      },
+    ],
+  },
 };
