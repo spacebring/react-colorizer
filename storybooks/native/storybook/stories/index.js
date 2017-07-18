@@ -1,9 +1,12 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react-native';
+import infoAddon from '@storybook/addon-info';
+import { storiesOf, setAddon } from '@storybook/react-native';
 import ColorPicker from '../../lib';
 
+setAddon(infoAddon);
+
 storiesOf('examples', module)
-  .add('main', () => (
+  .addWithInfo('main', () => (
     <ColorPicker
       height={50}
       color="#e56500"
