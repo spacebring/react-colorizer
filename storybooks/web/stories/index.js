@@ -1,7 +1,10 @@
 import React from 'react';
-import { storiesOf } from '@storybook/react';
+import infoAddon from '@storybook/addon-info';
+import { storiesOf, setAddon } from '@storybook/react';
 import ColorPicker from 'react-colorizer';
 import fullScheme, { HarmonyTypes } from 'color-harmony-generator';
+
+setAddon(infoAddon);
 
 const COLORIZER_WIDTH = 800;
 const COLORIZER_HEIGHT = 50;
@@ -129,6 +132,6 @@ class Example extends React.Component {
 }
 
 storiesOf('examples', module)
-  .add('main', () => (
+  .addWithInfo('main', () => (
     <Example />
   ));
