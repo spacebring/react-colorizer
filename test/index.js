@@ -12,7 +12,7 @@ describe('<ColorPicker /> full DOM rendering', () => {
         color="#e56500"
         width={255}
         onColorChanged={() => {}}
-      />
+      />,
     );
     expect(wrapper.children()).to.have.length(3);
   });
@@ -23,7 +23,7 @@ describe('<ColorPicker /> full DOM rendering', () => {
         color="#e56500"
         width={255}
         onColorChanged={() => {}}
-      />
+      />,
     );
     expect(wrapper.childAt(0).children()).to.have.length(1);
     expect(wrapper.childAt(1).children()).to.have.length(1);
