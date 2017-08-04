@@ -39,9 +39,9 @@ export default class ColorPickerCircle extends React.PureComponent {
   onTouchMove() { }
 
   onMouseUp() {
-    this.setState({
+    this.setState(() => ({
       dragging: false,
-    });
+    }));
   }
 
   getPosition(positionX) {

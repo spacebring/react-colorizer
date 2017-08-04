@@ -23,11 +23,15 @@ class Example extends React.Component {
   }
 
   onColorChanged(color) {
-    this.setState({ color });
+    this.setState(() => ({
+      color,
+    }));
   }
 
   onHarmonyChange(e) {
-    this.setState({ harmony: e.target.value });
+    this.setState(() => ({
+      harmony: e.target.value,
+    }));
   }
 
   onSetRandomColor() {

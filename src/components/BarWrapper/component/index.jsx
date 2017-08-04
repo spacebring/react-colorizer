@@ -70,9 +70,9 @@ export default class BarWrapper extends React.Component {
     const { clientX, clientY } = e;
     this.cache.holdPositionX = clientX;
     this.cache.holdPositionY = clientY;
-    this.setState({
+    this.setState(() => ({
       holding: true,
-    });
+    }));
     this.setOnHoldTimerInitIfNeed(e, this.getOnHoldHandler(clientX, targetBoundingClientRect));
   }
 
@@ -81,9 +81,9 @@ export default class BarWrapper extends React.Component {
     const { clientX, clientY } = e.touches[0];
     this.cache.holdPositionX = clientX;
     this.cache.holdPositionY = clientY;
-    this.setState({
+    this.setState(() => ({
       holding: true,
-    });
+    }));
     this.setOnHoldTimerInitIfNeed(e, this.getOnHoldHandler(clientX, targetBoundingClientRect));
   }
 
@@ -100,9 +100,9 @@ export default class BarWrapper extends React.Component {
   }
 
   onDraggingChanged(dragging) {
-    this.setState({
+    this.setState(() => ({
       dragging,
-    });
+    }));
   }
 
   onSetBarDom(barDom) {
@@ -143,9 +143,9 @@ export default class BarWrapper extends React.Component {
     clearTimeout(this.cache.holdTimer);
     this.cache.holdTimer = null;
     this.cache.holdPositionX = null;
-    this.setState({
+    this.setState(() => ({
       holding: false,
-    });
+    }));
   }
 
   checkHolding(e, isTouch) {
@@ -156,9 +156,9 @@ export default class BarWrapper extends React.Component {
       const diffY = Math.abs(this.cache.holdPositionY - clientY);
 
       if ((diffX !== 0 && diffX > TOLERANCE) || (diffY !== 0 && diffY > TOLERANCE)) {
-        this.setState({
+        this.setState(() => ({
           holding: false,
-        });
+        }));
       }
     }
   }
