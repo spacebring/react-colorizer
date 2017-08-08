@@ -154,7 +154,6 @@ export default class BarWrapper extends React.Component {
       const clientY = isTouch ? e.touches[0].clientY : e.clientY;
       const diffX = Math.abs(this.cache.holdPositionX - clientX);
       const diffY = Math.abs(this.cache.holdPositionY - clientY);
-
       if ((diffX !== 0 && diffX > TOLERANCE) || (diffY !== 0 && diffY > TOLERANCE)) {
         this.setState(() => ({
           holding: false,

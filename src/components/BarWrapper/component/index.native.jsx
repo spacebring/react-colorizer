@@ -33,17 +33,7 @@ export default class BarWrapper extends React.Component {
     }));
   }
 
-  onTapStart(e) {
-    const { onValueChanged } = this.props;
-    const targetBoundingClientRect = e.target.getBoundingClientRect();
-    const newPosition = getPosition(
-      targetBoundingClientRect.left,
-      e.clientX,
-      targetBoundingClientRect.width,
-    );
-    onValueChanged(newPosition);
-    this.onDraggingChanged(true);
-  }
+  onTapStart(e) { }
 
   onSetBarDom(barDom) {
     this.barDom = barDom;
@@ -57,20 +47,7 @@ export default class BarWrapper extends React.Component {
     if (!isDomInitialized) {
       return null;
     }
-    const barDomBoundingClientRect = this.barDom.getBoundingClientRect();
-    return (
-      <Handler
-        barDom={this.barDom}
-        dragging={dragging}
-        position={position}
-        positionLeft={barDomBoundingClientRect.left}
-        positionRight={barDomBoundingClientRect.right}
-        size={height}
-        width={width}
-        onDraggingChanged={this.onDraggingChanged}
-        onPositionChanged={onValueChanged}
-      />
-    );
+    return null;
   }
 
   render() {
