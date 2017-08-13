@@ -54,7 +54,7 @@ export default class ColorPickerCircle extends React.PureComponent {
     const { position, size, top, width } = this.props;
     return (
       <TouchableWithoutFeedback onPressIn={this.onPressIn} >
-        <ColorPickerCircleWrapper position={position} size={size} top={top} width={width} >
+        <ColorPickerCircleWrapper position={position} size={size} top={top} >
           <ColorPickerTargetWrapper size={size} />
         </ColorPickerCircleWrapper>
       </TouchableWithoutFeedback>

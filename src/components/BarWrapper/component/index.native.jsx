@@ -47,7 +47,14 @@ export default class BarWrapper extends React.Component {
     if (!isDomInitialized) {
       return null;
     }
-    return null;
+    return (
+      <Handler
+        barDom={this.barDom}
+        dragging={dragging}
+        size={height}
+        width={width}
+      />
+    );
   }
 
   render() {
