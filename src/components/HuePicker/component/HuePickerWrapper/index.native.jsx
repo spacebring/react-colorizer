@@ -34,7 +34,7 @@ const HuePickerWrapper = ({ height, position, width }) => {
     <BarWrapperStyled height={height} position={position} width={width} >
       {children => (
         <GradientWrapper style={newStyle} >
-          <Surface height={height} width={width} >
+          <Surface height={height} width={width} style={{ position: 'absolute', top: 0 }} >
             <Shape
               fill={fill}
               d={`M 0 0 L ${width} 0 L ${width} ${height} L 0 ${height} Z`}

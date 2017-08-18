@@ -139,5 +139,18 @@ class Example extends React.Component {
 
 storiesOf('examples', module)
   .add('main', () => (
+<<<<<<< HEAD
     <Example />
+=======
+    <View>
+      <View style={{ backgroundColor: '#EDEBE6', height: 50 }} />
+      <ColorPicker
+        height={50}
+        color="#e56500"
+        width={width}
+        onColorChanged={action()}
+      />
+      <View style={{ backgroundColor: '#EDEBE6', height: 50 }} />
+    </View>
+>>>>>>> 2519264d88c806000c076b515625a2840df58f8d
   ));
