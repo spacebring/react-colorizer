@@ -18,6 +18,7 @@
     "storybook-web": "cd ./storybooks/web && npm run storybook",
     "storybook-native-watch": "babel ./src --out-dir=./storybooks/native/lib --watch",
     "storybook-ios": "cd ./storybooks/native && npm run ios",
+    "storybook-android": "cd ./storybooks/native && npm run android",
     "clean": "rimraf lib",
     "lint": "eslint src",
     "test": "mocha --recursive --compilers js:babel-core/register",
