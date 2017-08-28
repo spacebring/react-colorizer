@@ -52,9 +52,10 @@ export default class BarWrapper extends React.Component {
       <Handler
         barDom={this.barDom}
         dragging={dragging}
-        size={height}
         position={position}
+        size={height}
         width={width}
+        onPositionChanged={onValueChanged}
       />
     );
   }
