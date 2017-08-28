@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import React from 'react';
-import { TouchableWithoutFeedback } from 'react-native';
+import { PanResponder } from 'react-native';
 import ColorPickerCircleWrapper from '../components-styled/ColorPickerCircleWrapper';
 import ColorPickerTargetWrapper from '../components-styled/ColorPickerTargetWrapper';
 
@@ -26,17 +26,33 @@ export default class ColorPickerCircle extends React.PureComponent {
       dragging: false,
       parentLeft: 0,
     };
-    this.onPressIn = this.onPressIn.bind(this);
-    this.onMouseMove = this.onMouseMove.bind(this);
+    this.onTouchStart = this.onTouchStart.bind(this);
     this.onTouchMove = this.onTouchMove.bind(this);
+    this.onTouchRelease = this.onTouchRelease.bind(this);
     this.onMouseUp = this.onMouseUp.bind(this);
   }
 
-  onPressIn() { }
+  componentWillMount() {
+    this.panResponder = PanResponder.create({
+      onStartShouldSetPanResponder: (evt, gestureState) => true,
+      onMoveShouldSetPanResponder: (evt, gestureState) => true,
+      onPanResponderGrant: this.onTouchStart,
+      onPanResponderMove: this.onTouchMove,
+      onPanResponderRelease: this.onTouchRelease,
+    });
+  }
 
-  onMouseMove() { }
+  onTouchStart(e, gestureState) {
+    console.warn('Touch started');
+  }
 
-  onTouchMove() { }
+  onTouchMove(e, gestureState) {
+    console.warn('Touch moved ' + gestureState.dx);
+  }
+
+  onTouchRelease(e, gestureState) {
+    console.warn('Touch released');
+  }
 
   onMouseUp() {
     this.setState(() => ({
@@ -44,20 +60,19 @@ export default class ColorPickerCircle extends React.PureComponent {
     }));
   }
 
-  getPosition(positionX) {
-    const { positionLeft, positionRight } = this.props;
-    const width = positionRight - positionLeft;
-    return (positionX - this.state.parentLeft) / width;
-  }
-
   render() {
-    const { position, size, top, width } = this.props;
+    const { size, top, width, position } = this.props;
     return (
-      <TouchableWithoutFeedback onPressIn={this.onPressIn} >
-        <ColorPickerCircleWrapper position={position} size={size} top={top} >
-          <ColorPickerTargetWrapper size={size} />
-        </ColorPickerCircleWrapper>
-      </TouchableWithoutFeedback>
+      <ColorPickerCircleWrapper
+        position={position}
+        width={width}
+        size={size}
+        top={top}
+        renderToHardwareTextureAndroid
+        {...this.panResponder.panHandlers}
+      >
+        <ColorPickerTargetWrapper size={size} />
+      </ColorPickerCircleWrapper>
     );
   }
 }
