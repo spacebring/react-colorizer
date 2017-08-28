@@ -10,15 +10,16 @@ const propTypes = {
   position: PropTypes.number.isRequired,
   saturationPercent: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
+  onValueChanged: PropTypes.func.isRequired,
 };
 
 const defaultProps = {};
 
-const HuePickerWrapper = ({ height, hue, position, saturationPercent, width }) => (
-  <BarWrapper height={height} position={position} width={width} >
+const HuePickerWrapper = ({ height, hue, position, saturationPercent, width, onValueChanged }) => (
+  <BarWrapper height={height} position={position} width={width} onValueChanged={onValueChanged} >
     {children => (
       <GradientWrapper style={{ height, width }} >
-        <Surface height={height} width={width} style={{ position: 'absolute', top: 0 }} >
+        <Surface height={height} width={width} >
           <Shape
             d={`M 0 0 L ${width} 0 L ${width} ${height} L 0 ${height} Z`}
             fill={new LinearGradient([

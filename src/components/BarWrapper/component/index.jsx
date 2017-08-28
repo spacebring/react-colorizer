@@ -33,12 +33,12 @@ export default class BarWrapper extends React.Component {
     this.onDraggingChanged = this.onDraggingChanged.bind(this);
     this.onMouseDown = this.onMouseDown.bind(this);
     this.onMouseMove = this.onMouseMove.bind(this);
+    this.onMouseUp = this.onMouseUp.bind(this);
+    this.onSetBarDom = this.onSetBarDom.bind(this);
     this.onTouchMove = this.onTouchMove.bind(this);
     this.onTouchStart = this.onTouchStart.bind(this);
-    this.onMouseUp = this.onMouseUp.bind(this);
     this.onTouchCancel = this.onTouchCancel.bind(this);
     this.onTouchEnd = this.onTouchEnd.bind(this);
-    this.onSetBarDom = this.onSetBarDom.bind(this);
   }
 
   componentDidMount() {
@@ -55,14 +55,6 @@ export default class BarWrapper extends React.Component {
     window.removeEventListener('touchcancel', this.onTouchCancel);
     window.removeEventListener('mousemove', this.onMouseMove);
     window.removeEventListener('touchmove', this.onTouchMove);
-  }
-
-  onMouseMove(e) {
-    this.checkHolding(e, false);
-  }
-
-  onTouchMove(e) {
-    this.checkHolding(e, true);
   }
 
   onMouseDown(e) {
@@ -85,6 +77,14 @@ export default class BarWrapper extends React.Component {
       holding: true,
     }));
     this.setOnHoldTimerInitIfNeed(e, this.getOnHoldHandler(clientX, targetBoundingClientRect));
+  }
+
+  onMouseMove(e) {
+    this.checkHolding(e, false);
+  }
+
+  onTouchMove(e) {
+    this.checkHolding(e, true);
   }
 
   onMouseUp() {
@@ -135,7 +135,7 @@ export default class BarWrapper extends React.Component {
       (e.button === 0 || e.button === undefined)
     ) {
       this.cache.holdHandler = holdHandler;
-      this.cache.holdTimer = setTimeout(this.cache.holdHandler, HOLD_TIME, e);
+      this.cache.holdTimer = setTimeout(this.cache.holdHandler, HOLD_TIME);
     }
   }
 

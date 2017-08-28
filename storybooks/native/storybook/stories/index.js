@@ -8,16 +8,40 @@ import ColorPicker from '../../lib';
 
 const { width } = Dimensions.get('window');
 
+class Example extends React.Component {
+
+  constructor(props) {
+    super(props);
+    this.state = {
+      color: 'hsl(26, 100%, 44%)',
+    };
+    this.onColorChanged = this.onColorChanged.bind(this);
+  }
+
+  onColorChanged(color) {
+    this.setState(() => ({
+      color,
+    }));
+  }
+
+  render() {
+    return (
+      <View>
+        <View style={{ backgroundColor: '#EDEBE6', height: 50 }} />
+        <ColorPicker
+          height={50}
+          color={this.state.color}
+          width={width}
+          onColorChanged={this.onColorChanged}
+        />
+        <View style={{ backgroundColor: '#EDEBE6', height: 50 }} />
+        <View style={{ backgroundColor: this.state.color, height: 50, marginTop: 10 }} />
+      </View>
+    );
+  }
+}
+
 storiesOf('examples', module)
   .add('main', () => (
-    <View>
-      <View style={{ backgroundColor: '#EDEBE6', height: 50 }} />
-      <ColorPicker
-        height={50}
-        color="#e56500"
-        width={width}
-        onColorChanged={action()}
-      />
-      <View style={{ backgroundColor: '#EDEBE6', height: 50 }} />
-    </View>
+    <Example />
   ));

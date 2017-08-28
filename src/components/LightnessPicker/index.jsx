@@ -26,13 +26,7 @@ export default class LightnessPicker extends React.PureComponent {
   }
 
   render() {
-    const {
-      height,
-      hue,
-      saturation,
-      value,
-      width,
-    } = this.props;
+    const { height, hue, saturation, value, width } = this.props;
     return (
       <LightnessPickerWrapper
         height={height}
