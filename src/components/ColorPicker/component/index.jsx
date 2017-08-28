@@ -39,17 +39,17 @@ export default class ColorPicker extends React.Component {
   }
 
   onHueChanged(h) {
-    this.setCachedColor(Object.assign({}, this.cache.colorParsed, { h }));
+    this.setCachedColor({ ...this.cache.colorParsed, h });
     this.onColorChanged();
   }
 
   onSaturationChanged(s) {
-    this.setCachedColor(Object.assign({}, this.cache.colorParsed, { s }));
+    this.setCachedColor({ ...this.cache.colorParsed, s });
     this.onColorChanged();
   }
 
   onLightnessChange(l) {
-    this.setCachedColor(Object.assign({}, this.cache.colorParsed, { l }));
+    this.setCachedColor({ ...this.cache.colorParsed, l });
     this.onColorChanged();
   }
 
@@ -61,10 +61,11 @@ export default class ColorPicker extends React.Component {
   }
 
   setCachedColor(newColorParsed) {
-    this.cache = Object.assign({}, this.cache, {
+    this.cache = {
+      ...this.cache,
       colorInput: `hsl(${Math.round(newColorParsed.h)}, ${Math.round(newColorParsed.s)}%, ${Math.round(newColorParsed.l)}%)`,
       colorParsed: newColorParsed,
-    });
+    };
   }
 
   render() {
