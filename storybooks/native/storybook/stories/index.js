@@ -1,8 +1,7 @@
 import React from 'react';
-import { Dimensions, View } from 'react-native';
+import { Dimensions, ScrollView, View } from 'react-native';
 
 import { storiesOf } from '@storybook/react-native';
-import { action } from '@storybook/addon-actions';
 
 import ColorPicker from '../../lib';
 
@@ -26,7 +25,7 @@ class Example extends React.Component {
 
   render() {
     return (
-      <View>
+      <ScrollView>
         <View style={{ backgroundColor: '#EDEBE6', height: 50 }} />
         <ColorPicker
           height={50}
@@ -36,7 +35,7 @@ class Example extends React.Component {
         />
         <View style={{ backgroundColor: '#EDEBE6', height: 50 }} />
         <View style={{ backgroundColor: this.state.color, height: 50, marginTop: 10 }} />
-      </View>
+      </ScrollView>
     );
   }
 }

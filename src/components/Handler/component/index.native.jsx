@@ -30,11 +30,11 @@ export default class ColorPickerCircle extends React.PureComponent {
 
   componentWillMount() {
     this.panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: () => true,
-      onMoveShouldSetPanResponder: () => true,
       onPanResponderGrant: this.onTouchStart,
       onPanResponderMove: this.onTouchMove,
       onPanResponderRelease: this.onTouchRelease,
+      onPanResponderTerminationRequest: () => false,
+      onStartShouldSetPanResponderCapture: () => true,
     });
   }
 
