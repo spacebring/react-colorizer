@@ -10,6 +10,10 @@ A library for generation of harmonious color themes for React and React Native.
 
 ![](https://github.com/opensource-cards/react-colorizer/blob/master/demo.gif)
 
+Check out our app built on top of this component:
+
+- Download from [Google Play Store](https://play.google.com/store/apps/details?id=com.cards.colorizer)
+
 ### Installation
 
 ```
