@@ -1,4 +1,3 @@
-
 export default (position, onPositionChanged) => {
   if (position < 0) {
     onPositionChanged(0);

@@ -1,10 +1,10 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { PanResponder } from 'react-native';
-import ColorPickerCircleWrapper from '../components-styled/ColorPickerCircleWrapper';
-import ColorPickerTargetWrapper from '../components-styled/ColorPickerTargetWrapper';
-import validatePosition from '../utils/position-validation';
-import getPosition from '../../../utils/position';
+import PropTypes from "prop-types";
+import React from "react";
+import { PanResponder } from "react-native";
+import ColorPickerCircleWrapper from "../components-styled/ColorPickerCircleWrapper";
+import ColorPickerTargetWrapper from "../components-styled/ColorPickerTargetWrapper";
+import validatePosition from "../utils/position-validation";
+import getPosition from "../../../utils/position";
 
 const propTypes = {
   dragging: PropTypes.bool.isRequired,
@@ -14,13 +14,12 @@ const propTypes = {
   size: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   onDraggingChanged: PropTypes.func.isRequired,
-  onPositionChanged: PropTypes.func.isRequired,
+  onPositionChanged: PropTypes.func.isRequired
 };
 
 const defaultProps = {};
 
 export default class ColorPickerCircle extends React.PureComponent {
-
   constructor(props) {
     super(props);
     this.onTouchStart = this.onTouchStart.bind(this);
@@ -34,7 +33,7 @@ export default class ColorPickerCircle extends React.PureComponent {
       onPanResponderMove: this.onTouchMove,
       onPanResponderRelease: this.onTouchRelease,
       onPanResponderTerminationRequest: () => false,
-      onStartShouldSetPanResponderCapture: () => true,
+      onStartShouldSetPanResponderCapture: () => true
     });
   }
 
@@ -43,14 +42,19 @@ export default class ColorPickerCircle extends React.PureComponent {
   }
 
   onTouchMove(e, gestureState) {
-    const { dragging, positionLeft, positionRight, onPositionChanged } = this.props;
+    const {
+      dragging,
+      positionLeft,
+      positionRight,
+      onPositionChanged
+    } = this.props;
     if (!dragging) {
       return;
     }
     const position = getPosition(
       positionLeft,
       gestureState.moveX,
-      positionRight - positionLeft,
+      positionRight - positionLeft
     );
     validatePosition(position, onPositionChanged);
   }

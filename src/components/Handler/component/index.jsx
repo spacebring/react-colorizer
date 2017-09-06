@@ -1,10 +1,10 @@
 /* global window */
-import PropTypes from 'prop-types';
-import React from 'react';
-import ColorPickerCircleWrapper from '../components-styled/ColorPickerCircleWrapper';
-import ColorPickerTargetWrapper from '../components-styled/ColorPickerTargetWrapper';
-import validatePosition from '../utils/position-validation';
-import getPosition from '../../../utils/position';
+import PropTypes from "prop-types";
+import React from "react";
+import ColorPickerCircleWrapper from "../components-styled/ColorPickerCircleWrapper";
+import ColorPickerTargetWrapper from "../components-styled/ColorPickerTargetWrapper";
+import validatePosition from "../utils/position-validation";
+import getPosition from "../../../utils/position";
 
 const propTypes = {
   dragging: PropTypes.bool.isRequired,
@@ -14,13 +14,12 @@ const propTypes = {
   size: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   onDraggingChanged: PropTypes.func.isRequired,
-  onPositionChanged: PropTypes.func.isRequired,
+  onPositionChanged: PropTypes.func.isRequired
 };
 
 const defaultProps = {};
 
 export default class Handler extends React.PureComponent {
-
   constructor(props) {
     super(props);
     this.onGestureResponderStart = this.onGestureResponderStart.bind(this);
@@ -30,17 +29,17 @@ export default class Handler extends React.PureComponent {
   }
 
   componentDidMount() {
-    window.addEventListener('mousemove', this.onMouseResponderMove, true);
-    window.addEventListener('touchmove', this.onTouchResponderMove, true);
-    window.addEventListener('mouseup', this.onGestureResponderEnd);
-    window.addEventListener('touchend', this.onGestureResponderEnd);
+    window.addEventListener("mousemove", this.onMouseResponderMove, true);
+    window.addEventListener("touchmove", this.onTouchResponderMove, true);
+    window.addEventListener("mouseup", this.onGestureResponderEnd);
+    window.addEventListener("touchend", this.onGestureResponderEnd);
   }
 
   componentWillUnmount() {
-    window.removeEventListener('mousemove', this.onMouseResponderMove, true);
-    window.removeEventListener('touchmove', this.onTouchResponderMove, true);
-    window.removeEventListener('mouseup', this.onGestureResponderEnd);
-    window.removeEventListener('touchend', this.onGestureResponderEnd);
+    window.removeEventListener("mousemove", this.onMouseResponderMove, true);
+    window.removeEventListener("touchmove", this.onTouchResponderMove, true);
+    window.removeEventListener("mouseup", this.onGestureResponderEnd);
+    window.removeEventListener("touchend", this.onGestureResponderEnd);
   }
 
   onGestureResponderStart(e) {
@@ -52,7 +51,12 @@ export default class Handler extends React.PureComponent {
   }
 
   onMouseResponderMove(e) {
-    const { dragging, positionLeft, positionRight, onPositionChanged } = this.props;
+    const {
+      dragging,
+      positionLeft,
+      positionRight,
+      onPositionChanged
+    } = this.props;
     if (!dragging) {
       return;
     }
@@ -63,13 +67,18 @@ export default class Handler extends React.PureComponent {
     const position = getPosition(
       positionLeft,
       e.clientX,
-      positionRight - positionLeft,
+      positionRight - positionLeft
     );
     validatePosition(position, onPositionChanged);
   }
 
   onTouchResponderMove(e) {
-    const { dragging, positionLeft, positionRight, onPositionChanged } = this.props;
+    const {
+      dragging,
+      positionLeft,
+      positionRight,
+      onPositionChanged
+    } = this.props;
     if (!dragging) {
       return;
     }
@@ -80,7 +89,7 @@ export default class Handler extends React.PureComponent {
     const position = getPosition(
       positionLeft,
       e.changedTouches[0].clientX,
-      positionRight - positionLeft,
+      positionRight - positionLeft
     );
     validatePosition(position, onPositionChanged);
   }

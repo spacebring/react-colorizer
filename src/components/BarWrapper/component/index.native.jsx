@@ -1,34 +1,34 @@
-import PropTypes from 'prop-types';
-import React from 'react';
-import { PanResponder, View } from 'react-native';
-import { HOLD_TIME, TOLERANCE } from '../utils/config';
-import Handler from '../../Handler';
-import getPosition from '../../../utils/position';
+import PropTypes from "prop-types";
+import React from "react";
+import { PanResponder } from "react-native";
+import BarWrapperStyled from "../components-styled/BarWrapperStyled.native";
+import { HOLD_TIME, TOLERANCE } from "../utils/config";
+import Handler from "../../Handler";
+import getPosition from "../../../utils/position";
 
 const propTypes = {
   children: PropTypes.any.isRequired,
   height: PropTypes.number.isRequired,
   position: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
-  onValueChanged: PropTypes.func.isRequired,
+  onValueChanged: PropTypes.func.isRequired
 };
 
 const defaultProps = {};
 
 export default class BarWrapper extends React.Component {
-
   constructor(props) {
     super(props);
     this.cache = {
       holdTimer: null,
       holdHandler: null,
       holdPositionX: null,
-      holdPositionY: null,
+      holdPositionY: null
     };
     this.state = {
       dragging: false,
       holding: false,
-      isDomInitialized: false,
+      isDomInitialized: false
     };
     this.onDraggingChanged = this.onDraggingChanged.bind(this);
     this.onSetBarDom = this.onSetBarDom.bind(this);
@@ -43,7 +43,7 @@ export default class BarWrapper extends React.Component {
       onMoveShouldSetPanResponder: () => true,
       onPanResponderGrant: this.onTouchStart,
       onPanResponderMove: this.onTouchMove,
-      onPanResponderRelease: this.onTouchRelease,
+      onPanResponderRelease: this.onTouchRelease
     });
   }
 
@@ -51,14 +51,16 @@ export default class BarWrapper extends React.Component {
     const { width } = this.props;
     const targetBoundingClientRect = {
       left: 0,
-      width,
+      width
     };
     this.cache.holdPositionX = gestureState.moveX;
     this.cache.holdPositionY = gestureState.moveY;
     this.setState(() => ({
-      holding: true,
+      holding: true
     }));
-    this.setOnHoldTimerInitIfNeed(this.getOnHoldHandler(gestureState.moveX, targetBoundingClientRect));
+    this.setOnHoldTimerInitIfNeed(
+      this.getOnHoldHandler(gestureState.moveX, targetBoundingClientRect)
+    );
   }
 
   onTouchMove(e, gestureState) {
@@ -71,14 +73,14 @@ export default class BarWrapper extends React.Component {
 
   onDraggingChanged(dragging) {
     this.setState(() => ({
-      dragging,
+      dragging
     }));
   }
 
   onSetBarDom(barDom) {
     this.barDom = barDom;
     this.setState(() => ({
-      isDomInitialized: true,
+      isDomInitialized: true
     }));
   }
 
@@ -89,7 +91,7 @@ export default class BarWrapper extends React.Component {
         const newPosition = getPosition(
           targetBoundingClientRect.left,
           clientX,
-          targetBoundingClientRect.width,
+          targetBoundingClientRect.width
         );
         onValueChanged(newPosition);
         this.onDraggingChanged(true);
@@ -110,7 +112,7 @@ export default class BarWrapper extends React.Component {
     this.cache.holdTimer = null;
     this.cache.holdPositionX = null;
     this.setState(() => ({
-      holding: false,
+      holding: false
     }));
   }
 
@@ -118,9 +120,12 @@ export default class BarWrapper extends React.Component {
     if (this.state.holding) {
       const diffX = Math.abs(this.cache.holdPositionX - gestureState.moveX);
       const diffY = Math.abs(this.cache.holdPositionY - gestureState.moveY);
-      if ((diffX !== 0 && diffX > TOLERANCE) || (diffY !== 0 && diffY > TOLERANCE)) {
+      if (
+        (diffX !== 0 && diffX > TOLERANCE) ||
+        (diffY !== 0 && diffY > TOLERANCE)
+      ) {
         this.setState(() => ({
-          holding: false,
+          holding: false
         }));
       }
     }
@@ -148,11 +153,23 @@ export default class BarWrapper extends React.Component {
   }
 
   render() {
-    const { children, height, position, onValueChanged, ...props } = this.props;
+    const {
+      children,
+      height,
+      position,
+      width,
+      onValueChanged,
+      ...props
+    } = this.props;
     return (
-      <View {...props} ref={this.onSetBarDom} >
-        {children(this.renderHandler(height, position, onValueChanged))}
-      </View>
+      <BarWrapperStyled
+        ref={this.onSetBarDom}
+        style={{ height, width }}
+        {...props}
+      >
+        {children}
+        {this.renderHandler(height, position, onValueChanged)}
+      </BarWrapperStyled>
     );
   }
 }

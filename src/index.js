@@ -1,1 +1,1 @@
-export { default } from './components/ColorPicker';
+export { default } from "./components/Main";
