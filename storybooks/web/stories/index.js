@@ -1,8 +1,8 @@
-import React from 'react';
-import infoAddon from '@storybook/addon-info';
-import { storiesOf, setAddon } from '@storybook/react';
-import ColorPicker from 'react-colorizer';
-import fullScheme, { HarmonyTypes } from 'color-harmony-generator';
+import React from "react";
+import infoAddon from "@storybook/addon-info";
+import { storiesOf, setAddon } from "@storybook/react";
+import ColorPicker from "react-colorizer";
+import fullScheme, { HarmonyTypes } from "color-harmony-generator";
 
 setAddon(infoAddon);
 
@@ -10,12 +10,11 @@ const COLORIZER_WIDTH = 800;
 const COLORIZER_HEIGHT = 50;
 
 class Example extends React.Component {
-
   constructor(props) {
     super(props);
     this.state = {
-      color: 'hsl(26, 100%, 44%)',
-      harmony: HarmonyTypes.TRIAD,
+      color: "hsl(26, 100%, 44%)",
+      harmony: HarmonyTypes.TRIAD
     };
     this.onColorChanged = this.onColorChanged.bind(this);
     this.onHarmonyChange = this.onHarmonyChange.bind(this);
@@ -24,18 +23,19 @@ class Example extends React.Component {
 
   onColorChanged(color) {
     this.setState(() => ({
-      color,
+      color
     }));
   }
 
   onHarmonyChange(e) {
     this.setState(() => ({
-      harmony: e.target.value,
+      harmony: e.target.value
     }));
   }
 
   onSetRandomColor() {
-    const randomColor = `#${('00000' + (Math.random() * (1 << 24) | 0).toString(16)).slice(-6)}`;
+    const randomColor = `#${("00000" +
+      ((Math.random() * (1 << 24)) | 0).toString(16)).slice(-6)}`;
     this.onColorChanged(randomColor);
   }
 
@@ -53,16 +53,19 @@ class Example extends React.Component {
         <br />
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
             width: COLORIZER_WIDTH,
-            fontFamily: 'Roboto, Helvetica, Trebuchet MS, sans-serif',
-            fontWeight: 100,
+            fontFamily: "Roboto, Helvetica, Trebuchet MS, sans-serif",
+            fontWeight: 100
           }}
         >
-          <div style={{ marginBottom: 10, marginTop: 20 }} >Selected color:</div>
-          <button style={{ marginBottom: 10, marginTop: 20 }} onClick={this.onSetRandomColor}>
+          <div style={{ marginBottom: 10, marginTop: 20 }}>Selected color:</div>
+          <button
+            style={{ marginBottom: 10, marginTop: 20 }}
+            onClick={this.onSetRandomColor}
+          >
             Set random color
           </button>
         </div>
@@ -71,11 +74,11 @@ class Example extends React.Component {
             backgroundColor: this.state.color,
             width: COLORIZER_WIDTH,
             height: 40,
-            alignItems: 'center',
-            display: 'flex',
-            justifyContent: 'center',
-            fontFamily: 'monospace',
-            fontWeight: 200,
+            alignItems: "center",
+            display: "flex",
+            justifyContent: "center",
+            fontFamily: "monospace",
+            fontWeight: 200
           }}
         >
           {this.state.color}
@@ -83,15 +86,17 @@ class Example extends React.Component {
         <br />
         <div
           style={{
-            display: 'flex',
-            flexDirection: 'row',
-            justifyContent: 'space-between',
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
             width: COLORIZER_WIDTH,
-            fontFamily: 'Roboto, Helvetica, Trebuchet MS, sans-serif',
-            fontWeight: 100,
+            fontFamily: "Roboto, Helvetica, Trebuchet MS, sans-serif",
+            fontWeight: 100
           }}
         >
-          <div style={{ marginBottom: 10, marginTop: 20 }} >Generated colors:</div>
+          <div style={{ marginBottom: 10, marginTop: 20 }}>
+            Generated colors:
+          </div>
           <select
             value={this.state.harmony}
             onChange={this.onHarmonyChange}
@@ -106,24 +111,24 @@ class Example extends React.Component {
         </div>
         <div
           style={{
-            display: 'flex',
-            flexFlow: 'row wrap',
-            justifyContent: 'flex-start',
+            display: "flex",
+            flexFlow: "row wrap",
+            justifyContent: "flex-start",
             width: COLORIZER_WIDTH,
-            fontFamily: 'monospace',
-            fontWeight: 200,
+            fontFamily: "monospace",
+            fontWeight: 200
           }}
         >
           {colors.map((color, index) => (
             <div
               key={index}
               style={{
-                alignItems: 'center',
-                display: 'flex',
-                justifyContent: 'center',
+                alignItems: "center",
+                display: "flex",
+                justifyContent: "center",
                 backgroundColor: color,
                 height: 40,
-                width: '20%',
+                width: "20%"
               }}
             >
               {color}
@@ -135,7 +140,4 @@ class Example extends React.Component {
   }
 }
 
-storiesOf('examples', module)
-  .addWithInfo('main', () => (
-    <Example />
-  ));
+storiesOf("examples", module).addWithInfo("main", () => <Example />);
