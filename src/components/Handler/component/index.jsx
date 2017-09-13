@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import React from "react";
 import ColorPickerCircleWrapper from "../components-styled/ColorPickerCircleWrapper";
 import ColorPickerTargetWrapper from "../components-styled/ColorPickerTargetWrapper";
-import validatePosition from "../utils/position-validation";
+import validatePosition from "../../../utils/position-validation";
 import getPosition from "../../../utils/position";
 
 const propTypes = {

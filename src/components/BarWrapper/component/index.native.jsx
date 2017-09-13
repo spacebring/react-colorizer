@@ -5,6 +5,7 @@ import BarWrapperStyled from "../components-styled/BarWrapperStyled.native";
 import { HOLD_TIME, TOLERANCE } from "../utils/config";
 import Handler from "../../Handler";
 import getPosition from "../../../utils/position";
+import validatePosition from "../../../utils/position-validation";
 
 const propTypes = {
   children: PropTypes.any.isRequired,
@@ -39,11 +40,12 @@ export default class BarWrapper extends React.Component {
 
   componentWillMount() {
     this.panResponder = PanResponder.create({
-      onStartShouldSetPanResponder: () => false,
+      onStartShouldSetPanResponder: () => true,
       onMoveShouldSetPanResponder: () => true,
       onPanResponderGrant: this.onTouchStart,
       onPanResponderMove: this.onTouchMove,
-      onPanResponderRelease: this.onTouchRelease
+      onPanResponderRelease: this.onTouchRelease,
+      onPanResponderTerminationRequest: () => false
     });
   }
 
@@ -53,21 +55,43 @@ export default class BarWrapper extends React.Component {
       left: 0,
       width
     };
-    this.cache.holdPositionX = gestureState.moveX;
-    this.cache.holdPositionY = gestureState.moveY;
+    this.cache.holdPositionX = gestureState.x0;
+    this.cache.holdPositionY = gestureState.y0;
     this.setState(() => ({
       holding: true
     }));
     this.setOnHoldTimerInitIfNeed(
-      this.getOnHoldHandler(gestureState.moveX, targetBoundingClientRect)
+      this.getOnHoldHandler(gestureState.x0, targetBoundingClientRect)
     );
   }
 
   onTouchMove(e, gestureState) {
-    this.checkHolding(e, gestureState);
+    const {
+      width,
+      onValueChanged,
+      position, height
+    } = this.props;
+    const { dragging, holding } = this.state;
+    if (holding) {
+      this.setState(() => ({ holding: false }));
+    }
+    // disable move if moved over handler
+    if (!dragging && (!holding || Math.abs(position * width - gestureState.moveX) > height / 2)) {
+      return;
+    }
+    if (!dragging) {
+      this.onDraggingChanged(true);
+    }
+    const newPosition = getPosition(
+      0,
+      gestureState.moveX,
+      width
+    );
+    validatePosition(newPosition, onValueChanged);
   }
 
   onTouchRelease() {
+    this.onDraggingChanged(false);
     this.setCancelTimer();
   }
 
@@ -128,26 +152,22 @@ export default class BarWrapper extends React.Component {
           holding: false
         }));
       }
+    } else {
+      this.setState(() => ({ holding: true }));
     }
   }
 
   renderHandler(height, position, onValueChanged) {
     const { width } = this.props;
-    const { dragging, isDomInitialized } = this.state;
+    const { isDomInitialized } = this.state;
     if (!isDomInitialized) {
       return null;
     }
     return (
       <Handler
-        barDom={this.barDom}
-        dragging={dragging}
         position={position}
-        positionLeft={0}
-        positionRight={width}
         size={height}
         width={width}
-        onDraggingChanged={this.onDraggingChanged}
-        onPositionChanged={onValueChanged}
       />
     );
   }
@@ -166,6 +186,7 @@ export default class BarWrapper extends React.Component {
         ref={this.onSetBarDom}
         style={{ height, width }}
         {...props}
+        {...this.panResponder.panHandlers}
       >
         {children}
         {this.renderHandler(height, position, onValueChanged)}
