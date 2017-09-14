@@ -66,27 +66,22 @@ export default class BarWrapper extends React.Component {
   }
 
   onTouchMove(e, gestureState) {
-    const {
-      width,
-      onValueChanged,
-      position, height
-    } = this.props;
+    const { width, onValueChanged, position, height } = this.props;
     const { dragging, holding } = this.state;
-    if (holding) {
-      this.setState(() => ({ holding: false }));
+    if (this.checkHolding(gestureState.moveX, gestureState.moveY)) {
+      return;
     }
     // disable move if moved over handler
-    if (!dragging && (!holding || Math.abs(position * width - gestureState.moveX) > height / 2)) {
+    if (
+      !dragging &&
+      (!holding || Math.abs(position * width - gestureState.moveX) > height / 2)
+    ) {
       return;
     }
     if (!dragging) {
       this.onDraggingChanged(true);
     }
-    const newPosition = getPosition(
-      0,
-      gestureState.moveX,
-      width
-    );
+    const newPosition = getPosition(0, gestureState.moveX, width);
     validatePosition(newPosition, onValueChanged);
   }
 
@@ -140,10 +135,10 @@ export default class BarWrapper extends React.Component {
     }));
   }
 
-  checkHolding(e, gestureState) {
+  checkHolding(x, y) {
     if (this.state.holding) {
-      const diffX = Math.abs(this.cache.holdPositionX - gestureState.moveX);
-      const diffY = Math.abs(this.cache.holdPositionY - gestureState.moveY);
+      const diffX = Math.abs(this.cache.holdPositionX - x);
+      const diffY = Math.abs(this.cache.holdPositionY - y);
       if (
         (diffX !== 0 && diffX > TOLERANCE) ||
         (diffY !== 0 && diffY > TOLERANCE)
@@ -151,10 +146,10 @@ export default class BarWrapper extends React.Component {
         this.setState(() => ({
           holding: false
         }));
+        return false;
       }
-    } else {
-      this.setState(() => ({ holding: true }));
     }
+    return this.state.holding;
   }
 
   renderHandler(height, position, onValueChanged) {
@@ -163,13 +158,7 @@ export default class BarWrapper extends React.Component {
     if (!isDomInitialized) {
       return null;
     }
-    return (
-      <Handler
-        position={position}
-        size={height}
-        width={width}
-      />
-    );
+    return <Handler position={position} size={height} width={width} />;
   }
 
   render() {
