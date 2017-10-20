@@ -1,6 +1,6 @@
 {
   "name": "react-colorizer",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "Library for generation of harmonious color themes.",
   "keywords": [
     "react",
@@ -43,7 +43,8 @@
   "peerDependencies": {
     "react": "^15.4.2",
     "react-native": "^0.47.0",
-    "styled-components": "^2.0.0"
+    "styled-components": "^2.0.0",
+    "svgs": "^3.1.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",
@@ -75,6 +76,7 @@
     "react-dom": "^15.4.2",
     "react-native": "^0.47.0",
     "rimraf": "^2.6.0",
-    "styled-components": "^2.0.0"
+    "styled-components": "^2.0.0",
+    "svgs": "^3.1.0"
   }
 }

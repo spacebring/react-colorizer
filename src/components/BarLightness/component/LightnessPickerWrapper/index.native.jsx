@@ -1,10 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import {
-  LinearGradient,
-  Shape,
-  Surface
-} from "react-native/Libraries/ART/ReactNativeART";
+import Svg, { Defs, LinearGradient, Path, Stop } from "svgs";
 import BarWrapper from "../../../BarWrapper";
 
 const propTypes = {
@@ -28,6 +24,8 @@ export default class LightnessPickerWrapper extends React.PureComponent {
       width,
       onValueChanged
     } = this.props;
+    const hueRounded = Math.round(hue);
+    const saturationPercentRounded = Math.round(saturationPercent);
     return (
       <BarWrapper
         height={height}
@@ -35,24 +33,37 @@ export default class LightnessPickerWrapper extends React.PureComponent {
         width={width}
         onValueChanged={onValueChanged}
       >
-        <Surface height={height} width={width}>
-          <Shape
+        <Svg height={height} width={width}>
+          <Defs>
+            <LinearGradient
+              id="LightnessPickerGradient"
+              x1="0"
+              y1="0"
+              x2={width}
+              y2="0"
+            >
+              <Stop
+                offset="0"
+                stopColor={`hsl(${hueRounded}, ${saturationPercentRounded}%, 100%)`}
+                stopOpacity="1"
+              />
+              <Stop
+                offset="0.5"
+                stopColor={`hsl(${hueRounded}, ${saturationPercentRounded}%, 50%)`}
+                stopOpacity="1"
+              />
+              <Stop
+                offset="1"
+                stopColor={`hsl(${hueRounded}, ${saturationPercentRounded}%, 0%)`}
+                stopOpacity="1"
+              />
+            </LinearGradient>
+          </Defs>
+          <Path
             d={`M 0 0 L ${width} 0 L ${width} ${height} L 0 ${height} Z`}
-            fill={
-              new LinearGradient(
-                [
-                  `hsl(${hue}, ${saturationPercent}%, 100%) 0%`,
-                  `hsl(${hue}, ${saturationPercent}%, 50%) 50%`,
-                  `hsl(${hue}, ${saturationPercent}%, 0%) 100%`
-                ],
-                0,
-                0,
-                width,
-                0
-              )
-            }
+            fill="url(#LightnessPickerGradient)"
           />
-        </Surface>
+        </Svg>
       </BarWrapper>
     );
   }

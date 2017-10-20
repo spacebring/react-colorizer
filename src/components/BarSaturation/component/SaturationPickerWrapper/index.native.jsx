@@ -1,6 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
-import { ART } from "react-native";
+import Svg, { Defs, LinearGradient, Path, Stop } from "svgs";
 import BarWrapper from "../../../BarWrapper";
 
 const propTypes = {
@@ -16,6 +16,7 @@ const defaultProps = {};
 export default class SaturationPickerWrapper extends React.PureComponent {
   render() {
     const { height, hue, position, width, onValueChanged } = this.props;
+    const hueRounded = Math.round(hue);
     return (
       <BarWrapper
         height={height}
@@ -23,20 +24,32 @@ export default class SaturationPickerWrapper extends React.PureComponent {
         width={width}
         onValueChanged={onValueChanged}
       >
-        <ART.Surface height={height} width={width}>
-          <ART.Shape
-            fill={
-              new ART.LinearGradient(
-                [`hsl(${hue}%, 0%, 50%) 0%`, `hsl(${hue}%, 100%, 50%) 100%`],
-                0,
-                0,
-                width,
-                0
-              )
-            }
+        <Svg height={height} width={width}>
+          <Defs>
+            <LinearGradient
+              id="BarPickerGradient"
+              x1="0"
+              y1="0"
+              x2={width}
+              y2="0"
+            >
+              <Stop
+                offset="0"
+                stopColor={`hsl(${hueRounded}, 0%, 50%)`}
+                stopOpacity="1"
+              />
+              <Stop
+                offset="1"
+                stopColor={`hsl(${hueRounded}, 100%, 50%)`}
+                stopOpacity="1"
+              />
+            </LinearGradient>
+          </Defs>
+          <Path
             d={`M 0 0 L ${width} 0 L ${width} ${height} L 0 ${height} Z`}
+            fill="url(#BarPickerGradient)"
           />
-        </ART.Surface>
+        </Svg>
       </BarWrapper>
     );
   }
