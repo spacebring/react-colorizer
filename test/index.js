@@ -31,3 +31,4 @@ describe("<ColorPicker /> full DOM rendering", () => {
     expect(wrapper.childAt(0).children()).to.have.length(1);
   });
 });
+
