@@ -1,7 +1,6 @@
 # react-colorizer
 
 [![Greenkeeper badge](https://badges.greenkeeper.io/opensource-cards/react-colorizer.svg)](https://greenkeeper.io/)
-
 [![Build Status](https://travis-ci.org/opensource-cards/react-colorizer.svg?branch=master)](https://travis-ci.org/opensource-cards/react-colorizer)
 [![npm package](https://badge.fury.io/js/react-colorizer.svg)](https://www.npmjs.org/package/react-colorizer)
 [![Dependency Status](https://david-dm.org/opensource-cards/react-colorizer.svg)](https://david-dm.org/opensource-cards/react-colorizer)
