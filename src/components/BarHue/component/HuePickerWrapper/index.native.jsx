@@ -19,6 +19,7 @@ export default class HuePickerWrapper extends React.PureComponent {
       <BarWrapper
         height={height}
         position={position}
+        renderToHardwareTextureAndroid
         width={width}
         onValueChanged={onValueChanged}
       >

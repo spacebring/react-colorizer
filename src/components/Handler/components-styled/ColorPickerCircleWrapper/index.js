@@ -4,11 +4,11 @@ import styled from "styled-components";
 export default styled.div.attrs({
   style: props => ({
     height: props.size,
-    width: props.size,
-    top: 0,
     left: 0,
+    top: 0,
     transform: `translate3d(${Math.round(props.position * props.width) -
-      props.size / 2}px, 0, 0)`
+      props.size / 2}px, 0, 0)`,
+    width: props.size
   })
 })`
   align-items: center;

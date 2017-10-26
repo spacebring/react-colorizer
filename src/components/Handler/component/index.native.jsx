@@ -16,7 +16,6 @@ const ColorPickerCircle = ({ size, width, position }) => (
     position={position}
     size={size}
     width={width}
-    renderToHardwareTextureAndroid
   >
     <ColorPickerTargetWrapper size={size} />
   </ColorPickerCircleWrapper>

@@ -1,5 +1,11 @@
 import React from "react";
-import { Dimensions, ScrollView, View } from "react-native";
+import {
+  Dimensions,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View
+} from "react-native";
 
 import { storiesOf } from "@storybook/react-native";
 
@@ -14,12 +20,20 @@ class Example extends React.Component {
       color: "hsl(26, 100%, 44%)"
     };
     this.onColorChanged = this.onColorChanged.bind(this);
+    this.onSetRandomColor = this.onSetRandomColor.bind(this);
   }
 
   onColorChanged(color) {
     this.setState(() => ({
       color
     }));
+  }
+
+  onSetRandomColor() {
+    const randomColor = `#${("00000" +
+      ((Math.random() * (1 << 24)) | 0).toString(16)
+    ).slice(-6)}`;
+    this.onColorChanged(randomColor);
   }
 
   render() {
@@ -37,9 +51,13 @@ class Example extends React.Component {
           style={{
             backgroundColor: this.state.color,
             height: 50,
+            marginBottom: 10,
             marginTop: 10
           }}
         />
+        <TouchableOpacity onPress={this.onSetRandomColor}>
+          <Text>Set random color</Text>
+        </TouchableOpacity>
       </ScrollView>
     );
   }
