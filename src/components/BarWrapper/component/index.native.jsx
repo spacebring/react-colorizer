@@ -52,7 +52,7 @@ export default class BarWrapper extends React.Component {
   }
 
   onTouchStart(e, gestureState) {
-    const { width, onValueChangeStart } = this.props;
+    const { width } = this.props;
     const targetBoundingClientRect = {
       left: 0,
       width
@@ -65,13 +65,16 @@ export default class BarWrapper extends React.Component {
     this.setOnHoldTimerInitIfNeed(
       this.getOnHoldHandler(gestureState.x0, targetBoundingClientRect)
     );
-    if (onValueChangeStart) {
-      onValueChangeStart();
-    }
   }
 
   onTouchMove(e, gestureState) {
-    const { width, onValueChanged, position, height } = this.props;
+    const {
+      width,
+      onValueChanged,
+      position,
+      height,
+      onValueChangeStart
+    } = this.props;
     const { dragging, holding } = this.state;
     if (this.checkHolding(gestureState.moveX, gestureState.moveY)) {
       return;
@@ -84,6 +87,9 @@ export default class BarWrapper extends React.Component {
       return;
     }
     if (!dragging) {
+      if (onValueChangeStart) {
+        onValueChangeStart();
+      }
       this.onDraggingChanged(true);
     }
     const newPosition = getPosition(0, gestureState.moveX, width);
@@ -114,7 +120,7 @@ export default class BarWrapper extends React.Component {
 
   getOnHoldHandler(clientX, targetBoundingClientRect) {
     return () => {
-      const { onValueChanged } = this.props;
+      const { onValueChanged, onValueChangeStart } = this.props;
       if (this.state.holding) {
         const newPosition = getPosition(
           targetBoundingClientRect.left,
@@ -122,6 +128,9 @@ export default class BarWrapper extends React.Component {
           targetBoundingClientRect.width
         );
         onValueChanged(newPosition);
+        if (onValueChangeStart) {
+          onValueChangeStart();
+        }
         this.onDraggingChanged(true);
       }
     };
