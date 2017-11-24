@@ -17,7 +17,8 @@ class Example extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      color: "hsl(26, 100%, 44%)"
+      color: "hsl(26, 100%, 44%)",
+      scrollEnabled: true
     };
     this.onColorChanged = this.onColorChanged.bind(this);
     this.onSetRandomColor = this.onSetRandomColor.bind(this);
@@ -38,15 +39,23 @@ class Example extends React.Component {
 
   render() {
     return (
-      <ScrollView>
+      <ScrollView scrollEnabled={this.state.scrollEnabled}>
         <View style={{ backgroundColor: "#EDEBE6", height: 50 }} />
         <ColorPicker
           height={50}
           color={this.state.color}
           width={width}
           onColorChanged={this.onColorChanged}
-          onColorChangeStart={() => console.log('start')}
-          onColorChangeEnd={() => console.log('end')}
+          onColorChangeStart={() => {
+            this.setState(() => ({
+              scrollEnabled: false
+            }));
+          }}
+          onColorChangeEnd={() => {
+            this.setState(() => ({
+              scrollEnabled: true
+            }));
+          }}
         />
         <View style={{ backgroundColor: "#EDEBE6", height: 50 }} />
         <View
