@@ -10,7 +10,9 @@ const propTypes = {
   color: PropTypes.string,
   height: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
-  onColorChanged: PropTypes.func
+  onColorChanged: PropTypes.func,
+  onColorChangeEnd: PropTypes.func,
+  onColorChangeStart: PropTypes.func
 };
 
 const defaultProps = {
@@ -71,7 +73,7 @@ export default class Main extends React.Component {
 
   render() {
     const { colorParsed } = this.cache;
-    const { height, width } = this.props;
+    const { height, width, onColorChangeEnd, onColorChangeStart } = this.props;
     return (
       <ColorPickerWrapper>
         <BarHue
@@ -79,6 +81,8 @@ export default class Main extends React.Component {
           value={colorParsed.h}
           width={width}
           onValueChanged={this.onHueChanged}
+          onValueChangeEnd={onColorChangeEnd}
+          onValueChangeStart={onColorChangeStart}
         />
         <BarSaturation
           height={height}
@@ -86,6 +90,8 @@ export default class Main extends React.Component {
           value={colorParsed.s}
           width={width}
           onValueChanged={this.onSaturationChanged}
+          onValueChangeEnd={onColorChangeEnd}
+          onValueChangeStart={onColorChangeStart}
         />
         <BarLightness
           height={height}
@@ -94,6 +100,8 @@ export default class Main extends React.Component {
           value={colorParsed.l}
           width={width}
           onValueChanged={this.onLightnessChange}
+          onValueChangeEnd={onColorChangeEnd}
+          onValueChangeStart={onColorChangeStart}
         />
       </ColorPickerWrapper>
     );

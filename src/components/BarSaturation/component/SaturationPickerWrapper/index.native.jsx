@@ -8,14 +8,24 @@ const propTypes = {
   hue: PropTypes.number.isRequired,
   position: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
-  onValueChanged: PropTypes.func.isRequired
+  onValueChanged: PropTypes.func.isRequired,
+  onValueChangeEnd: PropTypes.func,
+  onValueChangeStart: PropTypes.func
 };
 
 const defaultProps = {};
 
 export default class SaturationPickerWrapper extends React.PureComponent {
   render() {
-    const { height, hue, position, width, onValueChanged } = this.props;
+    const {
+      height,
+      hue,
+      position,
+      width,
+      onValueChanged,
+      onValueChangeEnd,
+      onValueChangeStart
+    } = this.props;
     const hueRounded = Math.round(hue);
     return (
       <BarWrapper
@@ -23,6 +33,8 @@ export default class SaturationPickerWrapper extends React.PureComponent {
         position={position}
         width={width}
         onValueChanged={onValueChanged}
+        onValueChangeEnd={onValueChangeEnd}
+        onValueChangeStart={onValueChangeStart}
       >
         <Svg height={height} width={width}>
           <Defs>

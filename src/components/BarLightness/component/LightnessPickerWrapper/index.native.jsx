@@ -9,7 +9,9 @@ const propTypes = {
   position: PropTypes.number.isRequired,
   saturationPercent: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
-  onValueChanged: PropTypes.func.isRequired
+  onValueChanged: PropTypes.func.isRequired,
+  onValueChangeEnd: PropTypes.func,
+  onValueChangeStart: PropTypes.func
 };
 
 const defaultProps = {};
@@ -22,7 +24,9 @@ export default class LightnessPickerWrapper extends React.PureComponent {
       position,
       saturationPercent,
       width,
-      onValueChanged
+      onValueChanged,
+      onValueChangeEnd,
+      onValueChangeStart
     } = this.props;
     const hueRounded = Math.round(hue);
     const saturationPercentRounded = Math.round(saturationPercent);
@@ -32,6 +36,8 @@ export default class LightnessPickerWrapper extends React.PureComponent {
         position={position}
         width={width}
         onValueChanged={onValueChanged}
+        onValueChangeEnd={onValueChangeEnd}
+        onValueChangeStart={onValueChangeStart}
       >
         <Svg height={height} width={width}>
           <Defs>

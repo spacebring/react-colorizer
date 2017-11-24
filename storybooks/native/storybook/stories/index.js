@@ -45,6 +45,8 @@ class Example extends React.Component {
           color={this.state.color}
           width={width}
           onColorChanged={this.onColorChanged}
+          onColorChangeStart={() => console.log('start')}
+          onColorChangeEnd={() => console.log('end')}
         />
         <View style={{ backgroundColor: "#EDEBE6", height: 50 }} />
         <View

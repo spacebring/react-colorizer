@@ -8,7 +8,9 @@ const propTypes = {
   saturation: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
-  onValueChanged: PropTypes.func.isRequired
+  onValueChanged: PropTypes.func.isRequired,
+  onValueChangeEnd: PropTypes.func,
+  onValueChangeStart: PropTypes.func
 };
 
 const defaultProps = {};
@@ -25,7 +27,15 @@ export default class BarLightness extends React.PureComponent {
   }
 
   render() {
-    const { height, hue, saturation, value, width } = this.props;
+    const {
+      height,
+      hue,
+      saturation,
+      value,
+      width,
+      onValueChangeEnd,
+      onValueChangeStart
+    } = this.props;
     return (
       <LightnessPickerWrapper
         height={height}
@@ -34,6 +44,8 @@ export default class BarLightness extends React.PureComponent {
         saturationPercent={saturation * 100}
         width={width}
         onValueChanged={this.onValueChanged}
+        onValueChangeEnd={onValueChangeEnd}
+        onValueChangeStart={onValueChangeStart}
       />
     );
   }

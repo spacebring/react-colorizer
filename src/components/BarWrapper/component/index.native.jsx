@@ -12,7 +12,9 @@ const propTypes = {
   height: PropTypes.number.isRequired,
   position: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
-  onValueChanged: PropTypes.func.isRequired
+  onValueChanged: PropTypes.func.isRequired,
+  onValueChangeEnd: PropTypes.func,
+  onValueChangeStart: PropTypes.func
 };
 
 const defaultProps = {};
@@ -50,7 +52,7 @@ export default class BarWrapper extends React.Component {
   }
 
   onTouchStart(e, gestureState) {
-    const { width } = this.props;
+    const { width, onValueChangeStart } = this.props;
     const targetBoundingClientRect = {
       left: 0,
       width
@@ -63,6 +65,9 @@ export default class BarWrapper extends React.Component {
     this.setOnHoldTimerInitIfNeed(
       this.getOnHoldHandler(gestureState.x0, targetBoundingClientRect)
     );
+    if (onValueChangeStart) {
+      onValueChangeStart();
+    }
   }
 
   onTouchMove(e, gestureState) {
@@ -86,6 +91,10 @@ export default class BarWrapper extends React.Component {
   }
 
   onTouchRelease() {
+    const { onValueChangeEnd } = this.props;
+    if (onValueChangeEnd) {
+      onValueChangeEnd();
+    }
     this.onDraggingChanged(false);
     this.setCancelTimer();
   }
