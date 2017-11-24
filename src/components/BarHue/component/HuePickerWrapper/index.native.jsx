@@ -7,14 +7,23 @@ const propTypes = {
   height: PropTypes.number.isRequired,
   position: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
-  onValueChanged: PropTypes.func.isRequired
+  onValueChanged: PropTypes.func.isRequired,
+  onValueChangeEnd: PropTypes.func,
+  onValueChangeStart: PropTypes.func
 };
 
 const defaultProps = {};
 
 export default class HuePickerWrapper extends React.PureComponent {
   render() {
-    const { height, position, width, onValueChanged } = this.props;
+    const {
+      height,
+      position,
+      width,
+      onValueChanged,
+      onValueChangeEnd,
+      onValueChangeStart
+    } = this.props;
     return (
       <BarWrapper
         height={height}
@@ -22,6 +31,8 @@ export default class HuePickerWrapper extends React.PureComponent {
         renderToHardwareTextureAndroid
         width={width}
         onValueChanged={onValueChanged}
+        onValueChangeEnd={onValueChangeEnd}
+        onValueChangeStart={onValueChangeStart}
       >
         <Svg height={height} width={width}>
           <Defs>

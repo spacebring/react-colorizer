@@ -12,7 +12,9 @@ const propTypes = {
   height: PropTypes.number.isRequired,
   position: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
-  onValueChanged: PropTypes.func.isRequired
+  onValueChanged: PropTypes.func.isRequired,
+  onValueChangeEnd: PropTypes.func,
+  onValueChangeStart: PropTypes.func
 };
 
 const defaultProps = {};
@@ -66,7 +68,13 @@ export default class BarWrapper extends React.Component {
   }
 
   onTouchMove(e, gestureState) {
-    const { width, onValueChanged, position, height } = this.props;
+    const {
+      width,
+      onValueChanged,
+      position,
+      height,
+      onValueChangeStart
+    } = this.props;
     const { dragging, holding } = this.state;
     if (this.checkHolding(gestureState.moveX, gestureState.moveY)) {
       return;
@@ -79,6 +87,9 @@ export default class BarWrapper extends React.Component {
       return;
     }
     if (!dragging) {
+      if (onValueChangeStart) {
+        onValueChangeStart();
+      }
       this.onDraggingChanged(true);
     }
     const newPosition = getPosition(0, gestureState.moveX, width);
@@ -86,6 +97,10 @@ export default class BarWrapper extends React.Component {
   }
 
   onTouchRelease() {
+    const { onValueChangeEnd } = this.props;
+    if (onValueChangeEnd) {
+      onValueChangeEnd();
+    }
     this.onDraggingChanged(false);
     this.setCancelTimer();
   }
@@ -105,7 +120,7 @@ export default class BarWrapper extends React.Component {
 
   getOnHoldHandler(clientX, targetBoundingClientRect) {
     return () => {
-      const { onValueChanged } = this.props;
+      const { onValueChanged, onValueChangeStart } = this.props;
       if (this.state.holding) {
         const newPosition = getPosition(
           targetBoundingClientRect.left,
@@ -113,6 +128,9 @@ export default class BarWrapper extends React.Component {
           targetBoundingClientRect.width
         );
         onValueChanged(newPosition);
+        if (onValueChangeStart) {
+          onValueChangeStart();
+        }
         this.onDraggingChanged(true);
       }
     };

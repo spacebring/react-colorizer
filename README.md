@@ -48,12 +48,14 @@ ReactDOM.render(
 
 ### API
 
-prop             | type                 | default value
------------------|----------------------|--------------
-`color`          | `string`             | '#ff0000'
-`height`         | `number`             |
-`width`          | `number`             |
-`onColorChanged` | `func`               |
+prop                  | type                 | default value
+----------------------|----------------------|--------------
+`color`               | `string`             | '#ff0000'
+`height`              | `number`             |
+`width`               | `number`             |
+`onColorChanged`      | `func`               |
+`onColorChangeEnd`    | `func`               |
+`onColorChangeStart`  | `func`               |
 
 ### Want to contribute?
 

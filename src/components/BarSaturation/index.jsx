@@ -7,7 +7,9 @@ const propTypes = {
   hue: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
-  onValueChanged: PropTypes.func.isRequired
+  onValueChanged: PropTypes.func.isRequired,
+  onValueChangeEnd: PropTypes.func,
+  onValueChangeStart: PropTypes.func
 };
 
 const defaultProps = {};
@@ -24,7 +26,14 @@ export default class BarSaturation extends React.PureComponent {
   }
 
   render() {
-    const { height, hue, value, width } = this.props;
+    const {
+      height,
+      hue,
+      value,
+      width,
+      onValueChangeEnd,
+      onValueChangeStart
+    } = this.props;
     return (
       <SaturationPickerWrapper
         height={height}
@@ -32,6 +41,8 @@ export default class BarSaturation extends React.PureComponent {
         position={value / 100}
         width={width}
         onValueChanged={this.onValueChanged}
+        onValueChangeEnd={onValueChangeEnd}
+        onValueChangeStart={onValueChangeStart}
       />
     );
   }
