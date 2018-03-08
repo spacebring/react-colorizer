@@ -10,6 +10,6 @@ language: node_js
 node_js:
   - "6.0"
 notifications:
-  slack: cards-inc:NJt6wNBjKHUWl15RMjvGRbcA
+  slack: cards-corp:NJt6wNBjKHUWl15RMjvGRbcA
 script:
   - npm run build
