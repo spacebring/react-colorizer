@@ -12,7 +12,7 @@
   ],
   "author": {
     "name": "Ross Khanas",
-    "email": "rk@try.cards"
+    "email": "rk@andcards.com"
   },
   "scripts": {
     "storybook-web-build": "cd ./storybooks/web && npm run build-storybook",
