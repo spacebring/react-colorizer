@@ -7,7 +7,8 @@ import validatePosition from "../../../utils/position-validation";
 import getPosition from "../../../utils/position";
 
 const propTypes = {
-  dragging: PropTypes.bool.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
+  isDragging: PropTypes.bool.isRequired,
   position: PropTypes.number.isRequired,
   positionLeft: PropTypes.number.isRequired,
   positionRight: PropTypes.number.isRequired,
@@ -47,55 +48,65 @@ export default class Handler extends React.PureComponent {
     e.preventDefault();
     // parents don't need to know about this event
     e.stopPropagation();
-    this.props.onDraggingChanged(true);
+    const { isDisabled } = this.props;
+    if (isDisabled) {
+      return;
+    }
+    const { onDraggingChanged } = this.props;
+    onDraggingChanged(true);
   }
 
   onMouseResponderMove(e) {
-    const {
-      dragging,
-      positionLeft,
-      positionRight,
-      onPositionChanged
-    } = this.props;
-    if (!dragging) {
+    const { isDisabled } = this.props;
+    if (isDisabled) {
       return;
     }
+    const { isDragging } = this.props;
+    if (!isDragging) {
+      return;
+    }
+    const { positionLeft, positionRight, onPositionChanged } = this.props;
     // prevent selecting text
     e.preventDefault();
     // prevent any other movement
     e.stopImmediatePropagation();
-    const position = getPosition(
-      positionLeft,
-      e.clientX,
-      positionRight - positionLeft
+    validatePosition(
+      getPosition(positionLeft, e.clientX, positionRight - positionLeft),
+      onPositionChanged
     );
-    validatePosition(position, onPositionChanged);
   }
 
   onTouchResponderMove(e) {
-    const {
-      dragging,
-      positionLeft,
-      positionRight,
-      onPositionChanged
-    } = this.props;
-    if (!dragging) {
+    const { isDisabled } = this.props;
+    if (isDisabled) {
       return;
     }
+    const { isDragging } = this.props;
+    if (!isDragging) {
+      return;
+    }
+    const { positionLeft, positionRight, onPositionChanged } = this.props;
     // prevent selecting text
     e.preventDefault();
     // prevent any other movement
     e.stopImmediatePropagation();
-    const position = getPosition(
-      positionLeft,
-      e.changedTouches[0].clientX,
-      positionRight - positionLeft
+    validatePosition(
+      getPosition(
+        positionLeft,
+        e.changedTouches[0].clientX,
+        positionRight - positionLeft
+      ),
+      onPositionChanged
     );
-    validatePosition(position, onPositionChanged);
   }
 
   onGestureResponderEnd() {
-    this.props.onDraggingChanged(false);
+    const { isDisabled } = this.props;
+    if (isDisabled) {
+      return;
+    }
+    const { onDraggingChanged } = this.props;
+    onDraggingChanged(false);
   }
 
   render() {

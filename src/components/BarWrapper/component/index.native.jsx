@@ -10,6 +10,7 @@ import validatePosition from "../../../utils/position-validation";
 const propTypes = {
   children: PropTypes.any.isRequired,
   height: PropTypes.number.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
   position: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   onValueChanged: PropTypes.func.isRequired,
@@ -52,7 +53,10 @@ export default class BarWrapper extends React.Component {
   }
 
   onTouchStart(e, gestureState) {
-    const { width } = this.props;
+    const { isDisabled, width } = this.props;
+    if (isDisabled) {
+      return;
+    }
     const targetBoundingClientRect = {
       left: 0,
       width
@@ -69,12 +73,16 @@ export default class BarWrapper extends React.Component {
 
   onTouchMove(e, gestureState) {
     const {
+      isDisabled,
       width,
       onValueChanged,
       position,
       height,
       onValueChangeStart
     } = this.props;
+    if (isDisabled) {
+      return;
+    }
     const { dragging, holding } = this.state;
     if (this.checkHolding(gestureState.moveX, gestureState.moveY)) {
       return;
@@ -97,7 +105,10 @@ export default class BarWrapper extends React.Component {
   }
 
   onTouchRelease() {
-    const { onValueChangeEnd } = this.props;
+    const { isDisabled, onValueChangeEnd } = this.props;
+    if (isDisabled) {
+      return;
+    }
     if (onValueChangeEnd) {
       onValueChangeEnd();
     }
@@ -120,14 +131,18 @@ export default class BarWrapper extends React.Component {
 
   getOnHoldHandler(clientX, targetBoundingClientRect) {
     return () => {
-      const { onValueChanged, onValueChangeStart } = this.props;
+      const { isDisabled, onValueChanged, onValueChangeStart } = this.props;
+      if (isDisabled) {
+        return;
+      }
       if (this.state.holding) {
-        const newPosition = getPosition(
-          targetBoundingClientRect.left,
-          clientX,
-          targetBoundingClientRect.width
+        onValueChanged(
+          getPosition(
+            targetBoundingClientRect.left,
+            clientX,
+            targetBoundingClientRect.width
+          )
         );
-        onValueChanged(newPosition);
         if (onValueChangeStart) {
           onValueChangeStart();
         }
@@ -170,7 +185,7 @@ export default class BarWrapper extends React.Component {
     return this.state.holding;
   }
 
-  renderHandler(height, position, onValueChanged) {
+  renderHandler(height, position) {
     const { width } = this.props;
     const { isDomInitialized } = this.state;
     if (!isDomInitialized) {
@@ -183,6 +198,7 @@ export default class BarWrapper extends React.Component {
     const {
       children,
       height,
+      isDisabled,
       position,
       width,
       onValueChanged,
@@ -190,13 +206,15 @@ export default class BarWrapper extends React.Component {
     } = this.props;
     return (
       <BarWrapperStyled
+        isDisabled={isDisabled}
         ref={this.onSetBarDom}
-        style={{ height, width }}
+        styleHeight={height}
+        styleWidth={width}
         {...props}
         {...this.panResponder.panHandlers}
       >
         {children}
-        {this.renderHandler(height, position, onValueChanged)}
+        {this.renderHandler(height, position)}
       </BarWrapperStyled>
     );
   }

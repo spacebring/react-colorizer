@@ -4,6 +4,7 @@ import HuePickerWrapper from "./component/HuePickerWrapper";
 
 const propTypes = {
   height: PropTypes.number.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
   value: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   onValueChanged: PropTypes.func.isRequired,
@@ -17,6 +18,7 @@ export default class BarHue extends React.PureComponent {
   render() {
     const {
       height,
+      isDisabled,
       value,
       width,
       onValueChanged,
@@ -26,6 +28,7 @@ export default class BarHue extends React.PureComponent {
     return (
       <HuePickerWrapper
         height={height}
+        isDisabled={isDisabled}
         position={value / 360}
         width={width}
         onValueChanged={pos => onValueChanged(pos * 360)}

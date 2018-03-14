@@ -18,15 +18,23 @@ class Example extends React.Component {
     super(props);
     this.state = {
       color: "hsl(26, 100%, 44%)",
+      isDisabled: false,
       scrollEnabled: true
     };
     this.onColorChanged = this.onColorChanged.bind(this);
+    this.onSetIsDisabled = this.onSetIsDisabled.bind(this);
     this.onSetRandomColor = this.onSetRandomColor.bind(this);
   }
 
   onColorChanged(color) {
     this.setState(() => ({
       color
+    }));
+  }
+
+  onSetIsDisabled() {
+    this.setState(() => ({
+      isDisabled: !this.state.isDisabled
     }));
   }
 
@@ -40,10 +48,18 @@ class Example extends React.Component {
   render() {
     return (
       <ScrollView scrollEnabled={this.state.scrollEnabled}>
+        <View>
+          <Text>Disabled</Text>
+        </View>
+        <ColorPicker height={50} isDisabled width={width} />
+        <View>
+          <Text>Enabled</Text>
+        </View>
         <View style={{ backgroundColor: "#EDEBE6", height: 50 }} />
         <ColorPicker
-          height={50}
           color={this.state.color}
+          height={50}
+          isDisabled={this.state.isDisabled}
           width={width}
           onColorChanged={this.onColorChanged}
           onColorChangeStart={() => {
@@ -66,6 +82,9 @@ class Example extends React.Component {
             marginTop: 10
           }}
         />
+        <TouchableOpacity onPress={this.onSetIsDisabled}>
+          <Text>Set disabled state ({String(this.state.isDisabled)})</Text>
+        </TouchableOpacity>
         <TouchableOpacity onPress={this.onSetRandomColor}>
           <Text>Set random color</Text>
         </TouchableOpacity>

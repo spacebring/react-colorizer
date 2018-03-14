@@ -1,10 +1,7 @@
 import React from "react";
-import infoAddon from "@storybook/addon-info";
-import { storiesOf, setAddon } from "@storybook/react";
+import { storiesOf } from "@storybook/react";
 import ColorPicker from "react-colorizer";
 import fullScheme, { HarmonyTypes } from "color-harmony-generator";
-
-setAddon(infoAddon);
 
 const COLORIZER_WIDTH = 800;
 const COLORIZER_HEIGHT = 50;
@@ -14,10 +11,12 @@ class Example extends React.Component {
     super(props);
     this.state = {
       color: "hsl(26, 100%, 44%)",
-      harmony: HarmonyTypes.TRIAD
+      harmony: HarmonyTypes.TRIAD,
+      isDisabled: false
     };
     this.onColorChanged = this.onColorChanged.bind(this);
     this.onHarmonyChange = this.onHarmonyChange.bind(this);
+    this.onSetIsDisabled = this.onSetIsDisabled.bind(this);
     this.onSetRandomColor = this.onSetRandomColor.bind(this);
   }
 
@@ -33,9 +32,16 @@ class Example extends React.Component {
     }));
   }
 
+  onSetIsDisabled() {
+    this.setState(() => ({
+      isDisabled: !this.state.isDisabled
+    }));
+  }
+
   onSetRandomColor() {
     const randomColor = `#${("00000" +
-      ((Math.random() * (1 << 24)) | 0).toString(16)).slice(-6)}`;
+      ((Math.random() * (1 << 24)) | 0).toString(16)
+    ).slice(-6)}`;
     this.onColorChanged(randomColor);
   }
 
@@ -44,12 +50,39 @@ class Example extends React.Component {
     // style={{ transform: 'scale3d(0.5, 0.5, 1)' }}
     return (
       <div>
+        <div>Disabled</div>
         <ColorPicker
           height={COLORIZER_HEIGHT}
+          isDisabled
+          width={COLORIZER_WIDTH}
+        />
+        <div>Enabled</div>
+        <ColorPicker
           color={this.state.color}
+          height={COLORIZER_HEIGHT}
+          isDisabled={this.state.isDisabled}
           width={COLORIZER_WIDTH}
           onColorChanged={this.onColorChanged}
         />
+        <br />
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            justifyContent: "space-between",
+            width: COLORIZER_WIDTH,
+            fontFamily: "Roboto, Helvetica, Trebuchet MS, sans-serif",
+            fontWeight: 100
+          }}
+        >
+          <div style={{ marginBottom: 10, marginTop: 20 }}>Disabled:</div>
+          <button
+            style={{ marginBottom: 10, marginTop: 20 }}
+            onClick={this.onSetIsDisabled}
+          >
+            Set disabled state ({String(this.state.isDisabled)})
+          </button>
+        </div>
         <br />
         <div
           style={{
@@ -140,4 +173,4 @@ class Example extends React.Component {
   }
 }
 
-storiesOf("examples", module).addWithInfo("main", () => <Example />);
+storiesOf("examples", module).add("main", () => <Example />);

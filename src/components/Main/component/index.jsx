@@ -9,6 +9,7 @@ import BarSaturation from "../../BarSaturation";
 const propTypes = {
   color: PropTypes.string,
   height: PropTypes.number.isRequired,
+  isDisabled: PropTypes.bool,
   width: PropTypes.number.isRequired,
   onColorChanged: PropTypes.func,
   onColorChangeEnd: PropTypes.func,
@@ -16,7 +17,8 @@ const propTypes = {
 };
 
 const defaultProps = {
-  color: "hsl(0, 100%, 50%)",
+  color: "hsl(38.2, 21.57%, 90%)",
+  isDisabled: false,
   onColorChanged: undefined
 };
 
@@ -73,11 +75,18 @@ export default class Main extends React.Component {
 
   render() {
     const { colorParsed } = this.cache;
-    const { height, width, onColorChangeEnd, onColorChangeStart } = this.props;
+    const {
+      height,
+      isDisabled,
+      width,
+      onColorChangeEnd,
+      onColorChangeStart
+    } = this.props;
     return (
       <ColorPickerWrapper>
         <BarHue
           height={height}
+          isDisabled={isDisabled}
           value={colorParsed.h}
           width={width}
           onValueChanged={this.onHueChanged}
@@ -87,6 +96,7 @@ export default class Main extends React.Component {
         <BarSaturation
           height={height}
           hue={colorParsed.h}
+          isDisabled={isDisabled}
           value={colorParsed.s}
           width={width}
           onValueChanged={this.onSaturationChanged}
@@ -96,6 +106,7 @@ export default class Main extends React.Component {
         <BarLightness
           height={height}
           hue={colorParsed.h}
+          isDisabled={isDisabled}
           saturation={colorParsed.s}
           value={colorParsed.l}
           width={width}

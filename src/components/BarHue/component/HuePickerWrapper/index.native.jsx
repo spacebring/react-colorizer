@@ -5,6 +5,7 @@ import BarWrapper from "../../../BarWrapper";
 
 const propTypes = {
   height: PropTypes.number.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
   position: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   onValueChanged: PropTypes.func.isRequired,
@@ -18,6 +19,7 @@ export default class HuePickerWrapper extends React.PureComponent {
   render() {
     const {
       height,
+      isDisabled,
       position,
       width,
       onValueChanged,
@@ -27,6 +29,7 @@ export default class HuePickerWrapper extends React.PureComponent {
     return (
       <BarWrapper
         height={height}
+        isDisabled={isDisabled}
         position={position}
         renderToHardwareTextureAndroid
         width={width}

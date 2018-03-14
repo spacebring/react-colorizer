@@ -5,6 +5,7 @@ import LightnessPickerWrapper from "./component/LightnessPickerWrapper";
 const propTypes = {
   height: PropTypes.number.isRequired,
   hue: PropTypes.number.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
   saturation: PropTypes.number.isRequired,
   value: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
@@ -30,6 +31,7 @@ export default class BarLightness extends React.PureComponent {
     const {
       height,
       hue,
+      isDisabled,
       saturation,
       value,
       width,
@@ -40,6 +42,7 @@ export default class BarLightness extends React.PureComponent {
       <LightnessPickerWrapper
         height={height}
         hue={hue}
+        isDisabled={isDisabled}
         position={1 - value / 100}
         saturationPercent={saturation * 100}
         width={width}

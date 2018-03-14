@@ -5,6 +5,7 @@ import SaturationPickerWrapper from "./component/SaturationPickerWrapper";
 const propTypes = {
   height: PropTypes.number.isRequired,
   hue: PropTypes.number.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
   value: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   onValueChanged: PropTypes.func.isRequired,
@@ -29,6 +30,7 @@ export default class BarSaturation extends React.PureComponent {
     const {
       height,
       hue,
+      isDisabled,
       value,
       width,
       onValueChangeEnd,
@@ -38,6 +40,7 @@ export default class BarSaturation extends React.PureComponent {
       <SaturationPickerWrapper
         height={height}
         hue={hue}
+        isDisabled={isDisabled}
         position={value / 100}
         width={width}
         onValueChanged={this.onValueChanged}

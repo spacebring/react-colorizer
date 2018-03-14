@@ -6,6 +6,7 @@ import BarWrapper from "../../../BarWrapper";
 const propTypes = {
   height: PropTypes.number.isRequired,
   hue: PropTypes.number.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
   position: PropTypes.number.isRequired,
   saturationPercent: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
@@ -21,6 +22,7 @@ export default class LightnessPickerWrapper extends React.PureComponent {
     const {
       height,
       hue,
+      isDisabled,
       position,
       saturationPercent,
       width,
@@ -33,6 +35,7 @@ export default class LightnessPickerWrapper extends React.PureComponent {
     return (
       <BarWrapper
         height={height}
+        isDisabled={isDisabled}
         position={position}
         width={width}
         onValueChanged={onValueChanged}

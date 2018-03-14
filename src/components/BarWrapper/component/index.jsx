@@ -8,6 +8,7 @@ import getPosition from "../../../utils/position";
 
 const propTypes = {
   height: PropTypes.number.isRequired,
+  isDisabled: PropTypes.bool.isRequired,
   position: PropTypes.number.isRequired,
   width: PropTypes.number.isRequired,
   onValueChanged: PropTypes.func.isRequired
@@ -58,15 +59,14 @@ export default class BarWrapper extends React.Component {
 
   onMouseDown(e) {
     const targetBoundingClientRect = e.target.getBoundingClientRect();
-    const { clientX, clientY } = e;
-    this.cache.holdPositionX = clientX;
-    this.cache.holdPositionY = clientY;
+    this.cache.holdPositionX = e.clientX;
+    this.cache.holdPositionY = e.clientY;
     this.setState(() => ({
       holding: true
     }));
     this.setOnHoldTimerInitIfNeed(
       e,
-      this.getOnHoldHandler(clientX, targetBoundingClientRect)
+      this.getOnHoldHandler(e.clientX, targetBoundingClientRect)
     );
   }
 
@@ -119,14 +119,18 @@ export default class BarWrapper extends React.Component {
 
   getOnHoldHandler(clientX, targetBoundingClientRect) {
     return () => {
-      const { onValueChanged } = this.props;
+      const { isDisabled, onValueChanged } = this.props;
+      if (isDisabled) {
+        return;
+      }
       if (this.state.holding) {
-        const newPosition = getPosition(
-          targetBoundingClientRect.left,
-          clientX,
-          targetBoundingClientRect.width
+        onValueChanged(
+          getPosition(
+            targetBoundingClientRect.left,
+            clientX,
+            targetBoundingClientRect.width
+          )
         );
-        onValueChanged(newPosition);
         this.onDraggingChanged(true);
       }
     };
@@ -170,8 +174,8 @@ export default class BarWrapper extends React.Component {
     }
   }
 
-  renderHandler(height, position, onValueChanged) {
-    const { width } = this.props;
+  renderHandler(height, position, onValueChange) {
+    const { isDisabled, width } = this.props;
     const { dragging, isDomInitialized } = this.state;
     if (!isDomInitialized) {
       return null;
@@ -180,23 +184,32 @@ export default class BarWrapper extends React.Component {
     return (
       <Handler
         barDom={this.barDom}
-        dragging={dragging}
+        isDisabled={isDisabled}
+        isDragging={dragging}
         position={position}
         positionLeft={barDomBoundingClientRect.left}
         positionRight={barDomBoundingClientRect.right}
         size={height}
         width={width}
         onDraggingChanged={this.onDraggingChanged}
-        onPositionChanged={onValueChanged}
+        onPositionChanged={onValueChange}
       />
     );
   }
 
   render() {
-    const { height, position, width, onValueChanged, ...props } = this.props;
+    const {
+      height,
+      isDisabled,
+      position,
+      width,
+      onValueChanged,
+      ...props
+    } = this.props;
     return (
       <BarWrapperStyled
         innerRef={this.onSetBarDom}
+        isDisabled={isDisabled}
         styleHeight={height}
         styleWidth={width}
         onMouseDown={this.onMouseDown}

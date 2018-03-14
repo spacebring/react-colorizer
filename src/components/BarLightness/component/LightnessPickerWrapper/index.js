@@ -10,4 +10,5 @@ export default styled(BarWrapper).attrs({
       hsl(${props.hue}, ${props.saturationPercent}%, 0%) 100%
     )`
   })
-})``;
+})`
+`;
