@@ -4,8 +4,8 @@ import styled from "styled-components";
 export default styled.div.attrs({
   style: props => ({
     height: props.size,
-    transform: `translate3d(${Math.round(props.position * props.width) -
-      props.size / 2}px, 0, 0)`,
+    transform: `translateX(${Math.round(props.position * props.width) -
+      props.size / 2}px)`,
     width: props.size
   })
 })`
