@@ -27,8 +27,9 @@ class Example extends React.Component {
   }
 
   onHarmonyChange(e) {
+    const harmony = e.target.value;
     this.setState(() => ({
-      harmony: e.target.value
+      harmony
     }));
   }
 
