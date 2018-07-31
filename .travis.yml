@@ -8,7 +8,7 @@ branches:
 cache: yarn
 language: node_js
 node_js:
-  - "8.0.0"
+  - "10.0"
 notifications:
   slack: cards-corp:NJt6wNBjKHUWl15RMjvGRbcA
 script:
