@@ -7,7 +7,7 @@
 [![devDependency Status](https://david-dm.org/opensource-cards/react-colorizer/dev-status.svg)](https://david-dm.org/opensource-cards/react-colorizer#info=devDependencies)
 [![peerDependency Status](https://david-dm.org/opensource-cards/react-colorizer/peer-status.svg)](https://david-dm.org/opensource-cards/react-colorizer#info=peerDependencies)
 
-A color picker for React and React Native.
+A color picker component for React and React Native.
 
 ![](https://github.com/opensource-cards/react-colorizer/blob/master/demo.gif)
 
