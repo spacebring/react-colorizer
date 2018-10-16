@@ -1,15 +1,15 @@
 # react-colorizer
 
-[![Greenkeeper badge](https://badges.greenkeeper.io/opensource-cards/react-colorizer.svg)](https://greenkeeper.io/)
-[![Build Status](https://travis-ci.org/opensource-cards/react-colorizer.svg?branch=master)](https://travis-ci.org/opensource-cards/react-colorizer)
+[![Greenkeeper badge](https://badges.greenkeeper.io/andcards/react-colorizer.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/andcards/react-colorizer.svg?branch=master)](https://travis-ci.org/andcards/react-colorizer)
 [![npm package](https://badge.fury.io/js/react-colorizer.svg)](https://www.npmjs.org/package/react-colorizer)
-[![Dependency Status](https://david-dm.org/opensource-cards/react-colorizer.svg)](https://david-dm.org/opensource-cards/react-colorizer)
-[![devDependency Status](https://david-dm.org/opensource-cards/react-colorizer/dev-status.svg)](https://david-dm.org/opensource-cards/react-colorizer#info=devDependencies)
-[![peerDependency Status](https://david-dm.org/opensource-cards/react-colorizer/peer-status.svg)](https://david-dm.org/opensource-cards/react-colorizer#info=peerDependencies)
+[![Dependency Status](https://david-dm.org/andcards/react-colorizer.svg)](https://david-dm.org/andcards/react-colorizer)
+[![devDependency Status](https://david-dm.org/andcards/react-colorizer/dev-status.svg)](https://david-dm.org/andcards/react-colorizer#info=devDependencies)
+[![peerDependency Status](https://david-dm.org/andcards/react-colorizer/peer-status.svg)](https://david-dm.org/andcards/react-colorizer#info=peerDependencies)
 
 A color picker component for React and React Native.
 
-![](https://github.com/opensource-cards/react-colorizer/blob/master/demo.gif)
+![](https://github.com/andcards/react-colorizer/blob/master/demo.gif)
 
 Check out our app built on top of this component:
 
