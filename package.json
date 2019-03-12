@@ -75,7 +75,7 @@
     "react": "^16.2.0",
     "react-addons-test-utils": "^15.4.2",
     "react-dom": "^16.2.0",
-    "react-native": "^0.58.4",
+    "react-native": "^0.59.0",
     "rimraf": "^2.6.0",
     "styled-components": "^4.0.1",
     "svgs": "^4.0.0"
