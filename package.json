@@ -61,7 +61,7 @@
     "color-harmony-generator": "^0.1.2",
     "enzyme": "^3.6.0",
     "enzyme-adapter-react-16": "^1.5.0",
-    "eslint": "^5.14.0",
+    "eslint": "^6.7.0",
     "eslint-config-airbnb": "^18.0.0",
     "eslint-config-prettier": "^6.0.0",
     "eslint-plugin-import": "^2.2.0",
